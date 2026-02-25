@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One — 0から1を、Oneと。</title>
+  <link rel="stylesheet" href="style.css?v=1">
+  <style>
+  /* ヒーロー：リロード時にふわっと */
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  .hero__inner{animation:fadeInUp 0.9s ease-out 0s both;}
+  .hero__visual{animation:fadeInUp 0.8s ease-out 0.1s both;}
+  .hero__text{animation:fadeInUp 0.8s ease-out 0.2s both;}
+  /* セクション・フッター：スクロールで画面に入ったらふわっと */
+  .section{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease-out,transform 0.8s ease-out;}
+  .section.is-visible{opacity:1;transform:translateY(0);}
+  .section--services .services__item{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease-out,transform 0.6s ease-out;}
+  .section--services .services__item:nth-child(1){transition-delay:0.05s;}
+  .section--services .services__item:nth-child(2){transition-delay:0.15s;}
+  .section--services.is-visible .services__item{opacity:1;transform:translateY(0);}
+  .section--flow .flow__item{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease-out,transform 0.6s ease-out;}
+  .section--flow .flow__item:nth-child(1){transition-delay:0s;}
+  .section--flow .flow__item:nth-child(2){transition-delay:0.1s;}
+  .section--flow .flow__item:nth-child(3){transition-delay:0.2s;}
+  .section--flow .flow__item:nth-child(4){transition-delay:0.3s;}
+  .section--flow.is-visible .flow__item{opacity:1;transform:translateY(0);}
+  .footer{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease-out,transform 0.7s ease-out;}
+  .footer.is-visible{opacity:1;transform:translateY(0);}
+  @media(prefers-reduced-motion:reduce){.hero__inner,.hero__visual,.hero__text{animation:none !important;opacity:1 !important;transform:none !important;}.section,.section.is-visible,.section--services .services__item,.section--services.is-visible .services__item,.section--flow .flow__item,.section--flow.is-visible .flow__item,.footer,.footer.is-visible{opacity:1 !important;transform:none !important;transition:none !important;}}
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__visual hero__visual--character">
+        <img src="images/character.png" alt="Oneのイメージキャラクター" width="160" height="160">
+      </div>
+      <div class="hero__text">
+        <h1 class="hero__title">0から1を、Oneと。</h1>
+        <p class="hero__subtitle">0から1を生み出す、その一歩から。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--philosophy" id="philosophy">
+    <h2 class="section__title">想い</h2>
+    <div class="philosophy__inner">
+      <div class="philosophy__body">
+        <div class="philosophy__lead">
+          <p>成功も失敗も、すべては1から始まります。行動しなければ1は生まれない。</p>
+          <p>熱い願望を持ち、人生を本気で賭けている方を、Oneは全力でサポートします。その架け橋でありたい。</p>
+          <p>少しでも期待を寄せてくださった方と、一人ひとり、1件1件、真心こめて向き合うことをお誓いします。</p>
+        </div>
+        <p class="philosophy__sign">One代表 永冶陽平</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="sub-nav" aria-label="プロフィール・SNS">
+    <a class="sub-nav__link" href="profile.html">プロフィール</a>
+    <a class="sub-nav__link sub-nav__link--sns" href="sns.html"><span class="sns__live"><span class="sns__live-dot" aria-hidden="true"></span>随時更新</span> SNS</a>
+  </nav>
+
+  <section class="section section--services" id="services">
+    <h2 class="section__title">サービス</h2>
+    <p class="section__lead">一人ひとりの「0から1」を、こんな形でお手伝いします。</p>
+    <ul class="services__list">
+      <li class="services__item">
+        <h3 class="services__name">Web・システム開発</h3>
+        <p class="services__desc">サイト・業務システムなど、0から1の設計〜開発まで。</p>
+      </li>
+      <li class="services__item">
+        <h3 class="services__name">ツール・アプリ開発<span class="services__note">（あったらいいなを形に）</span></h3>
+        <p class="services__desc">設計から開発まで、相談しながら一緒に進めます。</p>
+      </li>
+    </ul>
+    <p class="services__closing">1客1件、真心こめて承ります。</p>
+  </section>
+
+  <section class="section section--flow" id="flow">
+    <h2 class="section__title">ご依頼の流れ</h2>
+    <ol class="flow__list">
+      <li class="flow__item">
+        <div class="flow__content">
+          <span class="flow__step">ご相談</span>
+          <p class="flow__desc">お話をうかがいます。まずはお気軽に。</p>
+        </div>
+        <figure class="flow__figure">
+          <img src="images/flow1.png" alt="ご相談" width="140" height="140">
+        </figure>
+      </li>
+      <li class="flow__item">
+        <div class="flow__content">
+          <span class="flow__step">お見積り</span>
+          <p class="flow__desc">ご要望に合わせてお見積りをご提出します。</p>
+        </div>
+        <figure class="flow__figure">
+          <img src="images/flow2.png" alt="お見積り" width="140" height="140">
+        </figure>
+      </li>
+      <li class="flow__item">
+        <div class="flow__content">
+          <span class="flow__step">ご契約</span>
+          <p class="flow__desc">内容にご納得いただけましたら、ご契約です。</p>
+        </div>
+        <figure class="flow__figure">
+          <img src="images/flow3.png" alt="ご契約" width="140" height="140">
+        </figure>
+      </li>
+      <li class="flow__item">
+        <div class="flow__content">
+          <span class="flow__step">納品・サポート</span>
+          <p class="flow__desc">納品後も、ご不明点には対応します。</p>
+        </div>
+        <figure class="flow__figure">
+          <img src="images/flow4.png" alt="納品・サポート" width="140" height="140">
+        </figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section section--contact" id="contact">
+    <h2 class="section__title">お問い合わせ</h2>
+    <p class="section__lead">0から1を一緒に、というご相談はこちらから。まずはお気軽に。</p>
+    <div class="contact__form-area">
+      <!-- Formspree フォーム送信先 -->
+      <form class="contact__form" action="https://formspree.io/f/maqdlrdv" method="post">
+        <input type="hidden" name="_subject" value="【One】ホームページからのお問い合わせ">
+        <label class="contact__label" for="contact-name">お名前</label>
+        <input class="contact__input" id="contact-name" type="text" name="name" required placeholder="お名前">
+        <label class="contact__label" for="contact-email">メールアドレス</label>
+        <input class="contact__input" id="contact-email" type="email" name="email" required placeholder="example@example.com">
+        <label class="contact__label" for="contact-message">お問い合わせ内容</label>
+        <textarea class="contact__textarea" id="contact-message" name="message" rows="5" required placeholder="ご相談内容をご記入ください"></textarea>
+        <button class="contact__submit" type="submit">送信する</button>
+      </form>
+      <p class="contact__note">※送信後、ご記入のメールアドレスに確認メールが届く場合があります。</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer__brand">One</p>
+    <p class="footer__tagline">0から1を、Oneと。</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
