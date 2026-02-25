@@ -32,15 +32,22 @@
 <body>
   <section class="hero">
     <div class="hero__inner">
-      <div class="hero__visual hero__visual--character">
-        <img src="images/character.png" alt="Oneのイメージキャラクター" width="160" height="160">
-      </div>
       <div class="hero__text">
         <h1 class="hero__title">0から1を、Oneと。</h1>
         <p class="hero__subtitle">0から1を生み出す、その一歩から。</p>
       </div>
     </div>
   </section>
+
+  <nav class="jump-nav" aria-label="ページ内リンク">
+    <span class="jump-nav__label">目次</span>
+    <ul class="jump-nav__list">
+      <li><a class="jump-nav__link" href="#philosophy">想い</a></li>
+      <li><a class="jump-nav__link" href="#services">サービス</a></li>
+      <li><a class="jump-nav__link" href="#flow">ご依頼の流れ</a></li>
+      <li><a class="jump-nav__link" href="#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
 
   <section class="section section--philosophy" id="philosophy">
     <h2 class="section__title">想い</h2>
@@ -56,8 +63,8 @@
     </div>
   </section>
 
-  <nav class="sub-nav" aria-label="プロフィール・SNS">
-    <a class="sub-nav__link" href="profile.html">プロフィール</a>
+  <nav class="sub-nav" aria-label="Oneとは・SNS">
+    <a class="sub-nav__link" href="profile.html">Oneとは</a>
     <a class="sub-nav__link sub-nav__link--sns" href="sns.html"><span class="sns__live"><span class="sns__live-dot" aria-hidden="true"></span>随時更新</span> SNS</a>
   </nav>
 
@@ -139,6 +146,9 @@
   </section>
 
   <footer class="footer">
+    <figure class="footer__character">
+      <img src="images/mascot.png" alt="Oneのマスコット" width="120" height="120" class="footer__character-img">
+    </figure>
     <p class="footer__brand">One</p>
     <p class="footer__tagline">0から1を、Oneと。</p>
   </footer>
