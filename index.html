@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One — 0から1を、Oneと。</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <style>
   /* ヒーロー：リロード時にふわっと */
   @keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
@@ -30,7 +30,7 @@
   </style>
 </head>
 <body>
-  <section class="hero">
+  <section class="hero" id="top">
     <div class="hero__bg hero__bg--1" aria-hidden="true"></div>
     <div class="hero__bg hero__bg--2" aria-hidden="true"></div>
     <div class="hero__inner">
@@ -185,6 +185,7 @@
     </div>
     </div>
     <p class="contact__note">※詳細を確認するため、ご記入のメールアドレスにご連絡させていただく場合がございます。</p>
+    <p class="contact__to-top-wrap"><a class="contact__to-top" href="#top">トップへ</a></p>
   </section>
 
   </div><!-- /.main-wrap -->
