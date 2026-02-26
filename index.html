@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One — 0から1を、Oneと。</title>
-  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="style.css?v=3">
   <style>
   /* ヒーロー：リロード時にふわっと */
   @keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
@@ -31,22 +31,47 @@
 </head>
 <body>
   <section class="hero">
+    <div class="hero__bg hero__bg--1" aria-hidden="true"></div>
+    <div class="hero__bg hero__bg--2" aria-hidden="true"></div>
     <div class="hero__inner">
       <div class="hero__text">
-        <h1 class="hero__title">0から1を、Oneと。</h1>
+        <h1 class="hero__title">0から1を、<ruby>One<rt>イチ</rt></ruby>と。</h1>
         <p class="hero__subtitle">0から1を生み出す、その一歩から。</p>
       </div>
     </div>
   </section>
 
+  <div class="main-wrap">
+    <div class="main-wrap__code-bg" aria-hidden="true">
+      <span class="main-wrap__code-sym">⚙</span>
+      <span class="main-wrap__code-sym">🔧</span>
+      <span class="main-wrap__code-sym">&lt;/&gt;</span>
+      <span class="main-wrap__code-sym">⚙</span>
+      <span class="main-wrap__code-sym">⚙</span>
+      <span class="main-wrap__code-sym">🔧</span>
+      <span class="main-wrap__code-sym">&lt;/&gt;</span>
+      <span class="main-wrap__code-sym">⚙</span>
+      <span class="main-wrap__code-sym">🔧</span>
+      <span class="main-wrap__code-sym">⚙</span>
+    </div>
   <nav class="jump-nav" aria-label="ページ内リンク">
-    <span class="jump-nav__label">目次</span>
+    <button type="button" class="jump-nav__trigger" aria-expanded="false" aria-controls="jump-nav-list" id="jump-nav-trigger">ご案内</button>
+    <div class="jump-nav__inner" id="jump-nav-list" role="region" aria-label="ご案内">
     <ul class="jump-nav__list">
-      <li><a class="jump-nav__link" href="#philosophy">想い</a></li>
-      <li><a class="jump-nav__link" href="#services">サービス</a></li>
-      <li><a class="jump-nav__link" href="#flow">ご依頼の流れ</a></li>
-      <li><a class="jump-nav__link" href="#contact">お問い合わせ</a></li>
+      <li class="jump-nav__item">
+        <a class="jump-nav__link" href="#philosophy"><span class="jump-nav__title">想い</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">1</span></a>
+      </li>
+      <li class="jump-nav__item">
+        <a class="jump-nav__link" href="#services"><span class="jump-nav__title">サービス</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">2</span></a>
+      </li>
+      <li class="jump-nav__item">
+        <a class="jump-nav__link" href="#flow"><span class="jump-nav__title">ご依頼の流れ</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">3</span></a>
+      </li>
+      <li class="jump-nav__item">
+        <a class="jump-nav__link" href="#contact"><span class="jump-nav__title">お問い合わせ</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">4</span></a>
+      </li>
     </ul>
+    </div>
   </nav>
 
   <section class="section section--philosophy" id="philosophy">
@@ -54,15 +79,14 @@
     <div class="philosophy__inner">
       <div class="philosophy__body">
         <div class="philosophy__lead">
-          <p>成功も失敗も、すべては1から始まります。行動しなければ1は生まれない。</p>
-          <p>熱い願望を持ち、人生を本気で賭けている方を、Oneは全力でサポートします。その架け橋でありたい。</p>
+          <p>成功も失敗も、すべては1から始まります。行動しなければ1は生まれません。</p>
+          <p>熱い願望を持ち"人生と本気で向き合っている"そんな方を、Oneは全力でサポートします。その架け橋でありたいと思っています。</p>
           <p>少しでも期待を寄せてくださった方と、一人ひとり、1件1件、真心こめて向き合うことをお誓いします。</p>
         </div>
         <p class="philosophy__sign">One代表 永冶陽平</p>
       </div>
     </div>
-  </section>
-
+    <div class="sub-nav-wrap">
   <nav class="sub-nav" aria-label="Oneとは・SNS">
     <span class="sub-nav__paws" aria-hidden="true">
       <svg class="sub-nav__paw" viewBox="0 0 24 28" width="18" height="21" aria-hidden="true"><ellipse cx="12" cy="20" rx="5" ry="4" fill="currentColor" opacity="0.5"/><circle cx="8" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="5" cy="16" r="2.5" fill="currentColor" opacity="0.5"/><circle cx="19" cy="16" r="2.5" fill="currentColor" opacity="0.5"/></svg>
@@ -77,6 +101,8 @@
       <svg class="sub-nav__paw" viewBox="0 0 24 28" width="18" height="21" aria-hidden="true"><ellipse cx="12" cy="20" rx="5" ry="4" fill="currentColor" opacity="0.5"/><circle cx="8" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="5" cy="16" r="2.5" fill="currentColor" opacity="0.5"/><circle cx="19" cy="16" r="2.5" fill="currentColor" opacity="0.5"/></svg>
     </span>
   </nav>
+  </div>
+  </section>
 
   <section class="section section--services" id="services">
     <h2 class="section__title">サービス</h2>
@@ -139,6 +165,11 @@
   <section class="section section--contact" id="contact">
     <h2 class="section__title">お問い合わせ</h2>
     <p class="section__lead">0から1を一緒に、というご相談はこちらから。まずはお気軽に。</p>
+    <div class="contact__inner">
+      <figure class="contact__character">
+        <img src="images/mascot.png" alt="Oneのマスコット・ボン" width="120" height="120" class="contact__character-img">
+        <span class="contact__character-bubble">待ってるよ！</span>
+      </figure>
     <div class="contact__form-area">
       <!-- Formspree フォーム送信先 -->
       <form class="contact__form" action="https://formspree.io/f/maqdlrdv" method="post">
@@ -151,16 +182,18 @@
         <textarea class="contact__textarea" id="contact-message" name="message" rows="5" required placeholder="ご相談内容をご記入ください"></textarea>
         <button class="contact__submit" type="submit">送信する</button>
       </form>
-      <p class="contact__note">※送信後、ご記入のメールアドレスに確認メールが届く場合があります。</p>
     </div>
+    </div>
+    <p class="contact__note">※詳細を確認するため、ご記入のメールアドレスにご連絡させていただく場合がございます。</p>
   </section>
 
+  </div><!-- /.main-wrap -->
+
   <footer class="footer">
-    <figure class="footer__character">
-      <img src="images/mascot.png" alt="Oneのマスコット" width="120" height="120" class="footer__character-img">
-    </figure>
-    <p class="footer__brand">One</p>
-    <p class="footer__tagline">0から1を、Oneと。</p>
+    <div class="footer__brand-block">
+      <p class="footer__tagline">0から1を、Oneと。</p>
+      <p class="footer__copyright">© One</p>
+    </div>
   </footer>
 
   <script src="main.js"></script>

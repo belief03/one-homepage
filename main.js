@@ -21,4 +21,14 @@
   document.querySelectorAll('.section, .footer').forEach(function (el) {
     observer.observe(el);
   });
+
+  // ご案内：クリックで本のように開く
+  var jumpNav = document.querySelector('.jump-nav');
+  var jumpNavTrigger = document.getElementById('jump-nav-trigger');
+  if (jumpNav && jumpNavTrigger) {
+    jumpNavTrigger.addEventListener('click', function () {
+      var isOpen = jumpNav.classList.toggle('is-open');
+      jumpNavTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
 })();
