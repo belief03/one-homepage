@@ -31,4 +31,51 @@
       jumpNavTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
+
+  // お問い合わせ：よくある質問バーの開閉
+  var faqTrigger = document.getElementById('faq-trigger');
+  var faqPanel = document.getElementById('faq-panel');
+  if (faqTrigger && faqPanel) {
+    faqTrigger.addEventListener('click', function () {
+      var isOpen = faqPanel.classList.toggle('is-open');
+      faqTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  // よくある質問：チャット形式（ボタン選択 → ・・・・ → 回答表示）
+  var faqAnswersEl = document.getElementById('faq-answers-data');
+  var faqTypingWrap = document.getElementById('faq-typing-wrap');
+  var faqAnswerWrap = document.getElementById('faq-answer-wrap');
+  var faqAnswerText = document.getElementById('faq-answer-text');
+  var faqBtns = document.querySelectorAll('.faq-btn');
+  var faqTypingDuration = 1800;
+
+  if (faqAnswersEl && faqTypingWrap && faqAnswerWrap && faqAnswerText && faqBtns.length) {
+    var faqAnswers = [];
+    try {
+      faqAnswers = JSON.parse(faqAnswersEl.textContent);
+    } catch (e) {}
+
+    faqBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var index = parseInt(btn.getAttribute('data-faq'), 10);
+        if (index < 0 || index >= faqAnswers.length) return;
+
+        faqAnswerWrap.classList.remove('is-visible');
+        faqAnswerText.textContent = '';
+        faqTypingWrap.setAttribute('aria-hidden', 'false');
+        faqTypingWrap.classList.add('is-visible');
+
+        faqBtns.forEach(function (b) { b.classList.remove('is-selected'); });
+        btn.classList.add('is-selected');
+
+        setTimeout(function () {
+          faqTypingWrap.classList.remove('is-visible');
+          faqTypingWrap.setAttribute('aria-hidden', 'true');
+          faqAnswerText.textContent = faqAnswers[index];
+          faqAnswerWrap.classList.add('is-visible');
+        }, faqTypingDuration);
+      });
+    });
+  }
 })();

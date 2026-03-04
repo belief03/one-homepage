@@ -4,8 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One — 0から1を、Oneと。</title>
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
   <style>
+  /* お問い合わせ：わんちゃん吹き出し（口元から・必ず適用） */
+  #contact .contact__character{position:relative;display:inline-block;width:100px;height:100px;}
+  #contact .contact__character-bubble{position:absolute;top:65px;left:106px;margin:0;padding:0.45em 0.75em;font-size:0.75rem;font-weight:600;color:#2c2c2c;background:#fff;border:none;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08);white-space:nowrap;line-height:1.3;transform:none;}
+  #contact .contact__character-bubble::before{content:"";position:absolute;right:100%;top:50%;margin-top:-6px;border:6px solid transparent;border-right-color:#fff;border-left:none;}
+  #contact .contact__character-bubble::after{content:"";position:absolute;right:100%;top:50%;margin-top:-7px;margin-right:-1px;border:7px solid transparent;border-right-color:rgba(0,0,0,.06);border-left:none;z-index:-1;}
+  @media(max-width:640px){
+    #contact .contact__character{width:80px;height:80px;}
+    #contact .contact__character-bubble{top:52px;left:88px;font-size:0.7rem;padding:0.4em 0.6em;}
+  }
   /* ヒーロー：リロード時にふわっと */
   @keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
   .hero__inner{animation:fadeInUp 0.9s ease-out 0s both;}
@@ -165,50 +174,83 @@
   <section class="section section--contact" id="contact">
     <h2 class="section__title">お問い合わせ</h2>
     <p class="section__lead">0から1を一緒に、というご相談はこちらから。お気軽にどうぞ。</p>
+
     <div class="contact__frame">
-    <p class="contact__choice-lead">メールフォームまたは公式LINEのどちらからでもご連絡いただけます。</p>
-    <div class="contact__inner">
-      <figure class="contact__character">
-        <img src="images/mascot.png" alt="Oneのマスコット・ボン" width="120" height="120" class="contact__character-img">
-        <span class="contact__character-bubble">待ってるよ！</span>
-      </figure>
-    <div class="contact__channels">
-      <div class="contact__channel contact__line-block">
-        <p class="contact__channel-label">公式LINE</p>
-        <a class="contact__line-btn" href="https://lin.ee/j1GSPEB" target="_blank" rel="noopener noreferrer" aria-label="公式LINEで友だち追加">
-          <span class="contact__line-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-          </span>
-          LINEで相談
-        </a>
-        <p class="contact__line-note">※友だち追加後、気軽にメッセージでご相談いただけます。</p>
+      <p class="contact__choice-lead">メールフォームまたは公式LINEのどちらからでもご連絡いただけます。</p>
+      <div class="contact__row">
+        <div class="contact__main">
+          <figure class="contact__character">
+            <img src="images/mascot.png" alt="Oneのマスコット・ボン" width="120" height="120" class="contact__character-img">
+            <span class="contact__character-bubble">待ってるよ！</span>
+          </figure>
+          <div class="contact__channels">
+            <div class="contact__channel contact__line-block">
+              <p class="contact__channel-label">公式LINE</p>
+              <a class="contact__line-btn" href="https://lin.ee/j1GSPEB" target="_blank" rel="noopener noreferrer" aria-label="公式LINEで友だち追加">
+                <span class="contact__line-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                </span>
+                LINEで相談
+              </a>
+              <p class="contact__line-note">※友だち追加後、気軽にメッセージでご相談いただけます。</p>
+            </div>
+            <div class="contact__channel contact__form-area">
+              <p class="contact__channel-label">メールフォーム</p>
+              <!-- Formspree フォーム送信先 -->
+              <form class="contact__form" action="https://formspree.io/f/maqdlrdv" method="post">
+                <input type="hidden" name="_subject" value="【One】ホームページからのお問い合わせ">
+                <div class="contact__form-row">
+                  <div class="contact__field">
+                    <label class="contact__label" for="contact-name">お名前</label>
+                    <input class="contact__input" id="contact-name" type="text" name="name" required placeholder="お名前">
+                  </div>
+                  <div class="contact__field contact__field--email">
+                    <label class="contact__label" for="contact-email">メールアドレス</label>
+                    <input class="contact__input" id="contact-email" type="email" name="email" required placeholder="example@example.com" autocomplete="email">
+                  </div>
+                </div>
+                <div class="contact__field">
+                  <label class="contact__label" for="contact-message">お問い合わせ内容</label>
+                  <textarea class="contact__textarea" id="contact-message" name="message" rows="3" required placeholder="ご相談内容をご記入ください"></textarea>
+                </div>
+                <button class="contact__submit" type="submit">送信する</button>
+              </form>
+              <p class="contact__form-note"><span class="contact__form-note-line">※詳細を確認するため、ご連絡</span><br><span class="contact__form-note-line">させていただく場合がございます。</span></p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="contact__channel contact__form-area">
-        <p class="contact__channel-label">メールフォーム</p>
-      <!-- Formspree フォーム送信先 -->
-      <form class="contact__form" action="https://formspree.io/f/maqdlrdv" method="post">
-        <input type="hidden" name="_subject" value="【One】ホームページからのお問い合わせ">
-        <div class="contact__form-row">
-          <div class="contact__field">
-            <label class="contact__label" for="contact-name">お名前</label>
-            <input class="contact__input" id="contact-name" type="text" name="name" required placeholder="お名前">
-          </div>
-          <div class="contact__field">
-            <label class="contact__label" for="contact-email">メールアドレス</label>
-            <input class="contact__input" id="contact-email" type="email" name="email" required placeholder="example@example.com">
+      <div class="contact__faq-bottom" id="faq-block">
+        <button type="button" class="contact__faq-trigger-bar" id="faq-trigger" aria-expanded="false" aria-controls="faq-panel">
+          <span class="contact__faq-trigger-bar-title">よくある質問</span>
+          <span class="contact__faq-trigger-bar-toggle" aria-hidden="true"></span>
+        </button>
+        <div class="contact__faq-panel" id="faq-panel" role="region" aria-label="よくある質問">
+          <div class="contact__faq-panel-inner">
+            <p class="contact__faq-panel-lead" id="faq">ご質問内容に近いものをお選びください。</p>
+            <div class="faq-chat">
+              <div class="faq-questions" role="group" aria-label="質問を選択">
+                <button type="button" class="faq-btn" data-faq="0">開発の流れ</button>
+                <button type="button" class="faq-btn" data-faq="1">料金の目安</button>
+                <button type="button" class="faq-btn" data-faq="2">どのような開発…</button>
+                <button type="button" class="faq-btn" data-faq="3">相談だけでも大丈夫ですか？</button>
+              </div>
+              <div class="faq-reply">
+                <div class="faq-typing-wrap" id="faq-typing-wrap" aria-hidden="true">
+                  <span class="faq-typing-dot"></span><span class="faq-typing-dot"></span><span class="faq-typing-dot"></span><span class="faq-typing-dot"></span>
+                </div>
+                <div class="faq-answer-wrap" id="faq-answer-wrap" aria-live="polite">
+                  <p class="faq-answer-text" id="faq-answer-text"></p>
+                </div>
+              </div>
+            </div>
+            <script type="application/json" id="faq-answers-data">
+              ["ご相談いただいた内容をもとに、お見積り・ご契約・開発・納品・サポートの流れで進めます。まずはお気軽にメールまたはLINEでご相談ください。","ご要望や規模により異なります。ヒアリングのうえ、お見積りをご提出しますので、まずはお気軽にご相談ください。","Webサイト、業務システム、ツール・アプリなど、0から1の設計〜開発まで対応しています。「こんなものを作りたい」というご相談から歓迎です。","はい、大丈夫です。まずは「こういうことをしたい」というお話だけでもお聞かせください。実現方法や目安をご説明します。"]
+            </script>
           </div>
         </div>
-        <div class="contact__field">
-          <label class="contact__label" for="contact-message">お問い合わせ内容</label>
-          <textarea class="contact__textarea" id="contact-message" name="message" rows="3" required placeholder="ご相談内容をご記入ください"></textarea>
-        </div>
-        <button class="contact__submit" type="submit">送信する</button>
-      </form>
-      <p class="contact__form-note">※詳細を確認するため、ご記入のメールアドレスにご連絡させていただく場合がございます。</p>
+      </div>
     </div>
-    </div><!-- /.contact__channels -->
-    </div>
-    </div><!-- /.contact__frame -->
     <p class="contact__to-top-wrap"><a class="contact__to-top" href="#top">トップへ</a></p>
   </section>
 
