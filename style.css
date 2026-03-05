@@ -344,12 +344,14 @@ body{overflow-x:clip;}
   .contact__submit{min-height:48px;padding:0.85em 1.75em;}
   .footer{padding:var(--space-lg) var(--space);min-height:140px;}
   .footer__tagline{font-size:1rem;}
-  /* よくある質問：スマホでビューポート全幅にして読みやすく（section・frameの外にはみ出す） */
-  .contact__faq-bottom{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;max-width:100vw;box-sizing:border-box;}
-  .contact__faq-trigger-bar{padding-left:1.25rem;padding-right:1.25rem;}
-  .contact__faq-panel-inner{padding:var(--space) 1.25rem;}
-  .faq-chat,.faq-questions,.faq-reply{max-width:100%;}
-  .faq-reply{padding-left:1.25rem;padding-right:1.25rem;}
+  /* よくある質問：閉じているときは枠内、開いたときだけ全幅 */
+  .contact__faq-bottom:has(.contact__faq-panel.is-open){margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;max-width:100vw;box-sizing:border-box;}
+  .contact__faq-bottom:has(.contact__faq-panel.is-open) .contact__faq-trigger-bar{padding-left:1.25rem;padding-right:1.25rem;}
+  .contact__faq-bottom:has(.contact__faq-panel.is-open) .contact__faq-panel-inner{padding:var(--space) 1.25rem;}
+  .contact__faq-bottom:has(.contact__faq-panel.is-open) .faq-chat,.contact__faq-bottom:has(.contact__faq-panel.is-open) .faq-questions,.contact__faq-bottom:has(.contact__faq-panel.is-open) .faq-reply{max-width:100%;}
+  .contact__faq-bottom:has(.contact__faq-panel.is-open) .faq-reply{padding-left:1.25rem;padding-right:1.25rem;}
+  /* 質問項目は4行で表示 */
+  .faq-questions{flex-direction:column;}
 }
 
 /* スマホ（〜640px） */
@@ -390,13 +392,13 @@ body{overflow-x:clip;}
   .footer{padding:var(--space) 1rem;min-height:120px;}
   .footer__tagline{font-size:0.95rem;}
   .footer__copyright{font-size:0.75rem;}
-  /* よくある質問：640px以下も同様に全幅＋1列 */
-  .contact__faq-bottom{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;max-width:100vw;box-sizing:border-box;}
-  .contact__faq-trigger-bar{padding-left:1.25rem;padding-right:1.25rem;}
-  .contact__faq-panel-inner{padding:var(--space) 1.25rem;}
-  .faq-reply,.faq-answer-text{padding-left:1.25rem;padding-right:1.25rem;}
+  /* よくある質問：開いたときだけ全幅 */
+  .contact__faq-bottom:has(.contact__faq-panel.is-open){margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;max-width:100vw;box-sizing:border-box;}
+  .contact__faq-bottom:has(.contact__faq-panel.is-open) .contact__faq-trigger-bar{padding-left:1.25rem;padding-right:1.25rem;}
+  .contact__faq-bottom:has(.contact__faq-panel.is-open) .contact__faq-panel-inner{padding:var(--space) 1.25rem;}
+  .contact__faq-bottom:has(.contact__faq-panel.is-open) .faq-reply,.contact__faq-bottom:has(.contact__faq-panel.is-open) .faq-answer-text{padding-left:1.25rem;padding-right:1.25rem;}
   .faq-chat{grid-template-columns:1fr;}
-  .faq-questions{flex-direction:row;flex-wrap:wrap;margin-bottom:var(--space);}
+  .faq-questions{flex-direction:column;margin-bottom:var(--space);}
 }
 
 /* 小型スマホ（〜480px） */
@@ -412,5 +414,5 @@ body{overflow-x:clip;}
   .contact__form-note-line{white-space:normal;}
   .faq-reply,.faq-answer-text{padding-left:1.25rem;padding-right:1.25rem;}
   .faq-chat{grid-template-columns:1fr;}
-  .faq-questions{flex-direction:row;margin-bottom:var(--space);}
+  .faq-questions{flex-direction:column;margin-bottom:var(--space);}
 }
