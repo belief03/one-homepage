@@ -315,7 +315,7 @@ body{overflow-x:clip;}
 /* タブレット縦・大画面スマホ（〜768px） */
 @media(max-width:768px){
   :root{--space-lg:3rem;--space-xl:4rem;}
-  .hero{padding:1.75rem var(--space) 3rem;margin-bottom:3rem;min-height:min(38vh,280px);}
+  .hero{padding:1.5rem var(--space) 2.5rem;margin-bottom:3rem;min-height:min(32vh,240px);}
   .hero__inner{padding-top:1rem;gap:var(--space);}
   .hero__title{font-size:clamp(1.6rem,5vw,2.2rem);}
   .hero__subtitle{font-size:clamp(0.95rem,2.5vw,1.05rem);}
@@ -358,8 +358,8 @@ body{overflow-x:clip;}
 @media(max-width:640px){
   :root{--space:1.25rem;--space-lg:2.5rem;--space-xl:3rem;}
   body{font-size:15px;}
-  .hero{padding:1.5rem 1.25rem 2.5rem;margin-bottom:2.5rem;min-height:min(35vh,240px);}
-  .hero::after{height:3rem;}
+  .hero{padding:1.25rem 1.25rem 2rem;margin-bottom:2.5rem;min-height:min(26vh,200px);}
+  .hero::after{height:2.5rem;}
   .hero__inner{padding-top:0.75rem;}
   .main-wrap{padding-left:1.5rem;padding-right:1.5rem;}
   .section{padding:var(--space-xl) 1.5rem;}
