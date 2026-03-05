@@ -389,6 +389,10 @@ body{overflow-x:clip;}
   .contact__character-bubble{top:52px;left:88px;font-size:0.7rem;padding:0.4em 0.6em;}
   .contact__input,.contact__textarea{font-size:16px;padding:0.75em 0.9em;}
   .contact__form-note{font-size:0.85rem;}
+  /* お問い合わせ：スマホだけ余白を詰めてフォーム幅を拡張 */
+  .section--contact{padding-left:1rem;padding-right:1rem;}
+  .section--contact .contact__frame{padding-left:1.25rem;padding-right:1.25rem;}
+  .section--contact .contact__channel{padding-left:1rem;padding-right:1rem;}
   .footer{padding:var(--space) 1rem;min-height:120px;}
   .footer__tagline{font-size:0.95rem;}
   .footer__copyright{font-size:0.75rem;}
