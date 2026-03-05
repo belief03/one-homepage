@@ -343,6 +343,12 @@ body{overflow-x:clip;}
   .contact__submit{min-height:48px;padding:0.85em 1.75em;}
   .footer{padding:var(--space-lg) var(--space);min-height:140px;}
   .footer__tagline{font-size:1rem;}
+  /* よくある質問：開いたときPC並みの幅で読みやすく */
+  .contact__faq-bottom{margin-left:calc(-1 * var(--space-lg));margin-right:calc(-1 * var(--space-lg));width:calc(100% + 2 * var(--space-lg));max-width:100vw;box-sizing:border-box;}
+  .contact__faq-trigger-bar{padding-left:var(--space-lg);padding-right:var(--space-lg);}
+  .contact__faq-panel-inner{padding:var(--space) var(--space-lg);}
+  .faq-chat,.faq-questions,.faq-reply{max-width:100%;}
+  .faq-reply{padding-left:var(--space-lg);padding-right:var(--space-lg);}
 }
 
 /* スマホ（〜640px） */
@@ -396,5 +402,5 @@ body{overflow-x:clip;}
   .contact__faq-panel.is-open{max-height:2000px;}
   .contact__line-btn{min-height:48px;padding:0.85em 1.5em;}
   .contact__form-note-line{white-space:normal;}
-  .faq-reply,.faq-answer-text{padding-left:var(--space);padding-right:var(--space);}
+  .faq-reply,.faq-answer-text{padding-left:var(--space-lg);padding-right:var(--space-lg);}
 }
