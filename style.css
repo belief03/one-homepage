@@ -344,12 +344,12 @@ body{overflow-x:clip;}
   .contact__submit{min-height:48px;padding:0.85em 1.75em;}
   .footer{padding:var(--space-lg) var(--space);min-height:140px;}
   .footer__tagline{font-size:1rem;}
-  /* よくある質問：開いたときPC並みの幅で読みやすく */
-  .contact__faq-bottom{margin-left:calc(-1 * var(--space-lg));margin-right:calc(-1 * var(--space-lg));width:calc(100% + 2 * var(--space-lg));max-width:100vw;box-sizing:border-box;}
-  .contact__faq-trigger-bar{padding-left:var(--space-lg);padding-right:var(--space-lg);}
-  .contact__faq-panel-inner{padding:var(--space) var(--space-lg);}
+  /* よくある質問：スマホでビューポート全幅にして読みやすく（section・frameの外にはみ出す） */
+  .contact__faq-bottom{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;max-width:100vw;box-sizing:border-box;}
+  .contact__faq-trigger-bar{padding-left:1.25rem;padding-right:1.25rem;}
+  .contact__faq-panel-inner{padding:var(--space) 1.25rem;}
   .faq-chat,.faq-questions,.faq-reply{max-width:100%;}
-  .faq-reply{padding-left:var(--space-lg);padding-right:var(--space-lg);}
+  .faq-reply{padding-left:1.25rem;padding-right:1.25rem;}
 }
 
 /* スマホ（〜640px） */
@@ -390,7 +390,11 @@ body{overflow-x:clip;}
   .footer{padding:var(--space) 1rem;min-height:120px;}
   .footer__tagline{font-size:0.95rem;}
   .footer__copyright{font-size:0.75rem;}
-  /* よくある質問：スマホは1列にして回答を読みやすく */
+  /* よくある質問：640px以下も同様に全幅＋1列 */
+  .contact__faq-bottom{margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;max-width:100vw;box-sizing:border-box;}
+  .contact__faq-trigger-bar{padding-left:1.25rem;padding-right:1.25rem;}
+  .contact__faq-panel-inner{padding:var(--space) 1.25rem;}
+  .faq-reply,.faq-answer-text{padding-left:1.25rem;padding-right:1.25rem;}
   .faq-chat{grid-template-columns:1fr;}
   .faq-questions{flex-direction:row;flex-wrap:wrap;margin-bottom:var(--space);}
 }
@@ -406,7 +410,7 @@ body{overflow-x:clip;}
   .contact__faq-panel.is-open{max-height:2000px;}
   .contact__line-btn{min-height:48px;padding:0.85em 1.5em;}
   .contact__form-note-line{white-space:normal;}
-  .faq-reply,.faq-answer-text{padding-left:var(--space-lg);padding-right:var(--space-lg);}
+  .faq-reply,.faq-answer-text{padding-left:1.25rem;padding-right:1.25rem;}
   .faq-chat{grid-template-columns:1fr;}
   .faq-questions{flex-direction:row;margin-bottom:var(--space);}
 }
