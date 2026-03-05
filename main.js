@@ -32,13 +32,14 @@
     });
   }
 
-  // お問い合わせ：よくある質問バーの開閉
+  // お問い合わせ：よくある質問バーの開閉（開いたとき内容の高さまで広がる）
   var faqTrigger = document.getElementById('faq-trigger');
   var faqPanel = document.getElementById('faq-panel');
   if (faqTrigger && faqPanel) {
     faqTrigger.addEventListener('click', function () {
       var isOpen = faqPanel.classList.toggle('is-open');
       faqTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      faqPanel.style.maxHeight = isOpen ? '' : '0';
     });
   }
 
