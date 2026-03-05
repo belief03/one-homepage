@@ -194,7 +194,8 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.85;color
 .faq-reply .faq-typing-dot:nth-child(4){animation-delay:0.54s;}
 .faq-answer-wrap{display:none;margin:0;}
 .faq-answer-wrap.is-visible{display:block;animation:faq-answer-in 0.4s ease;}
-.faq-answer-text{margin:0;font-size:1rem;color:var(--color-text);line-height:1.9;}
+.faq-answer-text{margin:0;font-size:1rem;color:var(--color-text);line-height:1.9;min-width:0;}
+.faq-reply{min-width:0;}
 @media(prefers-reduced-motion:reduce){
   .faq-reply .faq-typing-dot{animation:none;opacity:0.7;}
   .faq-answer-wrap.is-visible{animation:none;}
@@ -389,6 +390,9 @@ body{overflow-x:clip;}
   .footer{padding:var(--space) 1rem;min-height:120px;}
   .footer__tagline{font-size:0.95rem;}
   .footer__copyright{font-size:0.75rem;}
+  /* よくある質問：スマホは1列にして回答を読みやすく */
+  .faq-chat{grid-template-columns:1fr;}
+  .faq-questions{flex-direction:row;flex-wrap:wrap;margin-bottom:var(--space);}
 }
 
 /* 小型スマホ（〜480px） */
