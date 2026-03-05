@@ -63,25 +63,37 @@
       <span class="main-wrap__code-sym">🔧</span>
       <span class="main-wrap__code-sym">⚙</span>
     </div>
-  <nav class="jump-nav" aria-label="ページ内リンク">
-    <button type="button" class="jump-nav__trigger" aria-expanded="false" aria-controls="jump-nav-list" id="jump-nav-trigger">ご案内</button>
-    <div class="jump-nav__inner" id="jump-nav-list" role="region" aria-label="ご案内">
-    <ul class="jump-nav__list">
-      <li class="jump-nav__item">
-        <a class="jump-nav__link" href="#philosophy"><span class="jump-nav__title">想い</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">1</span></a>
-      </li>
-      <li class="jump-nav__item">
-        <a class="jump-nav__link" href="#services"><span class="jump-nav__title">サービス</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">2</span></a>
-      </li>
-      <li class="jump-nav__item">
-        <a class="jump-nav__link" href="#flow"><span class="jump-nav__title">ご依頼の流れ</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">3</span></a>
-      </li>
-      <li class="jump-nav__item">
-        <a class="jump-nav__link" href="#contact"><span class="jump-nav__title">お問い合わせ</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">4</span></a>
-      </li>
-    </ul>
-    </div>
-  </nav>
+
+    <!-- インフォーメーション：ご案内＋SNS・Oneとはを一つの枠に -->
+    <aside class="information" id="information" aria-label="インフォーメーション">
+      <h2 class="information__title">インフォーメーション</h2>
+      <nav class="information__nav jump-nav" aria-label="ページ内リンク">
+        <button type="button" class="jump-nav__trigger" aria-expanded="false" aria-controls="jump-nav-list" id="jump-nav-trigger"><span class="jump-nav__bullet" aria-hidden="true">・</span>ご案内</button>
+        <div class="jump-nav__inner" id="jump-nav-list" role="region" aria-label="ご案内">
+          <ul class="jump-nav__list">
+            <li class="jump-nav__item">
+              <a class="jump-nav__link" href="#philosophy"><span class="jump-nav__title">想い</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">1</span></a>
+            </li>
+            <li class="jump-nav__item">
+              <a class="jump-nav__link" href="#services"><span class="jump-nav__title">サービス</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">2</span></a>
+            </li>
+            <li class="jump-nav__item">
+              <a class="jump-nav__link" href="#flow"><span class="jump-nav__title">ご依頼の流れ</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">3</span></a>
+            </li>
+            <li class="jump-nav__item">
+              <a class="jump-nav__link" href="#contact"><span class="jump-nav__title">お問い合わせ</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">4</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="information__links">
+        <a class="information__link" href="profile.html"><span class="information__bullet" aria-hidden="true">・</span>Oneとは</a>
+        <a class="information__link information__link--sns" href="https://x.com/createtoOne" target="_blank" rel="noopener noreferrer" aria-label="One公式X（随時更新・新しいタブで開く）">
+          <span class="information__sns-line1"><span class="information__bullet" aria-hidden="true">・</span><span class="information__sns-label" aria-hidden="true"><span class="information__sns-dot"></span>随時更新</span>　X（旧Twitter）</span>
+          <span class="information__sns-line2">最新のつぶやきやお知らせを発信しています</span>
+        </a>
+      </div>
+    </aside>
 
   <section class="section section--philosophy" id="philosophy">
     <h2 class="section__title">想い</h2>
@@ -95,22 +107,6 @@
         <p class="philosophy__sign">One代表 永冶陽平</p>
       </div>
     </div>
-    <div class="sub-nav-wrap">
-  <nav class="sub-nav" aria-label="Oneとは・SNS">
-    <span class="sub-nav__paws" aria-hidden="true">
-      <svg class="sub-nav__paw" viewBox="0 0 24 28" width="18" height="21" aria-hidden="true"><ellipse cx="12" cy="20" rx="5" ry="4" fill="currentColor" opacity="0.5"/><circle cx="8" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="5" cy="16" r="2.5" fill="currentColor" opacity="0.5"/><circle cx="19" cy="16" r="2.5" fill="currentColor" opacity="0.5"/></svg>
-      <svg class="sub-nav__paw" viewBox="0 0 24 28" width="18" height="21" aria-hidden="true"><ellipse cx="12" cy="20" rx="5" ry="4" fill="currentColor" opacity="0.5"/><circle cx="8" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="5" cy="16" r="2.5" fill="currentColor" opacity="0.5"/><circle cx="19" cy="16" r="2.5" fill="currentColor" opacity="0.5"/></svg>
-      <svg class="sub-nav__paw" viewBox="0 0 24 28" width="18" height="21" aria-hidden="true"><ellipse cx="12" cy="20" rx="5" ry="4" fill="currentColor" opacity="0.5"/><circle cx="8" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="5" cy="16" r="2.5" fill="currentColor" opacity="0.5"/><circle cx="19" cy="16" r="2.5" fill="currentColor" opacity="0.5"/></svg>
-    </span>
-    <a class="sub-nav__link" href="profile.html">Oneとは</a>
-    <a class="sub-nav__link sub-nav__link--sns" href="sns.html"><span class="sns__live"><span class="sns__live-dot" aria-hidden="true"></span>随時更新</span> SNS</a>
-    <span class="sub-nav__paws sub-nav__paws--end" aria-hidden="true">
-      <svg class="sub-nav__paw" viewBox="0 0 24 28" width="18" height="21" aria-hidden="true"><ellipse cx="12" cy="20" rx="5" ry="4" fill="currentColor" opacity="0.5"/><circle cx="8" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="5" cy="16" r="2.5" fill="currentColor" opacity="0.5"/><circle cx="19" cy="16" r="2.5" fill="currentColor" opacity="0.5"/></svg>
-      <svg class="sub-nav__paw" viewBox="0 0 24 28" width="18" height="21" aria-hidden="true"><ellipse cx="12" cy="20" rx="5" ry="4" fill="currentColor" opacity="0.5"/><circle cx="8" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="5" cy="16" r="2.5" fill="currentColor" opacity="0.5"/><circle cx="19" cy="16" r="2.5" fill="currentColor" opacity="0.5"/></svg>
-      <svg class="sub-nav__paw" viewBox="0 0 24 28" width="18" height="21" aria-hidden="true"><ellipse cx="12" cy="20" rx="5" ry="4" fill="currentColor" opacity="0.5"/><circle cx="8" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="16" cy="10" r="3" fill="currentColor" opacity="0.5"/><circle cx="5" cy="16" r="2.5" fill="currentColor" opacity="0.5"/><circle cx="19" cy="16" r="2.5" fill="currentColor" opacity="0.5"/></svg>
-    </span>
-  </nav>
-  </div>
   </section>
 
   <section class="section section--services" id="services">
