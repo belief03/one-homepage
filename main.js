@@ -69,4 +69,78 @@
       });
     });
   }
+
+  // 今日のことば：吉田松陰先生語録（日替わり表示）
+  var quoteMiniEl = document.getElementById('daily-quote-mini');
+  var quoteTriggerEl = document.getElementById('daily-quote-trigger');
+  var quoteModalEl = document.getElementById('daily-quote-modal');
+  var quoteModalTextEl = document.getElementById('daily-quote-modal-text');
+  var quoteModalNoteEl = document.getElementById('daily-quote-modal-note');
+
+  if (quoteMiniEl) {
+    var quotes = [
+      {
+        text: '志荘(こころざし そう)ならば安(いず)くんぞ往(ゆ)くとして学を成すべからざらんや。',
+        note: '志が定まっていれば、学び続け道を切り拓くことができる――そんな勇気をくれる言葉です。'
+      },
+      {
+        text: '志(こころざし)を立てて以て万事の源と為(な)す。',
+        note: 'まず「志」をはっきりさせることが、すべての出発点だと教えてくれます。'
+      }
+    ];
+
+    if (quotes.length > 0) {
+      var today = new Date();
+      var dayIndex = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
+      var index = Math.abs(dayIndex) % quotes.length;
+      var todayQuote = quotes[index];
+
+      quoteMiniEl.textContent = todayQuote.text;
+
+      if (quoteModalTextEl) quoteModalTextEl.textContent = todayQuote.text;
+      if (quoteModalNoteEl) quoteModalNoteEl.textContent = todayQuote.note || '';
+    }
+  }
+
+  // 今日のことば：クリックで意味（現代語訳）を表示
+  (function () {
+    if (!quoteTriggerEl || !quoteModalEl) return;
+
+    var closeEls = quoteModalEl.querySelectorAll('[data-modal-close="true"]');
+
+    function openModal() {
+      quoteModalEl.classList.add('is-open');
+      quoteModalEl.setAttribute('aria-hidden', 'false');
+      quoteTriggerEl.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('is-modal-open');
+
+      // フォーカスは閉じるボタン優先
+      var closeBtn = quoteModalEl.querySelector('.modal__close');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      quoteModalEl.classList.remove('is-open');
+      quoteModalEl.setAttribute('aria-hidden', 'true');
+      quoteTriggerEl.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('is-modal-open');
+      quoteTriggerEl.focus();
+    }
+
+    quoteTriggerEl.addEventListener('click', function () {
+      openModal();
+    });
+
+    closeEls.forEach(function (el) {
+      el.addEventListener('click', function () {
+        closeModal();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && quoteModalEl.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  })();
 })();

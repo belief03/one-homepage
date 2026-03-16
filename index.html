@@ -69,6 +69,10 @@
         </ul>
       </nav>
     </div>
+    <button class="site-header__daily" id="daily-quote-trigger" type="button" aria-label="今日のことば（クリックで意味を表示）" aria-haspopup="dialog" aria-expanded="false" aria-controls="daily-quote-modal">
+      <span class="site-header__daily-label">今日のことば</span>
+      <span class="site-header__daily-text" id="daily-quote-mini">読み込み中…</span>
+    </button>
   </header>
 
   <section class="hero" id="top">
@@ -276,6 +280,18 @@
       <p class="footer__copyright">© One</p>
     </div>
   </footer>
+
+  <div class="modal" id="daily-quote-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="daily-quote-modal-title">
+    <div class="modal__overlay" data-modal-close="true"></div>
+    <div class="modal__panel" role="document">
+      <div class="modal__head">
+        <p class="modal__kicker" id="daily-quote-modal-title">今日のことば – 意味</p>
+        <button class="modal__close" type="button" data-modal-close="true" aria-label="閉じる">×</button>
+      </div>
+      <blockquote class="modal__quote" id="daily-quote-modal-text"></blockquote>
+      <p class="modal__note" id="daily-quote-modal-note"></p>
+    </div>
+  </div>
 
   <script src="main.js"></script>
 </body>
