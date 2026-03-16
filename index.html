@@ -39,6 +39,21 @@
   </style>
 </head>
 <body>
+  <!-- ヘッダー：One（左）＋ ナビ一覧 -->
+  <header class="site-header" aria-label="サイトヘッダー">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="index.html"><ruby>One<rt>イチ</rt></ruby></a>
+      <nav class="site-header__nav" aria-label="メインナビゲーション">
+        <ul class="site-header__list">
+          <li class="site-header__item"><a class="site-header__link" href="philosophy.html">想い</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="services.html">サービス</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="flow.html">ご依頼の流れ</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
   <section class="hero" id="top">
     <div class="hero__bg hero__bg--1" aria-hidden="true"></div>
     <div class="hero__bg hero__bg--2" aria-hidden="true"></div>
@@ -64,28 +79,9 @@
       <span class="main-wrap__code-sym">⚙</span>
     </div>
 
-    <!-- インフォーメーション：ご案内＋SNS・Oneとはを一つの枠に -->
+    <!-- インフォーメーション：Oneとは・SNS（ご案内はヒーロー上へ移動済み） -->
     <aside class="information" id="information" aria-label="インフォーメーション">
       <h2 class="information__title">インフォーメーション</h2>
-      <nav class="information__nav jump-nav" aria-label="ページ内リンク">
-        <button type="button" class="jump-nav__trigger" aria-expanded="false" aria-controls="jump-nav-list" id="jump-nav-trigger"><span class="jump-nav__bullet" aria-hidden="true">・</span>ご案内</button>
-        <div class="jump-nav__inner" id="jump-nav-list" role="region" aria-label="ご案内">
-          <ul class="jump-nav__list">
-            <li class="jump-nav__item">
-              <a class="jump-nav__link" href="#philosophy"><span class="jump-nav__title">想い</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">1</span></a>
-            </li>
-            <li class="jump-nav__item">
-              <a class="jump-nav__link" href="#services"><span class="jump-nav__title">サービス</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">2</span></a>
-            </li>
-            <li class="jump-nav__item">
-              <a class="jump-nav__link" href="#flow"><span class="jump-nav__title">ご依頼の流れ</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">3</span></a>
-            </li>
-            <li class="jump-nav__item">
-              <a class="jump-nav__link" href="#contact"><span class="jump-nav__title">お問い合わせ</span><span class="jump-nav__dot" aria-hidden="true"></span><span class="jump-nav__num">4</span></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
       <div class="information__links">
         <a class="information__link" href="profile.html"><span class="information__bullet" aria-hidden="true">・</span>Oneとは</a>
         <a class="information__link information__link--sns" href="https://x.com/createtoOne" target="_blank" rel="noopener noreferrer" aria-label="One公式X（随時更新・新しいタブで開く）">

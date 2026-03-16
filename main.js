@@ -22,16 +22,6 @@
     observer.observe(el);
   });
 
-  // ご案内：クリックで本のように開く
-  var jumpNav = document.querySelector('.jump-nav');
-  var jumpNavTrigger = document.getElementById('jump-nav-trigger');
-  if (jumpNav && jumpNavTrigger) {
-    jumpNavTrigger.addEventListener('click', function () {
-      var isOpen = jumpNav.classList.toggle('is-open');
-      jumpNavTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-  }
-
   // お問い合わせ：よくある質問バーの開閉（開いたとき内容の高さまで広がる）
   var faqTrigger = document.getElementById('faq-trigger');
   var faqPanel = document.getElementById('faq-panel');
