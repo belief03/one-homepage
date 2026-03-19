@@ -26,6 +26,9 @@
   (function () {
     var isMobile = window.matchMedia('(max-width: 640px)').matches;
     if (!isMobile) return;
+    var path = (window.location.pathname || '').toLowerCase();
+    var isTopPage = path === '/' || path.endsWith('/index.html') || path === '/index.html' || path === '';
+    if (!isTopPage) return;
 
     var sections = document.querySelectorAll('.section:not(.section--daily-quote)');
     sections.forEach(function (section, sectionIndex) {
