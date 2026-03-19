@@ -222,6 +222,30 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.85;color
 
 @media(max-width:640px){
   .section__panel{padding:var(--space);}
+  .section--daily-quote .site-header__daily{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:0.55rem;
+    padding:0.9rem 0.85rem;
+    border-radius:12px;
+  }
+  .section--daily-quote .site-header__daily-label{
+    font-size:0.72rem;
+    letter-spacing:.12em;
+  }
+  .section--daily-quote .site-header__daily-text{
+    width:100%;
+    padding:0.75rem 0.8rem;
+    border:1px solid var(--color-border);
+    border-radius:10px;
+    background:var(--color-bg);
+    font-size:0.96rem;
+    line-height:1.85;
+    letter-spacing:.01em;
+    word-break:normal;
+    line-break:strict;
+    text-wrap:pretty;
+  }
 }
 .results__list{margin:0.75rem 0 0;padding-left:1.25rem;color:var(--color-text-sub);line-height:1.9;}
 .results__list li{margin:0.35rem 0;}

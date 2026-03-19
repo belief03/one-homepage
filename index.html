@@ -19,10 +19,13 @@
   <meta name="twitter:image" content="https://create-to-one.com/favicon.png">
   <link rel="canonical" href="https://create-to-one.com/">
   <meta name="theme-color" content="#a85c38">
-  <link rel="manifest" href="site.webmanifest?v=10">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=10">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=10">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=10">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="One">
+  <link rel="manifest" href="site.webmanifest?v=13">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg?v=13">
+  <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg?v=13">
+  <link rel="apple-touch-icon" href="favicon.png?v=13">
+  <link rel="apple-touch-icon-precomposed" href="favicon.png?v=13">
   <link rel="stylesheet" href="style.css?v=8">
   <style>
   /* お問い合わせ：わんちゃん吹き出し（口元から・必ず適用） */
@@ -54,6 +57,16 @@
   .section--flow.is-visible .flow__item{opacity:1;transform:translateY(0);}
   .footer{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease-out,transform 0.7s ease-out;}
   .footer.is-visible{opacity:1;transform:translateY(0);}
+  .fv{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;text-align:center;}
+  .fv-inner{max-width:800px;width:100%;}
+  .fv-keyword{font-size:13px;color:#888;margin-bottom:12px;letter-spacing:1px;}
+  .fv-title{font-size:38px;font-weight:700;margin-bottom:20px;line-height:1.5;}
+  .fv-sub{font-size:18px;margin-bottom:28px;color:#444;}
+  .fv-target{font-size:14px;color:#666;line-height:1.9;}
+  @media(max-width:768px){
+    .fv-title{font-size:28px;}
+    .fv-sub{font-size:16px;}
+  }
   @media(prefers-reduced-motion:reduce){.hero__inner,.hero__visual,.hero__text{animation:none !important;opacity:1 !important;transform:none !important;}.section,.section.is-visible,.section--services .services__item,.section--services.is-visible .services__item,.section--flow .flow__item,.section--flow.is-visible .flow__item,.footer,.footer.is-visible{opacity:1 !important;transform:none !important;transition:none !important;}}
   </style>
 </head>
@@ -78,10 +91,13 @@
     <div class="hero__bg hero__bg--2" aria-hidden="true"></div>
     <div class="hero__inner">
       <div class="hero__text">
-        <h1 class="hero__title">0から1を、<ruby>One<rt>イチ</rt></ruby>と。</h1>
-        <p class="hero__subtitle">0から1を生み出す、その一歩から。</p>
-        <div class="hero__cta-row" aria-label="無料相談への導線">
-          <a class="hero__cta hero__cta--small" href="#contact-form">無料で相談する</a>
+        <p class="fv-keyword">個人事業主向けホームページ制作</p>
+        <h1 class="hero__title">０から１を共に創る、web設計パートナー</h1>
+        <p class="hero__subtitle">つくるのではなく、未来を形にする</p>
+        <p class="fv-target">個人事業主を中心に、小規模事業者・スタートアップの成長フェーズまで一貫してサポートしています。</p>
+        <div class="hero__cta-row hero__cta-row--main" aria-label="ヒーロー導線">
+          <a class="hero__cta" href="#contact-form">無料で相談する</a>
+          <a class="hero__cta hero__cta--ghost" href="#services">サービスを見る</a>
         </div>
       </div>
     </div>
@@ -105,11 +121,10 @@
     <h2 class="section__title">今日のことば</h2>
     <p class="section__lead">0から1の一歩を、言葉と仕組みで後押しします。</p>
     <div class="section__panel section__panel--quote">
-      <button class="site-header__daily" id="daily-quote-trigger" type="button" aria-label="今日のことば（クリックで意味を表示）" aria-haspopup="dialog" aria-expanded="false" aria-controls="daily-quote-modal">
+      <button class="site-header__daily" id="daily-quote-trigger" type="button" aria-label="今日のことばを表示" aria-haspopup="dialog" aria-expanded="false" aria-controls="daily-quote-modal">
         <span class="site-header__daily-label">今日のことば</span>
         <span class="site-header__daily-text" id="daily-quote-mini">読み込み中…</span>
       </button>
-      <p class="daily-quote__hint">「意味を見る」を押すと、今の状況に置き換えた解釈も読めます。</p>
       <div class="hero__cta-row hero__cta-row--main" aria-label="サービスへの導線">
         <a class="hero__cta hero__cta--ghost" href="#services">サービスを見る</a>
       </div>
