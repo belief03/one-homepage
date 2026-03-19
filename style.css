@@ -20,6 +20,7 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.85;color
 .hero__visual--character img{width:100%;height:auto;object-fit:contain;}
 .hero__text{min-width:0;}
 .hero__title{margin:0 0 .35em;font-family:var(--font-serif);font-size:clamp(1.85rem,5vw,2.75rem);font-weight:600;line-height:1.35;}
+.hero__title-break-mobile{display:none;}
 .hero__title ruby{font-size:1em;}
 .hero__title rt{font-size:0.45em;font-weight:500;opacity:.9;}
 .hero__subtitle{margin:0;font-size:clamp(1rem,2.5vw,1.15rem);color:var(--color-text-sub);}
@@ -522,6 +523,8 @@ body.is-modal-open{overflow:hidden;}
   .hero{padding:1.25rem 1.25rem 2rem;margin-bottom:2.5rem;min-height:min(26vh,200px);}
   .hero::after{height:2.5rem;}
   .hero__inner{padding-top:0.75rem;}
+  .hero__title{font-size:clamp(1.4rem,6.2vw,1.9rem);line-height:1.45;}
+  .hero__title-break-mobile{display:block;}
   .main-wrap{padding-left:1.5rem;padding-right:1.5rem;}
   .section{padding:var(--space-xl) 1.5rem;}
   .section__title{font-size:1.25rem;margin-bottom:var(--space);}
@@ -557,6 +560,69 @@ body.is-modal-open{overflow:hidden;}
   .footer{padding:var(--space) 1rem;min-height:120px;}
   .footer__tagline{font-size:0.95rem;}
   .footer__copyright{font-size:0.75rem;}
+  .section--mobile-collapsible > .section__title{display:none;}
+  .section--mobile-collapsible .section__mobile-trigger{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    padding:0.85rem var(--space);
+    margin:0;
+    border:none;
+    border-radius:var(--radius);
+    background:#6b5344;
+    color:#fff;
+    font-family:var(--font-sans);
+    font-size:0.98rem;
+    font-weight:600;
+    text-align:left;
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+  .section--mobile-collapsible .section__mobile-trigger:hover{background:#5a4639;}
+  .section--mobile-collapsible .section__mobile-trigger:focus{outline:2px solid #fff;outline-offset:2px;}
+  .section--mobile-collapsible .section__mobile-trigger-title{flex:1;}
+  .section--mobile-collapsible .section__mobile-trigger-toggle{
+    flex-shrink:0;
+    width:22px;
+    height:22px;
+    margin-left:var(--space);
+    background:rgba(255,255,255,.25);
+    border-radius:4px;
+    position:relative;
+  }
+  .section--mobile-collapsible .section__mobile-trigger-toggle::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:10px;
+    height:2px;
+    background:#fff;
+    transform:translate(-50%,-50%);
+  }
+  .section--mobile-collapsible .section__mobile-trigger-toggle::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:2px;
+    height:10px;
+    background:#fff;
+    transform:translate(-50%,-50%);
+    transition:opacity .25s ease,transform .25s ease;
+  }
+  .section--mobile-collapsible .section__mobile-trigger[aria-expanded="true"] .section__mobile-trigger-toggle::after{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(0);
+  }
+  .section--mobile-collapsible .section__mobile-panel{
+    overflow:hidden;
+    max-height:0;
+    transition:max-height .45s cubic-bezier(0.4,0,0.2,1);
+    margin-top:var(--space);
+  }
+  .section--mobile-collapsible .section__mobile-panel.is-open{max-height:6000px;}
   /* よくある質問：開いたときだけ全幅 */
   .contact__faq-bottom:has(.contact__faq-panel.is-open){margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw;max-width:100vw;box-sizing:border-box;}
   .contact__faq-bottom:has(.contact__faq-panel.is-open) .contact__faq-trigger-bar{padding-left:1.25rem;padding-right:1.25rem;}

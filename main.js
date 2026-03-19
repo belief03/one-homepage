@@ -22,6 +22,71 @@
     observer.observe(el);
   });
 
+  // スマホTOP：今日のことば以外を開閉バー化（初期はサービスのみ展開）
+  (function () {
+    var isMobile = window.matchMedia('(max-width: 640px)').matches;
+    if (!isMobile) return;
+
+    var sections = document.querySelectorAll('.section:not(.section--daily-quote)');
+    sections.forEach(function (section, sectionIndex) {
+      var titleEl = section.querySelector('.section__title');
+      if (!titleEl) return;
+
+      var titleText = (titleEl.textContent || '').trim();
+      if (!titleText) return;
+
+      var panel = document.createElement('div');
+      panel.className = 'section__mobile-panel';
+      panel.id = (section.id ? section.id : 'section-' + sectionIndex) + '-mobile-panel';
+
+      var node = titleEl.nextElementSibling;
+      while (node) {
+        var nextNode = node.nextElementSibling;
+        panel.appendChild(node);
+        node = nextNode;
+      }
+
+      var trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'section__mobile-trigger';
+      trigger.setAttribute('aria-controls', panel.id);
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.innerHTML =
+        '<span class="section__mobile-trigger-title">' + titleText + '</span>' +
+        '<span class="section__mobile-trigger-toggle" aria-hidden="true"></span>';
+
+      section.classList.add('section--mobile-collapsible');
+      section.appendChild(trigger);
+      section.appendChild(panel);
+
+      var isDefaultOpen = section.id === 'services';
+      if (isDefaultOpen) {
+        panel.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      } else {
+        panel.style.maxHeight = '0';
+      }
+
+      function syncPanelHeight() {
+        if (panel.classList.contains('is-open')) {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        } else {
+          panel.style.maxHeight = '0';
+        }
+      }
+
+      syncPanelHeight();
+      window.addEventListener('resize', syncPanelHeight);
+
+      trigger.addEventListener('click', function () {
+        var nextOpen = !panel.classList.contains('is-open');
+        panel.classList.toggle('is-open', nextOpen);
+        trigger.setAttribute('aria-expanded', nextOpen ? 'true' : 'false');
+        syncPanelHeight();
+      });
+    });
+  })();
+
   // お問い合わせ：よくある質問バーの開閉（開いたとき内容の高さまで広がる）
   var faqTrigger = document.getElementById('faq-trigger');
   var faqPanel = document.getElementById('faq-panel');
