@@ -18,9 +18,11 @@
   <meta name="twitter:description" content="個人事業主、税理士・行政書士などの士業、美容室・整体院などの店舗、スタートアップ企業の0から1を支えるWeb・システム開発パートナー。Webサイト制作、業務システム、ツール・アプリ開発まで、一人ひとりに寄り添って伴走します。">
   <meta name="twitter:image" content="https://create-to-one.com/favicon.png">
   <link rel="canonical" href="https://create-to-one.com/">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+  <meta name="theme-color" content="#a85c38">
+  <link rel="manifest" href="site.webmanifest?v=9">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=9">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=9">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=9">
   <link rel="stylesheet" href="style.css?v=8">
   <style>
   /* お問い合わせ：わんちゃん吹き出し（口元から・必ず適用） */
@@ -62,17 +64,13 @@
       <a class="site-header__brand" href="index.html"><ruby>One<rt>イチ</rt></ruby></a>
       <nav class="site-header__nav" aria-label="メインナビゲーション">
         <ul class="site-header__list">
-          <li class="site-header__item"><a class="site-header__link" href="philosophy.html">想い</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="philosophy.html">Oneとは</a></li>
           <li class="site-header__item"><a class="site-header__link" href="services.html">サービス</a></li>
           <li class="site-header__item"><a class="site-header__link" href="flow.html">ご依頼の流れ</a></li>
-          <li class="site-header__item"><a class="site-header__link" href="contact.html">お問い合わせ</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="contact.html">無料で相談</a></li>
         </ul>
       </nav>
     </div>
-    <button class="site-header__daily" id="daily-quote-trigger" type="button" aria-label="今日のことば（クリックで意味を表示）" aria-haspopup="dialog" aria-expanded="false" aria-controls="daily-quote-modal">
-      <span class="site-header__daily-label">今日のことば</span>
-      <span class="site-header__daily-text" id="daily-quote-mini">読み込み中…</span>
-    </button>
   </header>
 
   <section class="hero" id="top">
@@ -82,6 +80,9 @@
       <div class="hero__text">
         <h1 class="hero__title">0から1を、<ruby>One<rt>イチ</rt></ruby>と。</h1>
         <p class="hero__subtitle">0から1を生み出す、その一歩から。</p>
+        <div class="hero__cta-row" aria-label="無料相談への導線">
+          <a class="hero__cta hero__cta--small" href="#contact-form">無料で相談する</a>
+        </div>
       </div>
     </div>
   </section>
@@ -100,28 +101,17 @@
       <span class="main-wrap__code-sym">⚙</span>
     </div>
 
-    <!-- インフォーメーション：Oneとは・SNS（ご案内はヒーロー上へ移動済み） -->
-    <aside class="information" id="information" aria-label="インフォーメーション">
-      <h2 class="information__title">インフォーメーション</h2>
-      <div class="information__links">
-        <a class="information__link" href="profile.html"><span class="information__bullet" aria-hidden="true">・</span>Oneとは</a>
-        <a class="information__link information__link--sns" href="https://x.com/createtoOne" target="_blank" rel="noopener noreferrer" aria-label="One公式X（随時更新・新しいタブで開く）">
-          <span class="information__sns-line1"><span class="information__bullet" aria-hidden="true">・</span><span class="information__sns-label" aria-hidden="true"><span class="information__sns-dot"></span>随時更新</span>　X（旧Twitter）</span>
-          <span class="information__sns-line2">最新のつぶやきやお知らせを発信しています</span>
-        </a>
-      </div>
-    </aside>
-
-  <section class="section section--philosophy" id="philosophy">
-    <h2 class="section__title">想い</h2>
-    <div class="philosophy__inner">
-      <div class="philosophy__body">
-        <div class="philosophy__lead">
-          <p>成功も失敗も、すべては1から始まります。行動しなければ1は生まれません。</p>
-          <p>熱い願望を持ち"人生と本気で向き合っている"そんな方を、Oneは全力でサポートします。その架け橋でありたいと思っています。</p>
-          <p>少しでも期待を寄せてくださった方と、一人ひとり、1件1件、真心こめて向き合うことをお誓いします。</p>
-        </div>
-        <p class="philosophy__sign">One代表 永冶陽平</p>
+  <section class="section section--daily-quote" id="daily-quote">
+    <h2 class="section__title">今日のことば</h2>
+    <p class="section__lead">0から1の一歩を、言葉と仕組みで後押しします。</p>
+    <div class="section__panel section__panel--quote">
+      <button class="site-header__daily" id="daily-quote-trigger" type="button" aria-label="今日のことば（クリックで意味を表示）" aria-haspopup="dialog" aria-expanded="false" aria-controls="daily-quote-modal">
+        <span class="site-header__daily-label">今日のことば</span>
+        <span class="site-header__daily-text" id="daily-quote-mini">読み込み中…</span>
+      </button>
+      <p class="daily-quote__hint">「意味を見る」を押すと、今の状況に置き換えた解釈も読めます。</p>
+      <div class="hero__cta-row hero__cta-row--main" aria-label="サービスへの導線">
+        <a class="hero__cta hero__cta--ghost" href="#services">サービスを見る</a>
       </div>
     </div>
   </section>
@@ -140,6 +130,39 @@
       </li>
     </ul>
     <p class="services__closing">1客1件、真心こめて承ります。</p>
+  </section>
+
+  <section class="section section--results" id="results">
+    <h2 class="section__title">実績（進行中）</h2>
+    <p class="section__lead">納品前の案件も含めて、現在も支援を進めています。</p>
+    <div class="section__panel">
+      <ul class="results__list">
+        <li>税理士・会計士（業務効率化、情報整理、Web/システム連携）</li>
+        <li>中小運送業（現場の運用に寄り添う業務システム）</li>
+        <li>個人美容室（集客導線づくり・業務ツール）</li>
+      </ul>
+      <div class="hero__cta-row hero__cta-row--main" aria-label="実績の後の導線">
+        <a class="hero__cta" href="#contact-form">無料で相談する</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--philosophy" id="philosophy">
+    <h2 class="section__title">Oneとは</h2>
+    <div class="section__panel">
+      <div class="philosophy__inner">
+        <div class="philosophy__body">
+          <div class="philosophy__lead">
+            <p>成功も失敗も、すべては1から始まります。行動しなければ1は生まれません。</p>
+            <p>熱い願望を持ち、「人生と本気で向き合っている」方へ。Oneは全力で寄り添います。</p>
+            <p>この想いを積み重ねる先に、良き社会と未来があると信じています。</p>
+            <p>そのための架け橋でありたい。これがOneの原点です。</p>
+            <p>少しでも期待を寄せてくださった方と、一人ひとり、1件1件、真心こめて向き合うことをお誓いします。</p>
+          </div>
+          <p class="philosophy__sign">One代表　永冶陽平</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section section--flow" id="flow">
@@ -184,12 +207,39 @@
     </ol>
   </section>
 
+  <section class="section section--xfeed" id="information" aria-label="導線設計・改善の発信（X）">
+    <h2 class="section__title">導線設計・改善の発信</h2>
+    <p class="section__lead">事業の価値を“伝わる形”にするための改善や導線設計を発信しています。</p>
+
+    <div class="section__panel section__panel--x">
+      <a class="twitter-timeline"
+         data-lang="ja"
+         data-height="520"
+         data-dnt="true"
+         data-chrome="noheader nofooter"
+         href="https://twitter.com/createtoOne?ref_src=twsrc%5Etfw">
+        Tweets by @createtoOne
+      </a>
+      <div class="information__x-actions">
+        <a class="twitter-follow-button"
+           href="https://twitter.com/createtoOne?ref_src=twsrc%5Etfw"
+           data-lang="ja"
+           data-show-count="false">
+          Follow @createtoOne
+        </a>
+      </div>
+      <p class="information__x-fallback">
+        埋め込みが表示されない場合は、<a href="https://twitter.com/createtoOne" target="_blank" rel="noopener noreferrer">Xで見る</a>をご利用ください。
+      </p>
+    </div>
+  </section>
+
   <section class="section section--contact" id="contact">
-    <h2 class="section__title">お問い合わせ</h2>
-    <p class="section__lead">0から1を一緒に、というご相談はこちらから。お気軽にどうぞ。</p>
+    <h2 class="section__title">無料で相談する</h2>
+    <p class="section__lead">0から1を一緒に。無料でご相談いただけます。まずは整理、要点だけで大丈夫です。</p>
 
     <div class="contact__frame">
-      <p class="contact__choice-lead">メールフォームまたは公式LINEのどちらからでもご連絡いただけます。</p>
+      <p class="contact__choice-lead">メールフォーム（無料）または公式LINEのどちらからでもご連絡いただけます。</p>
       <div class="contact__row">
         <div class="contact__main">
           <figure class="contact__character">
@@ -205,17 +255,19 @@
                 </span>
                 LINEで相談
               </a>
-              <p class="contact__line-note">※友だち追加後、気軽にメッセージでご相談いただけます。</p>
+              <div class="contact__qr-wrap" aria-hidden="true">
+                <img class="contact__qr" src="images/line-qr.png" alt="">
+              </div>
             </div>
             <div class="contact__channel contact__form-area">
               <p class="contact__channel-label">メールフォーム</p>
               <!-- Formspree フォーム送信先 -->
-              <form class="contact__form" action="https://formspree.io/f/maqdlrdv" method="post">
+              <form id="contact-form" class="contact__form" action="https://formspree.io/f/maqdlrdv" method="post">
                 <input type="hidden" name="_subject" value="【One】ホームページからのお問い合わせ">
                 <div class="contact__form-row">
                   <div class="contact__field">
                     <label class="contact__label" for="contact-name">お名前</label>
-                    <input class="contact__input" id="contact-name" type="text" name="name" required placeholder="お名前">
+                    <input class="contact__input" id="contact-name" type="text" name="name" required placeholder="お名前" autocomplete="name">
                   </div>
                   <div class="contact__field contact__field--email">
                     <label class="contact__label" for="contact-email">メールアドレス</label>
@@ -223,19 +275,19 @@
                   </div>
                 </div>
                 <div class="contact__field">
-                  <label class="contact__label" for="contact-message">お問い合わせ内容</label>
-                  <textarea class="contact__textarea" id="contact-message" name="message" rows="3" required placeholder="ご相談内容をご記入ください"></textarea>
+                  <label class="contact__label" for="contact-message">ご相談内容（わかる範囲でOK）</label>
+                  <textarea class="contact__textarea" id="contact-message" name="message" rows="3" placeholder="例：作りたいもの/困っていることだけでも大丈夫です"></textarea>
                 </div>
-                <button class="contact__submit" type="submit">送信する</button>
+                <button class="contact__submit" type="submit">無料で相談する</button>
               </form>
-              <p class="contact__form-note"><span class="contact__form-note-line">※詳細を確認するため、ご連絡</span><br><span class="contact__form-note-line">させていただく場合がございます。</span></p>
             </div>
           </div>
         </div>
       </div>
+      <p class="contact__line-note">内容を確認して、原則1営業日以内にご返信します。</p>
       <div class="contact__faq-bottom" id="faq-block">
         <button type="button" class="contact__faq-trigger-bar" id="faq-trigger" aria-expanded="false" aria-controls="faq-panel">
-          <span class="contact__faq-trigger-bar-title">よくある質問</span>
+          <span class="contact__faq-trigger-bar-title">無料相談のよくある質問</span>
           <span class="contact__faq-trigger-bar-toggle" aria-hidden="true"></span>
         </button>
         <div class="contact__faq-panel" id="faq-panel" role="region" aria-label="よくある質問">
@@ -294,5 +346,6 @@
   </div>
 
   <script src="main.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>

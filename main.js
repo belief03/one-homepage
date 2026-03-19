@@ -90,15 +90,40 @@
     ];
 
     if (quotes.length > 0) {
-      var today = new Date();
-      var dayIndex = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
-      var index = Math.abs(dayIndex) % quotes.length;
-      var todayQuote = quotes[index];
+      function getTodayQuoteIndex() {
+        var today = new Date();
+        var dayIndex = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
+        return Math.abs(dayIndex) % quotes.length;
+      }
 
-      quoteMiniEl.textContent = todayQuote.text;
+      function applyQuoteByIndex(index) {
+        var todayQuote = quotes[index];
+        quoteMiniEl.textContent = todayQuote.text;
+        if (quoteModalTextEl) quoteModalTextEl.textContent = todayQuote.text;
+        if (quoteModalNoteEl) quoteModalNoteEl.textContent = todayQuote.note || '';
+      }
 
-      if (quoteModalTextEl) quoteModalTextEl.textContent = todayQuote.text;
-      if (quoteModalNoteEl) quoteModalNoteEl.textContent = todayQuote.note || '';
+      // 初回描画
+      var lastIndex = getTodayQuoteIndex();
+      applyQuoteByIndex(lastIndex);
+
+      function refreshIfNeeded() {
+        var nextIndex = getTodayQuoteIndex();
+        if (nextIndex === lastIndex) return;
+        lastIndex = nextIndex;
+        applyQuoteByIndex(lastIndex);
+      }
+
+      // ページを開きっぱなしでも日付が変わったら更新
+      // （分単位で十分。無駄な頻度で負荷を上げない）
+      setInterval(function () {
+        refreshIfNeeded();
+      }, 60 * 1000);
+
+      // バックグラウンドで停止される端末/環境でも、戻ってきた瞬間に再計算
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) refreshIfNeeded();
+      });
     }
   }
 
