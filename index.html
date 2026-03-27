@@ -28,7 +28,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon-precomposed" href="/images/favicon.png?v=16">
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
   <style>
   /* お問い合わせ：わんちゃん吹き出し（口元から・必ず適用） */
   #contact .contact__character{position:relative;display:inline-block;width:100px;height:100px;}
@@ -77,7 +77,7 @@
       repeating-linear-gradient(180deg,rgba(232,228,223,.14) 0 1px,transparent 1px 28px);
     border-radius:8px;
   }
-  .problem__text{margin:0 0 14px;color:#3f3f3f;line-height:1.82;font-size:1rem;letter-spacing:.01em;}
+  .problem__text{margin:0 0 4px;color:#3f3f3f;line-height:1.48;font-size:1rem;letter-spacing:.01em;}
   .problem__checks{margin-bottom:0.7rem;}
   .problem__checks .problem__text{
     margin-bottom:0;
@@ -88,10 +88,10 @@
     font-family:"Consolas","SFMono-Regular",Menlo,monospace;
     font-size:.95rem;
     line-height:1.6;
-    background:rgba(255,255,255,.52);
-    border:1px solid rgba(168,92,56,.2);
-    border-radius:999px;
-    padding:0.15rem 0.58rem;
+    background:transparent;
+    border:none;
+    border-radius:0;
+    padding:0;
   }
   .problem__checks .problem__text:last-child{margin-bottom:0;}
   .problem__link{
@@ -107,6 +107,29 @@
     border-bottom:1px solid rgba(168,92,56,.35);
   }
   .problem__link:hover,.problem__link:focus-visible{border-bottom-color:rgba(168,92,56,.75);}
+  .section--services,
+  .section--results,
+  .section--flow,
+  .section--xfeed,
+  .section--contact{
+    padding-top:clamp(2.2rem,4.8vw,3.1rem);
+    padding-bottom:clamp(2.2rem,4.8vw,3.1rem);
+  }
+  .section--services .section__lead,
+  .section--results .section__lead,
+  .section--flow .section__lead,
+  .section--contact .section__lead{
+    margin-bottom:clamp(0.95rem,2.2vw,1.25rem);
+  }
+  .section--xfeed .section__panel{
+    margin-top:0.9rem;
+  }
+  .section--problem + .section--services{
+    margin-top:clamp(0.8rem,2.2vw,1.25rem);
+  }
+  .section--contact .section__jump{
+    margin-top:0.1rem;
+  }
   @media(max-width:768px){
     .fv-title{font-size:28px;}
     .fv-sub{font-size:16px;}
@@ -140,7 +163,7 @@
         <p class="hero__subtitle">つくるのではなく、未来を形にする</p>
         <p class="fv-target">個人事業主を中心に、小規模事業者・スタートアップの成長フェーズまで一貫してサポートしています。</p>
         <div class="hero__cta-row hero__cta-row--main" aria-label="ヒーロー導線">
-          <a class="hero__cta" href="#contact-form">無料で相談する</a>
+          <a class="hero__cta" href="contact.html">無料で相談する</a>
           <a class="hero__cta hero__cta--ghost" href="#services">サービスを見る</a>
         </div>
       </div>
@@ -169,7 +192,7 @@
     <p class="problem__text">そう思っても、「どうせ無理だ」と見過ごしてしまうことがありませんか？</p>
     <p class="problem__text">本来、すべての始まりは小さな願望から生まれます。</p>
     <p class="problem__text">私の好きな言葉に「夢を持つことはタダ」というものがあります。</p>
-    <p class="problem__text">アイデアを持つこと、生み出すことも同じこと。<br>大切なのは、それを形にすることです。</p>
+    <p class="problem__text">アイデアを持つこと、生み出すことも同じこと。<br>大切なのは、それを形にすることと考えます。</p>
     <a class="problem__link" href="philosophy.html" aria-label="Oneとはのページへ移動">Oneとは→</a>
   </section>
 
@@ -178,18 +201,8 @@
       <span class="section__num" aria-hidden="true">01</span>
       <h2 class="section__title">サービス</h2>
     </div>
-    <p class="section__lead">一人ひとりの「0から1」を、こんな形でお手伝いします。</p>
-    <ul class="services__list">
-      <li class="services__item">
-        <h3 class="services__name">web・システム開発</h3>
-        <p class="services__desc">サイト・業務システムなど、0から1の設計〜開発まで。</p>
-      </li>
-      <li class="services__item">
-        <h3 class="services__name">ツール・アプリ開発<span class="services__note">（あったらいいなを形に）</span></h3>
-        <p class="services__desc">設計から開発まで、相談しながら一緒に進めます。</p>
-      </li>
-    </ul>
-    <p class="services__closing">1客1件、真心こめて承ります。</p>
+    <p class="section__lead">web・システム開発、ツール・アプリ開発まで、0から1の設計〜開発を一貫して支援します。</p>
+    <a class="section__jump" href="services.html" aria-label="サービス詳細ページへ移動">service→</a>
   </section>
 
   <section class="section section--results" id="results">
@@ -198,16 +211,7 @@
       <h2 class="section__title">実績（進行中）</h2>
     </div>
     <p class="section__lead">納品前の案件も含めて、現在も支援を進めています。</p>
-    <div class="section__panel">
-      <ul class="results__list">
-        <li>税理士・会計士（業務効率化、情報整理、web/システム連携）</li>
-        <li>中小運送業（現場の運用に寄り添う業務システム）</li>
-        <li>個人美容室（集客導線づくり・業務ツール）</li>
-      </ul>
-      <div class="hero__cta-row hero__cta-row--main" aria-label="実績の後の導線">
-        <a class="hero__cta" href="#contact-form">無料で相談する</a>
-      </div>
-    </div>
+    <a class="section__jump" href="results.html" aria-label="実績詳細ページへ移動">results→</a>
   </section>
 
   <section class="section section--flow" id="flow">
@@ -215,44 +219,8 @@
       <span class="section__num" aria-hidden="true">03</span>
       <h2 class="section__title">ご依頼の流れ</h2>
     </div>
-    <ol class="flow__list">
-      <li class="flow__item">
-        <div class="flow__content">
-          <span class="flow__step">ご相談</span>
-          <p class="flow__desc">お話をうかがいます。まずはお気軽に。</p>
-        </div>
-        <figure class="flow__figure">
-          <img src="images/flow1.png" alt="ご相談" width="140" height="140">
-        </figure>
-      </li>
-      <li class="flow__item">
-        <div class="flow__content">
-          <span class="flow__step">お見積り</span>
-          <p class="flow__desc">ご要望に合わせてお見積りをご提出します。</p>
-        </div>
-        <figure class="flow__figure">
-          <img src="images/flow2.png" alt="お見積り" width="140" height="140">
-        </figure>
-      </li>
-      <li class="flow__item">
-        <div class="flow__content">
-          <span class="flow__step">ご契約</span>
-          <p class="flow__desc">内容にご納得いただけましたら、ご契約です。</p>
-        </div>
-        <figure class="flow__figure">
-          <img src="images/flow3.png" alt="ご契約" width="140" height="140">
-        </figure>
-      </li>
-      <li class="flow__item">
-        <div class="flow__content">
-          <span class="flow__step">納品・サポート</span>
-          <p class="flow__desc">納品後も、ご不明点には対応します。</p>
-        </div>
-        <figure class="flow__figure">
-          <img src="images/flow4.png" alt="納品・サポート" width="140" height="140">
-        </figure>
-      </li>
-    </ol>
+    <p class="section__lead">ご相談からお見積り、ご契約、納品・サポートまで、各ステップを明確にして進めます。</p>
+    <a class="section__jump" href="flow.html" aria-label="ご依頼の流れ詳細ページへ移動">flow→</a>
   </section>
 
   <section class="section section--xfeed" id="information" aria-label="導線設計・改善の発信（X）">
@@ -288,99 +256,7 @@
       <p>小さなアイデアからでも大丈夫です。</p>
       <p>０から1のご相談、無料で承っています。</p>
     </div>
-
-    <div class="contact__frame">
-      <p class="contact__choice-lead">メールフォーム（無料）または公式LINEのどちらからでもご連絡いただけます。</p>
-      <div class="contact__row">
-        <div class="contact__main">
-          <figure class="contact__character">
-            <img src="images/mascot.png" alt="Oneのマスコット・ボン" width="120" height="120" class="contact__character-img">
-            <span class="contact__character-bubble">待ってるよ！</span>
-          </figure>
-          <div class="contact__channels">
-            <div class="contact__channel contact__line-block">
-              <p class="contact__channel-label">公式LINE</p>
-              <a class="contact__line-btn" href="https://lin.ee/j1GSPEB" target="_blank" rel="noopener noreferrer" aria-label="公式LINEで友だち追加">
-                <span class="contact__line-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-                </span>
-                LINEで相談
-              </a>
-              <div class="contact__qr-wrap" aria-hidden="true">
-                <img class="contact__qr" src="images/line-qr.png" alt="">
-              </div>
-            </div>
-            <div class="contact__channel contact__form-area">
-              <p class="contact__channel-label">メールフォーム</p>
-              <!-- Formspree フォーム送信先 -->
-              <form id="contact-form" class="contact__form" action="https://formspree.io/f/maqdlrdv" method="post">
-                <input type="hidden" name="_subject" value="【One】ホームページからのお問い合わせ">
-                <div class="contact__form-row">
-                  <div class="contact__field">
-                    <label class="contact__label" for="contact-name">お名前</label>
-                    <input class="contact__input" id="contact-name" type="text" name="name" required placeholder="お名前" autocomplete="name">
-                  </div>
-                  <div class="contact__field contact__field--email">
-                    <label class="contact__label" for="contact-email">メールアドレス</label>
-                    <input class="contact__input" id="contact-email" type="email" name="email" required placeholder="example@example.com" autocomplete="email">
-                  </div>
-                </div>
-                <div class="contact__field">
-                  <label class="contact__label" for="contact-message">ご相談内容（わかる範囲でOK）</label>
-                  <textarea class="contact__textarea" id="contact-message" name="message" rows="3" placeholder="例：作りたいもの/困っていることだけでも大丈夫です"></textarea>
-                </div>
-                <button class="contact__submit" type="submit">無料で相談する</button>
-              </form>
-            </div>
-          </div>
-          <p class="contact__line-note">内容を確認して、原則1営業日以内にご返信します。</p>
-        </div>
-      </div>
-      <div class="contact__nudge contact__nudge--embed" id="daily-quote" aria-label="相談の前のひとこと">
-        <div class="contact__nudge__card">
-          <p class="contact__nudge__note">LINEでもメールでも、その前にひとこと。</p>
-          <div class="daily-quote-inline daily-quote-inline--cta">
-            <div class="daily-quote-inline__body">
-              <button class="daily-quote-inline__phrase" id="daily-quote-trigger" type="button" aria-label="ひとことの意味を表示" aria-haspopup="dialog" aria-expanded="false" aria-controls="daily-quote-modal">
-                <span class="site-header__daily-text" id="daily-quote-mini">読み込み中…</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <p class="contact__nudge__hint">どちらからでも大丈夫です。気になったら、意味をひらいてみてください。</p>
-      </div>
-      <div class="contact__faq-bottom" id="faq-block">
-        <button type="button" class="contact__faq-trigger-bar" id="faq-trigger" aria-expanded="false" aria-controls="faq-panel">
-          <span class="contact__faq-trigger-bar-title">無料相談のよくある質問</span>
-          <span class="contact__faq-trigger-bar-toggle" aria-hidden="true"></span>
-        </button>
-        <div class="contact__faq-panel" id="faq-panel" role="region" aria-label="よくある質問">
-          <div class="contact__faq-panel-inner">
-            <p class="contact__faq-panel-lead" id="faq">ご質問内容に近いものをお選びください。</p>
-            <div class="faq-chat">
-              <div class="faq-questions" role="group" aria-label="質問を選択">
-                <button type="button" class="faq-btn" data-faq="0">開発の流れ</button>
-                <button type="button" class="faq-btn" data-faq="1">料金の目安</button>
-                <button type="button" class="faq-btn" data-faq="2">どのような開発…</button>
-                <button type="button" class="faq-btn" data-faq="3">相談だけでも大丈夫ですか？</button>
-              </div>
-              <div class="faq-reply">
-                <div class="faq-typing-wrap" id="faq-typing-wrap" aria-hidden="true">
-                  <span class="faq-typing-dot"></span><span class="faq-typing-dot"></span><span class="faq-typing-dot"></span><span class="faq-typing-dot"></span>
-                </div>
-                <div class="faq-answer-wrap" id="faq-answer-wrap" aria-live="polite">
-                  <p class="faq-answer-text" id="faq-answer-text"></p>
-                </div>
-              </div>
-            </div>
-            <script type="application/json" id="faq-answers-data">
-              ["ご相談いただいた内容をもとに、お見積り・ご契約・開発・納品・サポートの流れで進めます。まずはお気軽にメールまたはLINEでご相談ください。","ご要望や規模により異なります。ヒアリングのうえ、お見積りをご提出しますので、まずはお気軽にご相談ください。","webサイト、業務システム、ツール・アプリなど、0から1の設計〜開発まで対応しています。「こんなものを作りたい」というご相談から歓迎です。","はい、大丈夫です。まずは「こういうことをしたい」というお話だけでもお聞かせください。実現方法や目安をご説明します。"]
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="contact__to-top-wrap"><a class="contact__to-top" href="#top">トップへ</a></p>
+    <a class="section__jump" href="contact.html" aria-label="無料で相談する詳細ページへ移動">contact→</a>
   </section>
 
   </div><!-- /.main-wrap -->
