@@ -28,7 +28,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon-precomposed" href="/images/favicon.png?v=16">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=14">
   <style>
   /* お問い合わせ：わんちゃん吹き出し（口元から・必ず適用） */
   #contact .contact__character{position:relative;display:inline-block;width:100px;height:100px;}
@@ -65,10 +65,47 @@
   .fv-title{font-size:38px;font-weight:700;margin-bottom:20px;line-height:1.5;}
   .fv-sub{font-size:18px;margin-bottom:28px;color:#444;}
   .fv-target{font-size:14px;color:#666;line-height:1.9;}
-  .section--problem{max-width:860px;margin:0 auto;padding-top:28px;padding-bottom:20px;}
-  .problem__text{margin:0 0 16px;color:#444;line-height:1.95;font-size:1rem;}
-  .problem__link{display:inline-block;margin-top:6px;color:#2c2c2c;text-decoration:none;font-weight:600;letter-spacing:0.02em;}
-  .problem__link:hover,.problem__link:focus-visible{text-decoration:underline;}
+  .section--problem{
+    max-width:860px;
+    margin:0 auto;
+    padding-top:28px;
+    padding-bottom:20px;
+    padding-left:clamp(1rem,2.4vw,1.5rem);
+    border-left:3px solid rgba(168,92,56,.25);
+    background:
+      linear-gradient(90deg,rgba(168,92,56,.05),transparent 42%),
+      repeating-linear-gradient(180deg,rgba(232,228,223,.14) 0 1px,transparent 1px 28px);
+    border-radius:8px;
+  }
+  .problem__text{margin:0 0 16px;color:#3f3f3f;line-height:1.95;font-size:1rem;letter-spacing:.01em;}
+  .problem__checks{margin-bottom:0.9rem;}
+  .problem__checks .problem__text{
+    margin-bottom:0.45em;
+    display:inline-flex;
+    align-items:center;
+    font-weight:600;
+    color:#2f2f2f;
+    font-family:"Consolas","SFMono-Regular",Menlo,monospace;
+    font-size:.96rem;
+    background:rgba(255,255,255,.52);
+    border:1px solid rgba(168,92,56,.2);
+    border-radius:999px;
+    padding:0.2rem 0.6rem;
+  }
+  .problem__checks .problem__text:last-child{margin-bottom:0;}
+  .problem__link{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    margin-top:8px;
+    color:#2c2c2c;
+    text-decoration:none;
+    font-weight:700;
+    letter-spacing:0.04em;
+    padding:0.2rem 0.15rem;
+    border-bottom:1px solid rgba(168,92,56,.35);
+  }
+  .problem__link:hover,.problem__link:focus-visible{border-bottom-color:rgba(168,92,56,.75);}
   @media(max-width:768px){
     .fv-title{font-size:28px;}
     .fv-sub{font-size:16px;}
@@ -123,31 +160,25 @@
       <span class="main-wrap__code-sym">⚙</span>
     </div>
 
-  <section class="section section--daily-quote" id="daily-quote">
-    <h2 class="section__title">今日のことば</h2>
-    <p class="section__lead">0から1の一歩を、言葉と仕組みで後押しします。</p>
-    <div class="section__panel section__panel--quote">
-      <button class="site-header__daily" id="daily-quote-trigger" type="button" aria-label="今日のことばを表示" aria-haspopup="dialog" aria-expanded="false" aria-controls="daily-quote-modal">
-        <span class="site-header__daily-label">今日のことば</span>
-        <span class="site-header__daily-text" id="daily-quote-mini">読み込み中…</span>
-      </button>
-      <div class="hero__cta-row hero__cta-row--main" aria-label="サービスへの導線">
-        <a class="hero__cta hero__cta--ghost" href="#services">サービスを見る</a>
-      </div>
+  <section class="section section--problem" id="problem" aria-labelledby="section-problem-heading">
+    <h2 id="section-problem-heading" class="u-visually-hidden">メッセージ</h2>
+    <div class="problem__checks">
+      <p class="problem__text">☑ここが改善できたらいいな</p>
+      <p class="problem__text">☑こんなものがあったらいいな</p>
     </div>
-  </section>
-
-  <section class="section section--problem" id="problem">
-    <p class="problem__text">「ここが改善できたらいいな」「こんなものがあったらいいな」。そう思っても、「どうせ無理だ」と見過ごしてしまうことがあります。</p>
+    <p class="problem__text">そう思っても、「どうせ無理だ」と見過ごしてしまうことがありませんか？</p>
     <p class="problem__text">本来、すべての始まりは小さな願望から生まれます。私の好きな言葉に「夢を持つことはタダ」というものがあります。</p>
-    <p class="problem__text">アイデアを生み出すことも同じことと考えます。大切なのは、それを形にすること。</p>
-    <p class="problem__text">私は、あなたのアイデアを共有し、一緒に形にしていくパートナーでありたいと考えています。</p>
-    <p class="problem__text">ホームページ制作、Webアプリ、Webツールなど、手段にとらわれず最適な形をご提案します。まずは「これ、できる？」から気軽にご相談ください。</p>
+    <p class="problem__text">アイデアを持つこと、生み出すことも同じことと考えます。<br>大切なのは、それを形にすること。</p>
+    <p class="problem__text">私は、そのアイデアを一緒に形にしていくパートナーでありたいと考えています。</p>
+    <p class="problem__text">ホームページ制作、Webアプリ、Webツールなど、手段にとらわれず最適な形をご提案します。<br>まずは「これ、できる？」から気軽にご相談ください。</p>
     <a class="problem__link" href="philosophy.html" aria-label="Oneとはのページへ移動">Oneとは→</a>
   </section>
 
   <section class="section section--services" id="services">
-    <h2 class="section__title">サービス</h2>
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">01</span>
+      <h2 class="section__title">サービス</h2>
+    </div>
     <p class="section__lead">一人ひとりの「0から1」を、こんな形でお手伝いします。</p>
     <ul class="services__list">
       <li class="services__item">
@@ -163,7 +194,10 @@
   </section>
 
   <section class="section section--results" id="results">
-    <h2 class="section__title">実績（進行中）</h2>
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">02</span>
+      <h2 class="section__title">実績（進行中）</h2>
+    </div>
     <p class="section__lead">納品前の案件も含めて、現在も支援を進めています。</p>
     <div class="section__panel">
       <ul class="results__list">
@@ -178,7 +212,10 @@
   </section>
 
   <section class="section section--flow" id="flow">
-    <h2 class="section__title">ご依頼の流れ</h2>
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">03</span>
+      <h2 class="section__title">ご依頼の流れ</h2>
+    </div>
     <ol class="flow__list">
       <li class="flow__item">
         <div class="flow__content">
@@ -220,7 +257,10 @@
   </section>
 
   <section class="section section--xfeed" id="information" aria-label="導線設計・改善の発信（X）">
-    <h2 class="section__title">導線設計・改善の発信</h2>
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">04</span>
+      <h2 class="section__title">導線設計・改善の発信</h2>
+    </div>
 
     <div class="section__panel section__panel--x">
       <div class="information__x-pinned">
@@ -240,8 +280,15 @@
   </section>
 
   <section class="section section--contact" id="contact">
-    <h2 class="section__title">無料で相談する</h2>
-    <p class="section__lead">0から1を一緒に。無料でご相談いただけます。まずは整理、要点だけで大丈夫です。</p>
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">05</span>
+      <h2 class="section__title">無料で相談する</h2>
+    </div>
+    <div class="section__lead section__lead--contact">
+      <p>まずは構想から、一緒に整理しませんか？</p>
+      <p>小さなアイデアからでも大丈夫です。</p>
+      <p>０から1のご相談、無料で承っています。</p>
+    </div>
 
     <div class="contact__frame">
       <p class="contact__choice-lead">メールフォーム（無料）または公式LINEのどちらからでもご連絡いただけます。</p>
@@ -287,9 +334,22 @@
               </form>
             </div>
           </div>
+          <p class="contact__line-note">内容を確認して、原則1営業日以内にご返信します。</p>
         </div>
       </div>
-      <p class="contact__line-note">内容を確認して、原則1営業日以内にご返信します。</p>
+      <div class="contact__nudge contact__nudge--embed" id="daily-quote" aria-label="相談の前のひとこと">
+        <div class="contact__nudge__card">
+          <p class="contact__nudge__note">LINEでもメールでも、その前にひとこと。</p>
+          <div class="daily-quote-inline daily-quote-inline--cta">
+            <div class="daily-quote-inline__body">
+              <button class="daily-quote-inline__phrase" id="daily-quote-trigger" type="button" aria-label="ひとことの意味を表示" aria-haspopup="dialog" aria-expanded="false" aria-controls="daily-quote-modal">
+                <span class="site-header__daily-text" id="daily-quote-mini">読み込み中…</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="contact__nudge__hint">どちらからでも大丈夫です。気になったら、意味をひらいてみてください。</p>
+      </div>
       <div class="contact__faq-bottom" id="faq-block">
         <button type="button" class="contact__faq-trigger-bar" id="faq-trigger" aria-expanded="false" aria-controls="faq-panel">
           <span class="contact__faq-trigger-bar-title">無料相談のよくある質問</span>
