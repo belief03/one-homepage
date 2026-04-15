@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ITが苦手でも安心。個人事業主・中小企業のための0から1のWeb制作・業務設計｜One</title>
-  <meta name="description" content="ITが苦手でも安心。個人事業主・中小企業のための0から1のWeb制作・業務設計。まずはお気軽にご相談ください。">
+  <title>One｜個人事業主・士業・店舗向けWeb制作・業務システム開発</title>
+  <meta name="description" content="個人事業主・士業・店舗・スタートアップ向けに、Web制作、業務システム開発、ツール・アプリ開発を0から1で支援。ITが苦手な方も無料相談から伴走します。">
   <meta name="keywords" content="One,システムエンジニア,フリーランスエンジニア,web制作,業務システム開発,ツール開発,アプリ開発,個人事業主,税理士,行政書士,美容室,整体院,スタートアップ,0から1">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="ITが苦手でも安心。個人事業主・中小企業のための0から1のWeb制作・業務設計｜One">
-  <meta property="og:description" content="ITが苦手でも安心。個人事業主・中小企業のための0から1のWeb制作・業務設計。まずはお気軽にご相談ください。">
+  <meta property="og:title" content="One｜個人事業主・士業・店舗向けWeb制作・業務システム開発">
+  <meta property="og:description" content="個人事業主・士業・店舗・スタートアップ向けに、Web制作、業務システム開発、ツール・アプリ開発を0から1で支援。ITが苦手な方も無料相談から伴走します。">
   <meta property="og:site_name" content="One">
   <meta property="og:image" content="https://create-to-one.com/images/favicon.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ITが苦手でも安心。個人事業主・中小企業のための0から1のWeb制作・業務設計｜One">
-  <meta name="twitter:description" content="ITが苦手でも安心。個人事業主・中小企業のための0から1のWeb制作・業務設計。まずはお気軽にご相談ください。">
+  <meta name="twitter:title" content="One｜個人事業主・士業・店舗向けWeb制作・業務システム開発">
+  <meta name="twitter:description" content="個人事業主・士業・店舗・スタートアップ向けに、Web制作、業務システム開発、ツール・アプリ開発を0から1で支援。ITが苦手な方も無料相談から伴走します。">
   <meta name="twitter:image" content="https://create-to-one.com/images/favicon.png">
   <link rel="canonical" href="https://create-to-one.com/">
   <meta name="theme-color" content="#a85c38">
@@ -130,14 +130,253 @@
   .section--contact .section__jump{
     margin-top:0.1rem;
   }
+  .opening{
+    position:fixed;
+    inset:0;
+    z-index:1200;
+    display:grid;
+    place-items:center;
+    padding:24px;
+    background-image:url(images/hero-bg.jpg);
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:1;
+    visibility:visible;
+    transition:opacity 0.72s ease,visibility 0.72s ease,transform 0.72s ease;
+    overflow:hidden;
+  }
+  .opening::before{
+    content:"";
+    position:absolute;
+    inset:-35%;
+    background:linear-gradient(112deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.14) 50%,rgba(255,255,255,0) 62%);
+    transform:translateX(-80%) rotate(4deg);
+    opacity:0;
+    pointer-events:none;
+  }
+  .opening::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg,rgba(246,240,233,.74),rgba(236,228,218,.78)),
+      radial-gradient(circle at 50% 46%,rgba(255,255,255,0) 42%,rgba(25,18,14,.08) 100%);
+    pointer-events:none;
+  }
+  .opening.is-progress::before{
+    opacity:.42;
+    animation:openingLightSweep 2.8s cubic-bezier(.22,.75,.26,1) infinite;
+  }
+  body.is-opening{overflow:hidden;}
+  .opening.is-hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .opening.is-leave{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(-24px);
+  }
+  .opening__inner{
+    width:min(92vw,680px);
+    text-align:center;
+    color:#2c2c2c;
+    letter-spacing:.02em;
+    padding:clamp(1.1rem,2.8vw,1.65rem) clamp(1rem,2.2vw,1.45rem);
+    border:1px solid rgba(56,46,40,.12);
+    border-radius:12px;
+    background:rgba(255,255,255,.72);
+    box-shadow:0 10px 26px rgba(20,16,12,.08);
+    transition:transform .45s ease,box-shadow .45s ease;
+  }
+  .opening.is-progress .opening__inner{
+    transform:translateY(-1px);
+    box-shadow:0 13px 32px rgba(20,16,12,.1);
+  }
+  .opening__meter-wrap,
+  .opening__line,
+  .opening__sub{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  .opening.is-play .opening__meter-wrap,
+  .opening.is-play .opening__line,
+  .opening.is-play .opening__sub{
+    animation:openingRiseSoft .72s ease forwards;
+  }
+  .opening.is-play .opening__meter-wrap{animation-delay:.08s;}
+  .opening.is-play .opening__line{animation-delay:.16s;}
+  .opening.is-play .opening__sub{animation-delay:.24s;}
+  .opening__meter-wrap{
+    --opening-progress:0;
+    margin:0.2rem auto 0.36rem;
+    width:min(248px,74vw);
+    display:grid;
+    place-items:center;
+    position:relative;
+  }
+  .opening__meter-wrap::before{
+    content:"";
+    position:absolute;
+    inset:8%;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(168,92,56,.08),rgba(168,92,56,0) 74%);
+    opacity:.34;
+    transform:scale(.95);
+    pointer-events:none;
+  }
+  .opening__meter-wrap::after{
+    content:"";
+    position:absolute;
+    inset:1.8%;
+    border-radius:50%;
+    border:1px solid rgba(168,92,56,.12);
+    opacity:.2;
+    transform:scale(1.02);
+    pointer-events:none;
+  }
+  .opening__meter{
+    width:100%;
+    aspect-ratio:1;
+    display:block;
+    transform:rotate(-90deg);
+    filter:drop-shadow(0 8px 18px rgba(52,40,33,.08));
+  }
+  .opening__meter-scan{
+    fill:none;
+    stroke:rgba(168,92,56,.2);
+    stroke-width:1.7;
+    stroke-dasharray:3 12;
+    transform-origin:50% 50%;
+    opacity:.4;
+  }
+  .opening.is-progress .opening__meter-scan{
+    animation:openingMeterScanSpin 6s linear infinite;
+  }
+  .opening__meter-track{
+    fill:none;
+    stroke:rgba(168,92,56,.12);
+    stroke-width:7;
+  }
+  .opening__meter-progress{
+    fill:none;
+    stroke:url(#opening-meter-gradient);
+    stroke-linecap:round;
+    stroke-width:7;
+    stroke-dasharray:282.74;
+    stroke-dashoffset:calc(282.74 - (282.74 * var(--opening-progress) / 100));
+    transition:stroke-dashoffset .22s ease;
+    filter:drop-shadow(0 0 3px rgba(168,92,56,.24));
+  }
+  .opening__meter-inner{
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    text-align:center;
+  }
+  .opening__meter-orbit{
+    position:absolute;
+    inset:12%;
+    transform:rotate(calc(var(--opening-progress) * 3.6deg));
+    transition:transform .16s ease;
+    pointer-events:none;
+  }
+  .opening__meter-head{
+    position:absolute;
+    left:50%;
+    top:0;
+    width:8px;
+    height:8px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(248,236,225,.96) 0%,rgba(188,115,70,.96) 65%,rgba(155,86,47,.9) 100%);
+    box-shadow:0 0 0 2px rgba(188,115,70,.15),0 0 8px rgba(168,92,56,.28);
+    opacity:.22;
+    transition:opacity .24s ease;
+  }
+  .opening.is-progress .opening__meter-head{
+    opacity:1;
+  }
+  .opening.is-complete .opening__meter-head{
+    opacity:1;
+    box-shadow:0 0 0 3px rgba(188,115,70,.16),0 0 10px rgba(168,92,56,.32);
+  }
+  .opening__meter-value{
+    margin:0;
+    font-family:"Consolas","SFMono-Regular",Menlo,monospace;
+    font-size:clamp(1.3rem,5.4vw,2rem);
+    font-weight:600;
+    color:#352d27;
+    letter-spacing:.01em;
+  }
+  .opening.is-complete .opening__meter-wrap{
+    animation:openingMeterPop .36s ease;
+  }
+  .opening__line{
+    margin:.95rem 0 0;
+    font-size:clamp(.98rem,2.5vw,1.18rem);
+    font-weight:600;
+    color:#332b26;
+  }
+  .opening__sub{
+    margin:.45rem 0 0;
+    font-size:clamp(.84rem,1.9vw,.94rem);
+    letter-spacing:.08em;
+    color:#6c625b;
+    text-transform:uppercase;
+  }
+  @keyframes openingRiseSoft{
+    from{opacity:0;transform:translateY(12px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes openingLightSweep{
+    0%{transform:translateX(-86%) rotate(4deg);}
+    100%{transform:translateX(88%) rotate(4deg);}
+  }
+  @keyframes openingMeterScanSpin{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+  }
+  @keyframes openingMeterPop{
+    0%{transform:scale(1);}
+    45%{transform:scale(1.02);}
+    100%{transform:scale(1);}
+  }
   @media(max-width:768px){
     .fv-title{font-size:28px;}
     .fv-sub{font-size:16px;}
   }
-  @media(prefers-reduced-motion:reduce){.hero__inner,.hero__visual,.hero__text{animation:none !important;opacity:1 !important;transform:none !important;}.section,.section.is-visible,.section--services .services__item,.section--services.is-visible .services__item,.section--flow .flow__item,.section--flow.is-visible .flow__item,.footer,.footer.is-visible{opacity:1 !important;transform:none !important;transition:none !important;}}
+  @media(prefers-reduced-motion:reduce){.hero__inner,.hero__visual,.hero__text{animation:none !important;opacity:1 !important;transform:none !important;}.section,.section.is-visible,.section--services .services__item,.section--services.is-visible .services__item,.section--flow .flow__item,.section--flow.is-visible .flow__item,.footer,.footer.is-visible{opacity:1 !important;transform:none !important;transition:none !important;}.opening{transition:none !important;}.opening::before{display:none !important;}.opening__meter-wrap,.opening__line,.opening__sub{animation:none !important;opacity:1 !important;transform:none !important;}.opening__meter-wrap{--opening-progress:100 !important;}.opening__meter-scan,.opening__meter-head{animation:none !important;}}
   </style>
 </head>
 <body>
+  <div class="opening" id="opening" aria-hidden="true">
+    <div class="opening__inner">
+      <div class="opening__meter-wrap" id="opening-meter">
+        <svg class="opening__meter" viewBox="0 0 120 120" role="img" aria-label="読み込み進行率">
+          <defs>
+            <linearGradient id="opening-meter-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8f4f30"></stop>
+              <stop offset="100%" stop-color="#c77b4f"></stop>
+            </linearGradient>
+          </defs>
+          <circle class="opening__meter-track" cx="60" cy="60" r="45"></circle>
+          <circle class="opening__meter-scan" cx="60" cy="60" r="48"></circle>
+          <circle class="opening__meter-progress" cx="60" cy="60" r="45"></circle>
+        </svg>
+        <div class="opening__meter-orbit" aria-hidden="true"><span class="opening__meter-head"></span></div>
+        <div class="opening__meter-inner">
+          <p class="opening__meter-value"><span id="opening-progress-value">0</span>%</p>
+        </div>
+      </div>
+      <p class="opening__line">0から1をcreateするWeb設計パートナー</p>
+      <p class="opening__sub">One</p>
+    </div>
+  </div>
   <!-- ヘッダー：One（左）＋ ナビ一覧 -->
   <header class="site-header" aria-label="サイトヘッダー">
     <div class="site-header__inner">

@@ -3,6 +3,77 @@
 (function () {
   'use strict';
 
+  // トップ：オープニング演出（信頼感重視の導入）
+  var openingEl = document.getElementById('opening');
+  var openingMeterEl = document.getElementById('opening-meter');
+  var openingProgressValueEl = document.getElementById('opening-progress-value');
+  var openingMotionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function finishOpening(removeDelay, useLeaveMotion) {
+    if (!openingEl) return;
+    openingEl.classList.add(useLeaveMotion ? 'is-leave' : 'is-hidden');
+    window.setTimeout(function () {
+      if (!openingEl) return;
+      openingEl.remove();
+      document.body.classList.remove('is-opening');
+      openingEl = null;
+    }, removeDelay);
+  }
+
+  function runOpeningProgress(durationMs) {
+    if (!openingEl || !openingMeterEl || !openingProgressValueEl) return;
+    var startTime = null;
+    openingEl.classList.add('is-progress');
+
+    function tick(timestamp) {
+      if (!openingEl) return;
+      if (startTime === null) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var ratio = Math.min(elapsed / durationMs, 1);
+      var easedRatio = 0;
+      if (ratio < 0.72) {
+        var phaseA = ratio / 0.72;
+        easedRatio = (1 - Math.pow(1 - phaseA, 2)) * 0.82;
+      } else {
+        var phaseB = (ratio - 0.72) / 0.28;
+        easedRatio = 0.82 + (1 - Math.pow(1 - phaseB, 3)) * 0.18;
+      }
+      // 進行の終盤に向かって収束する、ごく小さな揺らぎを加える
+      var wobble = Math.sin(ratio * Math.PI * 7) * (1 - ratio) * 0.012;
+      var progress = Math.round(Math.max(0, Math.min(1, easedRatio + wobble)) * 100);
+
+      openingMeterEl.style.setProperty('--opening-progress', String(progress));
+      openingProgressValueEl.textContent = String(progress);
+
+      if (ratio < 1) {
+        window.requestAnimationFrame(tick);
+      } else {
+        openingEl.classList.remove('is-progress');
+        openingEl.classList.add('is-complete');
+      }
+    }
+
+    window.requestAnimationFrame(tick);
+  }
+
+  if (openingEl) {
+    if (openingMotionReduced) {
+      finishOpening(50, false);
+    } else {
+      document.body.classList.add('is-opening');
+      openingEl.classList.add('is-play');
+
+      window.setTimeout(function () {
+        if (!openingEl) return;
+        runOpeningProgress(1900);
+      }, 360);
+
+      window.setTimeout(function () {
+        finishOpening(760, true);
+      }, 3300);
+    }
+  }
+
   // ヒーローはCSSの keyframes で表示済みのためここでは何もしない
 
   // スクロールで画面に入ったら .is-visible を付与（少し手前で発火）
