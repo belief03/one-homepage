@@ -146,7 +146,7 @@
     threshold: 0.05
   });
 
-  document.querySelectorAll('.section, .footer').forEach(function (el) {
+  document.querySelectorAll('.section, .footer, .page-sitemap').forEach(function (el) {
     observer.observe(el);
   });
 
