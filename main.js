@@ -100,14 +100,12 @@
 
   // ヒーローはCSSの keyframes で表示済みのためここでは何もしない
 
-  // トップPR動画：左テキスト列の高さに合わせて枠サイズを調整／再生オーバーレイ／動きを減らす設定では自動再生しない
-  var problemVideoEl = document.querySelector('#problem-video');
+  // トップPR動画枠：左テキスト列の高さに合わせて枠サイズを調整（YouTube 埋め込み想定）
   var problemVideoFrame = document.querySelector('.problem__video-frame');
-  var problemVideoPlayBtn = document.querySelector('.problem__video-play');
   var problemLayoutEl = document.querySelector('.problem__layout');
   var problemTextColEl = document.querySelector('.problem__column--text');
 
-  if (problemVideoEl && problemVideoFrame && problemVideoPlayBtn) {
+  if (problemVideoFrame && problemLayoutEl && problemTextColEl) {
     function syncProblemVideoFrameMaxHeight() {
       if (!problemLayoutEl || !problemTextColEl) return;
       var h = problemTextColEl.getBoundingClientRect().height;
@@ -116,56 +114,24 @@
       }
     }
 
-    if (problemLayoutEl && problemTextColEl) {
-      syncProblemVideoFrameMaxHeight();
-      if (typeof ResizeObserver !== 'undefined') {
-        var problemTextResizeObserver = new ResizeObserver(function () {
-          syncProblemVideoFrameMaxHeight();
-        });
-        problemTextResizeObserver.observe(problemTextColEl);
-      }
-      var problemVideoResizeTimer;
-      window.addEventListener('resize', function () {
-        window.clearTimeout(problemVideoResizeTimer);
-        problemVideoResizeTimer = window.setTimeout(syncProblemVideoFrameMaxHeight, 80);
+    syncProblemVideoFrameMaxHeight();
+    if (typeof ResizeObserver !== 'undefined') {
+      var problemTextResizeObserver = new ResizeObserver(function () {
+        syncProblemVideoFrameMaxHeight();
       });
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(function () {
-          syncProblemVideoFrameMaxHeight();
-        }).catch(function () {});
-      }
-      window.addEventListener('load', syncProblemVideoFrameMaxHeight);
+      problemTextResizeObserver.observe(problemTextColEl);
     }
-
-    function syncProblemPlayOverlay() {
-      var playing = !problemVideoEl.paused && !problemVideoEl.ended;
-      problemVideoFrame.classList.toggle('is-playing', playing);
-      if (playing) {
-        problemVideoPlayBtn.setAttribute('aria-hidden', 'true');
-        problemVideoPlayBtn.setAttribute('tabindex', '-1');
-      } else {
-        problemVideoPlayBtn.setAttribute('aria-hidden', 'false');
-        problemVideoPlayBtn.removeAttribute('tabindex');
-      }
-    }
-
-    problemVideoPlayBtn.addEventListener('click', function () {
-      problemVideoEl.play().catch(function () {});
+    var problemVideoResizeTimer;
+    window.addEventListener('resize', function () {
+      window.clearTimeout(problemVideoResizeTimer);
+      problemVideoResizeTimer = window.setTimeout(syncProblemVideoFrameMaxHeight, 80);
     });
-
-    ['play', 'playing', 'pause', 'ended', 'emptied'].forEach(function (ev) {
-      problemVideoEl.addEventListener(ev, syncProblemPlayOverlay);
-    });
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      problemVideoEl.removeAttribute('autoplay');
-      if (typeof problemVideoEl.pause === 'function') {
-        problemVideoEl.pause();
-      }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () {
+        syncProblemVideoFrameMaxHeight();
+      }).catch(function () {});
     }
-
-    syncProblemPlayOverlay();
-    problemVideoEl.addEventListener('loadeddata', syncProblemPlayOverlay);
+    window.addEventListener('load', syncProblemVideoFrameMaxHeight);
   }
   // スクロールで画面に入ったら .is-visible を付与（少し手前で発火）
   var observer = new IntersectionObserver(function (entries) {
