@@ -3,14 +3,38 @@
 (function () {
   'use strict';
 
+  var OPENING_SEEN_KEY = 'one-home-opening-seen';
+
+  function markOpeningSeen() {
+    try {
+      window.sessionStorage.setItem(OPENING_SEEN_KEY, '1');
+    } catch (e) {}
+  }
+
+  var introAlreadySeen = false;
+  try {
+    introAlreadySeen = window.sessionStorage.getItem(OPENING_SEEN_KEY) === '1';
+  } catch (e) {}
+
   // トップ：オープニング演出（信頼感重視の導入）
   var openingEl = document.getElementById('opening');
   var openingMeterEl = document.getElementById('opening-meter');
   var openingProgressValueEl = document.getElementById('opening-progress-value');
   var openingMotionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  if (introAlreadySeen) {
+    document.documentElement.classList.add('one-skip-opening');
+    if (openingEl && openingEl.parentNode) {
+      openingEl.parentNode.removeChild(openingEl);
+    }
+    openingEl = null;
+    openingMeterEl = null;
+    openingProgressValueEl = null;
+  }
+
   function finishOpening(removeDelay, useLeaveMotion) {
     if (!openingEl) return;
+    markOpeningSeen();
     openingEl.classList.add(useLeaveMotion ? 'is-leave' : 'is-hidden');
     window.setTimeout(function () {
       if (!openingEl) return;
@@ -76,6 +100,73 @@
 
   // ヒーローはCSSの keyframes で表示済みのためここでは何もしない
 
+  // トップPR動画：左テキスト列の高さに合わせて枠サイズを調整／再生オーバーレイ／動きを減らす設定では自動再生しない
+  var problemVideoEl = document.querySelector('#problem-video');
+  var problemVideoFrame = document.querySelector('.problem__video-frame');
+  var problemVideoPlayBtn = document.querySelector('.problem__video-play');
+  var problemLayoutEl = document.querySelector('.problem__layout');
+  var problemTextColEl = document.querySelector('.problem__column--text');
+
+  if (problemVideoEl && problemVideoFrame && problemVideoPlayBtn) {
+    function syncProblemVideoFrameMaxHeight() {
+      if (!problemLayoutEl || !problemTextColEl) return;
+      var h = problemTextColEl.getBoundingClientRect().height;
+      if (h > 0) {
+        problemLayoutEl.style.setProperty('--problem-text-h', Math.round(h) + 'px');
+      }
+    }
+
+    if (problemLayoutEl && problemTextColEl) {
+      syncProblemVideoFrameMaxHeight();
+      if (typeof ResizeObserver !== 'undefined') {
+        var problemTextResizeObserver = new ResizeObserver(function () {
+          syncProblemVideoFrameMaxHeight();
+        });
+        problemTextResizeObserver.observe(problemTextColEl);
+      }
+      var problemVideoResizeTimer;
+      window.addEventListener('resize', function () {
+        window.clearTimeout(problemVideoResizeTimer);
+        problemVideoResizeTimer = window.setTimeout(syncProblemVideoFrameMaxHeight, 80);
+      });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () {
+          syncProblemVideoFrameMaxHeight();
+        }).catch(function () {});
+      }
+      window.addEventListener('load', syncProblemVideoFrameMaxHeight);
+    }
+
+    function syncProblemPlayOverlay() {
+      var playing = !problemVideoEl.paused && !problemVideoEl.ended;
+      problemVideoFrame.classList.toggle('is-playing', playing);
+      if (playing) {
+        problemVideoPlayBtn.setAttribute('aria-hidden', 'true');
+        problemVideoPlayBtn.setAttribute('tabindex', '-1');
+      } else {
+        problemVideoPlayBtn.setAttribute('aria-hidden', 'false');
+        problemVideoPlayBtn.removeAttribute('tabindex');
+      }
+    }
+
+    problemVideoPlayBtn.addEventListener('click', function () {
+      problemVideoEl.play().catch(function () {});
+    });
+
+    ['play', 'playing', 'pause', 'ended', 'emptied'].forEach(function (ev) {
+      problemVideoEl.addEventListener(ev, syncProblemPlayOverlay);
+    });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      problemVideoEl.removeAttribute('autoplay');
+      if (typeof problemVideoEl.pause === 'function') {
+        problemVideoEl.pause();
+      }
+    }
+
+    syncProblemPlayOverlay();
+    problemVideoEl.addEventListener('loadeddata', syncProblemPlayOverlay);
+  }
   // スクロールで画面に入ったら .is-visible を付与（少し手前で発火）
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {

@@ -2,20 +2,20 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>One｜個人事業主・士業・店舗向けWeb制作・業務システム開発</title>
-  <meta name="description" content="個人事業主・士業・店舗・スタートアップ向けに、Web制作、業務システム開発、ツール・アプリ開発を0から1で支援。ITが苦手な方も無料相談から伴走します。">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>【初めてでも安心】個人事業主向けホームページ制作｜0から伴走するOne</title>
+  <meta name="description" content="「HPが欲しいけど手が出せない」と悩む個人事業主・小規模事業者のためのWeb制作・システム開発パートナー「One（イチ）」。「どうせ無理だ」と見過ごしてしまう小さなアイデアから、誠実に0から対応し確かな未来を形にします。まずは無料でご相談ください。">
   <meta name="keywords" content="One,システムエンジニア,フリーランスエンジニア,web制作,業務システム開発,ツール開発,アプリ開発,個人事業主,税理士,行政書士,美容室,整体院,スタートアップ,0から1">
   <meta name="robots" content="index,follow">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="One｜個人事業主・士業・店舗向けWeb制作・業務システム開発">
-  <meta property="og:description" content="個人事業主・士業・店舗・スタートアップ向けに、Web制作、業務システム開発、ツール・アプリ開発を0から1で支援。ITが苦手な方も無料相談から伴走します。">
+  <meta property="og:title" content="【初めてでも安心】個人事業主向けホームページ制作｜0から伴走するOne">
+  <meta property="og:description" content="「HPが欲しいけど手が出せない」と悩む個人事業主・小規模事業者のためのWeb制作・システム開発パートナー「One（イチ）」。「どうせ無理だ」と見過ごしてしまう小さなアイデアから、誠実に0から対応し確かな未来を形にします。まずは無料でご相談ください。">
   <meta property="og:site_name" content="One">
   <meta property="og:image" content="https://create-to-one.com/images/favicon.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="One｜個人事業主・士業・店舗向けWeb制作・業務システム開発">
-  <meta name="twitter:description" content="個人事業主・士業・店舗・スタートアップ向けに、Web制作、業務システム開発、ツール・アプリ開発を0から1で支援。ITが苦手な方も無料相談から伴走します。">
+  <meta name="twitter:title" content="【初めてでも安心】個人事業主向けホームページ制作｜0から伴走するOne">
+  <meta name="twitter:description" content="「HPが欲しいけど手が出せない」と悩む個人事業主・小規模事業者のためのWeb制作・システム開発パートナー「One（イチ）」。「どうせ無理だ」と見過ごしてしまう小さなアイデアから、誠実に0から対応し確かな未来を形にします。まずは無料でご相談ください。">
   <meta name="twitter:image" content="https://create-to-one.com/images/favicon.png">
   <script type="application/ld+json">
   {
@@ -40,31 +40,31 @@
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Oneとは",
+            "name": "初めての方へ（個人事業主向けWeb制作のOneとは）",
             "url": "https://create-to-one.com/philosophy.html"
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "サービス一覧",
+            "name": "お手伝いできること（Web制作・システム開発）",
             "url": "https://create-to-one.com/services.html"
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "実績・事例",
+            "name": "これまでの制作実績（ホームページ・システム開発事例）",
             "url": "https://create-to-one.com/results.html"
           },
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "ご依頼の流れ",
+            "name": "ご相談から完成まで（Web制作・開発の流れとお見積り）",
             "url": "https://create-to-one.com/flow.html"
           },
           {
             "@type": "ListItem",
             "position": 5,
-            "name": "無料相談・お問い合わせ",
+            "name": "まずは無料で相談する（Web制作・システムのお問い合わせ）",
             "url": "https://create-to-one.com/contact.html"
           }
         ]
@@ -83,7 +83,14 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon-precomposed" href="/images/favicon.png?v=16">
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=30">
+  <script>
+  try {
+    if (sessionStorage.getItem('one-home-opening-seen') === '1') {
+      document.documentElement.classList.add('one-skip-opening');
+    }
+  } catch (e) {}
+  </script>
   <style>
   /* お問い合わせ：わんちゃん吹き出し（口元から・必ず適用） */
   #contact .contact__character{position:relative;display:inline-block;width:100px;height:100px;}
@@ -94,6 +101,15 @@
     #contact .contact__character{width:80px;height:80px;}
     #contact .contact__character-bubble{top:52px;left:88px;font-size:0.7rem;padding:0.4em 0.6em;}
   }
+  /* 同一タブで2回目以降のトップ表示：オープニング・入場演出を省略 */
+  html.one-skip-opening #opening{display:none !important;visibility:hidden !important;pointer-events:none !important;}
+  html.one-skip-opening .hero__inner,
+  html.one-skip-opening .hero__visual,
+  html.one-skip-opening .hero__text{animation:none !important;opacity:1 !important;transform:none !important;}
+  html.one-skip-opening .section,
+  html.one-skip-opening .footer{opacity:1 !important;transform:none !important;transition:none !important;}
+  html.one-skip-opening .section--services .services__item,
+  html.one-skip-opening .section--flow .flow__item{opacity:1 !important;transform:none !important;transition:none !important;}
   /* ヒーロー：リロード時にふわっと */
   @keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
   .hero__inner{animation:fadeInUp 0.9s ease-out 0s both;}
@@ -121,21 +137,162 @@
   .fv-sub{font-size:18px;margin-bottom:28px;color:#444;}
   .fv-target{font-size:14px;color:#666;line-height:1.9;}
   .section--problem{
-    max-width:860px;
+    max-width:min(1120px,100%);
     margin:0 auto;
+    padding-top:0;
+    padding-bottom:0;
+    padding-left:0;
+    padding-right:0;
+    border-left:none;
+    background:none;
+    border-radius:0;
+  }
+  .problem__layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(1.25rem,3.2vw,2.25rem);
+    align-items:start;
+    --problem-text-h:300px;
+  }
+  .problem__column--text{
     padding-top:28px;
     padding-bottom:20px;
     padding-left:clamp(1rem,2.4vw,1.5rem);
+    padding-right:clamp(0.75rem,2vw,1.25rem);
     border-left:3px solid rgba(168,92,56,.25);
     background:
       linear-gradient(90deg,rgba(168,92,56,.05),transparent 42%),
       repeating-linear-gradient(180deg,rgba(232,228,223,.14) 0 1px,transparent 1px 28px);
     border-radius:8px;
   }
+  .problem__column--media{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-width:0;
+  }
+  .problem__video-wrap{
+    margin:0;
+    border-radius:10px;
+    overflow:hidden;
+    background:rgba(60,52,46,.06);
+    box-shadow:0 12px 36px rgba(42,36,32,.08);
+  }
+  .problem__video-frame{
+    position:relative;
+    width:100%;
+    max-width:min(100%,calc(min(var(--problem-text-h),min(52vh,440px)) * 16 / 9));
+    aspect-ratio:16 / 9;
+    max-height:min(var(--problem-text-h),min(52vh,440px));
+    margin-inline:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#1a1816;
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .problem__video{
+    position:relative;
+    z-index:0;
+    display:block;
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+  }
+  .problem__video-play{
+    position:absolute;
+    left:50%;
+    top:50%;
+    z-index:2;
+    transform:translate(-50%,-50%);
+    width:4.25rem;
+    height:4.25rem;
+    padding:0;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(168,92,56,.94);
+    color:#fff;
+    box-shadow:0 8px 28px rgba(0,0,0,.35);
+    transition:transform .2s ease,background .2s ease,opacity .28s ease,visibility .28s ease;
+  }
+  .problem__video-play:hover{background:rgb(168,92,56);}
+  .problem__video-play:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+  }
+  .problem__video-play:active{transform:translate(-50%,-50%) scale(.96);}
+  .problem__video-play-svg{
+    width:1.4rem;
+    height:1.4rem;
+    margin-left:0.18rem;
+  }
+  .problem__video-frame.is-playing .problem__video-play{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  @media (max-width:820px){
+    .problem__layout{
+      grid-template-columns:1fr;
+      gap:1.25rem;
+    }
+  }
+  @media (max-width:640px){
+    .hero .hero__lead{
+      font-size:0.92rem;
+      line-height:1.78;
+      padding:0 max(0px,env(safe-area-inset-right)) 0 max(0px,env(safe-area-inset-left));
+    }
+    .problem__layout{gap:1rem;}
+    .problem__column--text{
+      padding-top:1rem;
+      padding-bottom:1.1rem;
+      padding-left:max(0.85rem,env(safe-area-inset-left));
+      padding-right:max(0.85rem,env(safe-area-inset-right));
+    }
+    .problem__video-wrap{
+      border-radius:8px;
+      box-shadow:0 8px 24px rgba(42,36,32,.07);
+    }
+    .problem__video-frame{
+      max-width:min(100%,calc(min(var(--problem-text-h),min(44vh,320px)) * 16 / 9));
+      max-height:min(var(--problem-text-h),min(44vh,320px));
+      border-radius:6px;
+    }
+    .problem__video-play{
+      width:3.75rem;
+      height:3.75rem;
+    }
+    .problem__video-play-svg{
+      width:1.25rem;
+      height:1.25rem;
+    }
+    .problem__text{font-size:0.97rem;line-height:1.55;}
+    .problem__check-item{font-size:0.88rem;line-height:1.55;}
+    .problem__link{
+      min-height:44px;
+      margin-top:0.35rem;
+      padding:0.35rem 0.2rem;
+      box-sizing:border-box;
+    }
+  }
   .problem__text{margin:0 0 4px;color:#3f3f3f;line-height:1.48;font-size:1rem;letter-spacing:.01em;}
-  .problem__checks{margin-bottom:0.7rem;}
-  .problem__checks .problem__text{
-    margin-bottom:0;
+  .problem__checks{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    gap:0.35rem 1.15rem;
+    margin-bottom:0.7rem;
+  }
+  .problem__check-item{
+    margin:0;
     display:inline-flex;
     align-items:center;
     font-weight:600;
@@ -148,7 +305,7 @@
     border-radius:0;
     padding:0;
   }
-  .problem__checks .problem__text:last-child{margin-bottom:0;}
+  .problem__checks .problem__check-item:last-child{margin-bottom:0;}
   .problem__link{
     display:inline-flex;
     align-items:center;
@@ -438,11 +595,11 @@
       <a class="site-header__brand" href="index.html"><ruby>One<rt>イチ</rt></ruby></a>
       <nav class="site-header__nav" aria-label="メインナビゲーション">
         <ul class="site-header__list">
-          <li class="site-header__item"><a class="site-header__link" href="philosophy.html">Oneとは</a></li>
-          <li class="site-header__item"><a class="site-header__link" href="services.html">サービス</a></li>
-          <li class="site-header__item"><a class="site-header__link" href="results.html">実績・事例</a></li>
-          <li class="site-header__item"><a class="site-header__link" href="flow.html">ご依頼の流れ</a></li>
-          <li class="site-header__item"><a class="site-header__link" href="contact.html">無料で相談</a></li>
+          <li class="site-header__item"><a class="site-header__link" href="philosophy.html" title="初めての方へ（個人事業主向けWeb制作のOneとは）" aria-label="初めての方へ（個人事業主向けWeb制作のOneとは）"><span class="site-header__link-num" aria-hidden="true">01</span><span class="site-header__link-label">初めての方へ</span></a></li>
+          <li class="site-header__item"><a class="site-header__link" href="services.html" title="お手伝いできること（Web制作・システム開発）" aria-label="お手伝いできること（Web制作・システム開発）"><span class="site-header__link-num" aria-hidden="true">02</span><span class="site-header__link-label">サービス</span></a></li>
+          <li class="site-header__item"><a class="site-header__link" href="results.html" title="これまでの制作実績（ホームページ・システム開発事例）" aria-label="これまでの制作実績（ホームページ・システム開発事例）"><span class="site-header__link-num" aria-hidden="true">03</span><span class="site-header__link-label">実績</span></a></li>
+          <li class="site-header__item"><a class="site-header__link" href="flow.html" title="ご相談から完成まで（Web制作・開発の流れとお見積り）" aria-label="ご相談から完成まで（Web制作・開発の流れとお見積り）"><span class="site-header__link-num" aria-hidden="true">04</span><span class="site-header__link-label">ご依頼の流れ</span></a></li>
+          <li class="site-header__item"><a class="site-header__link" href="contact.html" title="まずは無料で相談する（Web制作・システムのお問い合わせ）" aria-label="まずは無料で相談する（Web制作・システムのお問い合わせ）"><span class="site-header__link-num" aria-hidden="true">05</span><span class="site-header__link-label">無料で相談</span></a></li>
         </ul>
       </nav>
     </div>
@@ -453,13 +610,16 @@
     <div class="hero__bg hero__bg--2" aria-hidden="true"></div>
     <div class="hero__inner">
       <div class="hero__text">
-        <p class="fv-keyword">個人事業主向けホームページ制作</p>
-        <h1 class="hero__title">０から１を共に創る、<br class="hero__title-break-mobile">web設計パートナー</h1>
-        <p class="hero__subtitle">つくるのではなく、未来を形にする</p>
-        <p class="fv-target">個人事業主を中心に、小規模事業者・スタートアップの成長フェーズまで一貫してサポートしています。</p>
+        <h1 class="hero__title">
+          <span class="hero__title-sign">初めてでも安心。0から誠実に創る、</span>
+          <span class="hero__title-sub">個人事業主向けホームページ制作</span>
+        </h1>
+        <p class="hero__subtitle hero__catch">小さなアイデアを、確かな未来へ。</p>
+        <p class="hero__subtitle hero__catch hero__catch--second">0から1を、Oneと。</p>
+        <p class="hero__lead">小さな願望から、一緒に構想を整理しませんか？</p>
         <div class="hero__cta-row hero__cta-row--main" aria-label="ヒーロー導線">
           <a class="hero__cta" href="contact.html">無料で相談する</a>
-          <a class="hero__cta hero__cta--ghost" href="#services">サービスを見る</a>
+          <a class="hero__cta hero__cta--ghost" href="#services">お手伝いできることを見る</a>
         </div>
       </div>
     </div>
@@ -481,46 +641,62 @@
 
   <section class="section section--problem" id="problem" aria-labelledby="section-problem-heading">
     <h2 id="section-problem-heading" class="u-visually-hidden">メッセージ</h2>
-    <div class="problem__checks">
-      <p class="problem__text">☑ここが改善できたらいいな　☑こんなものがあったらいいな</p>
+    <div class="problem__layout">
+      <div class="problem__column problem__column--text">
+        <div class="problem__checks">
+          <p class="problem__check-item">☑ここが改善できたらいいな</p>
+          <p class="problem__check-item">☑こんなものがあったらいいな</p>
+        </div>
+        <p class="problem__text">そう思っても、「どうせ無理だ」と見過ごしてしまうことがありませんか？</p>
+        <p class="problem__text">本来、すべての始まりは小さな願望から生まれます。</p>
+        <p class="problem__text">私の好きな言葉に「夢を持つことはタダ」というものがあります。</p>
+        <p class="problem__text">アイデアを持つこと、生み出すことも同じこと。<br>大切なのは、それを形にすることと考えます。</p>
+        <a class="problem__link" href="philosophy.html" aria-label="初めての方へ（Oneとは）のページへ移動">初めての方へ→</a>
+      </div>
+      <div class="problem__column problem__column--media">
+        <figure class="problem__video-wrap">
+          <div class="problem__video-frame">
+            <video id="problem-video" class="problem__video" autoplay muted playsinline controls preload="auto" aria-label="事業の目的からサービスまでを紹介するOneのPR動画（初期はミュート。コントロールから音声をオンにできます）">
+              <source src="Oneとは.mp4" type="video/mp4">
+            </video>
+            <button type="button" class="problem__video-play" aria-controls="problem-video" aria-label="PR動画を再生">
+              <svg class="problem__video-play-svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7L8 5z"/></svg>
+            </button>
+          </div>
+        </figure>
+      </div>
     </div>
-    <p class="problem__text">そう思っても、「どうせ無理だ」と見過ごしてしまうことがありませんか？</p>
-    <p class="problem__text">本来、すべての始まりは小さな願望から生まれます。</p>
-    <p class="problem__text">私の好きな言葉に「夢を持つことはタダ」というものがあります。</p>
-    <p class="problem__text">アイデアを持つこと、生み出すことも同じこと。<br>大切なのは、それを形にすることと考えます。</p>
-    <a class="problem__link" href="philosophy.html" aria-label="Oneとはのページへ移動">Oneとは→</a>
   </section>
 
   <section class="section section--services" id="services">
     <div class="section__head">
-      <span class="section__num" aria-hidden="true">01</span>
-      <h2 class="section__title">サービス</h2>
+      <span class="section__num" aria-hidden="true">02</span>
+      <h2 class="section__title">お手伝いできること（<strong>Web制作・システム開発</strong>）</h2>
     </div>
     <p class="section__lead">web・システム開発、ツール・アプリ開発まで、0から1の設計〜開発を一貫して支援します。</p>
-    <a class="section__jump" href="services.html" aria-label="サービス詳細ページへ移動">service→</a>
+    <a class="section__jump" href="services.html" aria-label="お手伝いできることの詳細ページへ移動">service→</a>
   </section>
 
   <section class="section section--results" id="results">
     <div class="section__head">
-      <span class="section__num" aria-hidden="true">02</span>
-      <h2 class="section__title">実績・事例（進行中）</h2>
+      <span class="section__num" aria-hidden="true">03</span>
+      <h2 class="section__title">これまでの制作実績（ホームページ・システム開発事例）</h2>
     </div>
     <p class="section__lead">納品前の案件も含めて、現在も支援を進めています。</p>
-    <a class="section__jump" href="results.html" aria-label="実績・事例の詳細ページへ移動">results→</a>
+    <a class="section__jump" href="results.html" aria-label="これまでの制作実績の詳細ページへ移動">results→</a>
   </section>
 
   <section class="section section--flow" id="flow">
     <div class="section__head">
-      <span class="section__num" aria-hidden="true">03</span>
-      <h2 class="section__title">ご依頼の流れ</h2>
+      <span class="section__num" aria-hidden="true">04</span>
+      <h2 class="section__title">ご相談から完成まで（Web制作・開発の流れとお見積り）</h2>
     </div>
     <p class="section__lead">ご相談からお見積り、ご契約、納品・サポートまで、各ステップを明確にして進めます。</p>
-    <a class="section__jump" href="flow.html" aria-label="ご依頼の流れ詳細ページへ移動">flow→</a>
+    <a class="section__jump" href="flow.html" aria-label="ご相談から完成までの詳細ページへ移動">flow→</a>
   </section>
 
   <section class="section section--xfeed" id="information" aria-label="導線設計・改善の発信（X）">
-    <div class="section__head">
-      <span class="section__num" aria-hidden="true">04</span>
+    <div class="section__head section__head--minimal">
       <h2 class="section__title">導線設計・改善の発信</h2>
     </div>
 
@@ -544,14 +720,14 @@
   <section class="section section--contact" id="contact">
     <div class="section__head">
       <span class="section__num" aria-hidden="true">05</span>
-      <h2 class="section__title">無料で相談する</h2>
+      <h2 class="section__title">まずは無料で相談する（Web制作・システムのお問い合わせ）</h2>
     </div>
     <div class="section__lead section__lead--contact">
       <p>まずは構想から、一緒に整理しませんか？</p>
       <p>小さなアイデアからでも大丈夫です。</p>
       <p>０から1のご相談、無料で承っています。</p>
     </div>
-    <a class="section__jump" href="contact.html" aria-label="無料で相談する詳細ページへ移動">contact→</a>
+    <a class="section__jump" href="contact.html" aria-label="無料相談・お問い合わせの詳細ページへ移動">contact→</a>
   </section>
 
   </div><!-- /.main-wrap -->
@@ -582,6 +758,6 @@
     </div>
   </div>
 
-  <script src="main.js"></script>
+  <script src="main.js?v=21"></script>
 </body>
 </html>
