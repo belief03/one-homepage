@@ -297,4 +297,41 @@
     });
   })();
 
+  // Behind the Design：more+ / less+（②以降の開閉）
+  var aboutOneReveal = document.querySelector('[data-about-one-reveal]');
+  if (aboutOneReveal) {
+    var revealItems = aboutOneReveal.querySelectorAll('[data-about-one-reveal-item]');
+    var revealBtn = aboutOneReveal.querySelector('[data-about-one-reveal-btn]');
+    var revealOpenLabel = aboutOneReveal.querySelector('.about-one__reveal-label--open');
+    var revealCloseLabel = aboutOneReveal.querySelector('.about-one__reveal-label--close');
+    var revealFirst = aboutOneReveal.querySelector('.about-one__item--visible-end');
+    var revealOpen = false;
+
+    function setRevealOpen(open) {
+      revealOpen = open;
+      revealItems.forEach(function (item) {
+        item.hidden = !open;
+        item.classList.toggle('is-revealed', open);
+      });
+      if (revealFirst) {
+        revealFirst.classList.toggle('about-one__item--visible-end', !open);
+      }
+      if (revealBtn) {
+        revealBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        revealBtn.classList.toggle('is-open', open);
+      }
+      if (revealOpenLabel) revealOpenLabel.hidden = open;
+      if (revealCloseLabel) revealCloseLabel.hidden = !open;
+    }
+
+    if (!revealItems.length) {
+      var revealActions = aboutOneReveal.querySelector('.about-one__reveal-actions');
+      if (revealActions) revealActions.hidden = true;
+    } else if (revealBtn) {
+      revealBtn.addEventListener('click', function () {
+        setRevealOpen(!revealOpen);
+      });
+    }
+  }
+
 })();
