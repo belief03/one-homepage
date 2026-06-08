@@ -334,4 +334,35 @@
     }
   }
 
+  // スマホ：ヘッダーメニュー開閉
+  var siteHeader = document.querySelector('.site-header');
+  var navToggle = document.querySelector('.site-header__toggle');
+  var siteNav = document.getElementById('site-header-nav');
+  if (siteHeader && navToggle && siteNav) {
+    function setNavOpen(open) {
+      siteHeader.classList.toggle('is-open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      document.body.classList.toggle('is-nav-open', open);
+    }
+
+    navToggle.addEventListener('click', function () {
+      setNavOpen(!siteHeader.classList.contains('is-open'));
+    });
+
+    siteNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setNavOpen(false);
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setNavOpen(false);
+    });
+
+    window.matchMedia('(min-width: 769px)').addEventListener('change', function (e) {
+      if (e.matches) setNavOpen(false);
+    });
+  }
+
 })();

@@ -20,7 +20,12 @@
   <header class="site-header" aria-label="サイトヘッダー">
     <div class="site-header__inner">
       <a class="site-header__brand" href="index.html"><ruby>One<rt>イチ</rt></ruby></a>
-      <nav class="site-header__nav" aria-label="メインナビゲーション">
+      <button type="button" class="site-header__toggle" aria-expanded="false" aria-controls="site-header-nav" aria-label="メニューを開く">
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-header__nav" id="site-header-nav" aria-label="メインナビゲーション">
         <ul class="site-header__list">
           <li class="site-header__item"><a class="site-header__link" href="philosophy.html" title="初めての方へ（個人事業主向けWeb制作のOneとは）" aria-label="初めての方へ（個人事業主向けWeb制作のOneとは）"><span class="site-header__link-label">初めての方へ</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="profile.html" title="Profile（永冶陽平の経歴・岐阜・愛知で個人事業主向けWeb制作）" aria-label="Profile（永冶陽平の経歴・岐阜・愛知で個人事業主向けWeb制作）"><span class="site-header__link-label">Profile</span></a></li>
@@ -65,9 +70,8 @@
     <p class="contact__to-top-wrap"><a class="contact__to-top" href="index.html">トップへ</a></p>
   </div>
 
-  <nav class="page-sitemap" aria-label="サイトマップ（主要ページ）">
+  <nav class="page-sitemap" aria-label="主要ページ">
     <div class="page-sitemap__inner">
-      <p class="page-sitemap__title"><a href="site-map.html">サイトマップ</a></p>
       <ul class="page-sitemap__list">
         <li><a href="index.html">トップ</a></li>
         <li><a href="philosophy.html">初めての方へ</a></li>

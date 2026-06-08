@@ -14,13 +14,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=16">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon" href="/images/favicon.png?v=16">
-  <link rel="stylesheet" href="style.css?v=42">
+  <link rel="stylesheet" href="style.css?v=43">
 </head>
 <body>
   <header class="site-header" aria-label="サイトヘッダー">
     <div class="site-header__inner">
       <a class="site-header__brand" href="index.html"><ruby>One<rt>イチ</rt></ruby></a>
-      <nav class="site-header__nav" aria-label="メインナビゲーション">
+      <button type="button" class="site-header__toggle" aria-expanded="false" aria-controls="site-header-nav" aria-label="メニューを開く">
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+        <span class="site-header__toggle-bar" aria-hidden="true"></span>
+      </button>
+      <nav class="site-header__nav" id="site-header-nav" aria-label="メインナビゲーション">
         <ul class="site-header__list">
           <li class="site-header__item"><a class="site-header__link" href="philosophy.html" title="初めての方へ（個人事業主向けWeb制作のOneとは）" aria-label="初めての方へ（個人事業主向けWeb制作のOneとは）"><span class="site-header__link-label">初めての方へ</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="profile.html" title="Profile（永冶陽平の経歴・岐阜・愛知で個人事業主向けWeb制作）" aria-label="Profile（永冶陽平の経歴・岐阜・愛知で個人事業主向けWeb制作）"><span class="site-header__link-label">Profile</span></a></li>
@@ -50,26 +55,27 @@
     <section class="section section--services" id="services">
       <h1 class="section__title">お手伝いできること（<strong>Web制作・システム開発</strong>）</h1>
 
-      <div class="services-audience" aria-labelledby="services-audience-heading">
-        <p class="services-audience__intro">一人ひとりの「0から1」を、web・システム・ツールの形に落とし込み、運用まで伴走します。ITに不慣れな方でも、用語に振り回されないよう説明を心がけています。</p>
-        <h2 id="services-audience-heading" class="services-audience__title">こんな方に向いています</h2>
-        <ul class="services-audience__list">
-          <li>ホームページや業務の「こうしたい」を言葉にしたいが、何から手をつけるか迷っている</li>
-          <li>既存のツールや紙運用を、もう少し楽にしたい・ミスを減らしたい</li>
-          <li>士業・店舗・個人事業として、集客や問い合わせの導線を整えたい</li>
-          <li>スタートアップで、まずは小さく試せる仕組みから作りたい</li>
-        </ul>
-        <p class="services-audience__lead">web・システム開発、ツール・アプリ開発まで、0から1の設計〜開発を一貫して支援します。</p>
-      </div>
+      <div class="services-panel">
+        <p class="services-panel__intro">「0から1」を、web・システム・ツールの形に。設計から運用まで伴走します。<br>ITに不慣れな方にも、分かりやすくお伝えします。</p>
 
-      <ul class="services__list">
-        <li class="services__item">
-          <h2 class="services__name">web・システム開発</h2>
-        </li>
-        <li class="services__item">
-          <h2 class="services__name">ツール・アプリ開発<span class="services__note">（あったらいいなを形に）</span></h2>
-        </li>
-      </ul>
+        <div class="services-when" aria-labelledby="services-when-heading">
+          <h2 id="services-when-heading" class="services-when__title">こんな時におすすめ</h2>
+          <ul class="services-when__grid">
+            <li class="services-when__card">
+              <p>ホームページや業務の「こうしたい」を言葉にしたいが、何から手をつけるか迷っている</p>
+            </li>
+            <li class="services-when__card">
+              <p>既存のツールや紙運用を、もう少し楽にしたい・ミスを減らしたい</p>
+            </li>
+            <li class="services-when__card">
+              <p>士業・店舗・個人事業として、集客や問い合わせの導線を整えたい</p>
+            </li>
+            <li class="services-when__card">
+              <p>スタートアップで、まずは小さく試せる仕組みから作りたい</p>
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <p class="services__closing">1客1件、真心こめて承ります。</p>
       <div class="hero__cta-row hero__cta-row--main">
@@ -80,9 +86,8 @@
     <p class="contact__to-top-wrap"><a class="contact__to-top" href="index.html">トップへ</a></p>
   </div>
 
-  <nav class="page-sitemap" aria-label="サイトマップ（主要ページ）">
+  <nav class="page-sitemap" aria-label="主要ページ">
     <div class="page-sitemap__inner">
-      <p class="page-sitemap__title"><a href="site-map.html">サイトマップ</a></p>
       <ul class="page-sitemap__list">
         <li><a href="index.html">トップ</a></li>
         <li><a href="philosophy.html">初めての方へ</a></li>
