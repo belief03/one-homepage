@@ -91,7 +91,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon-precomposed" href="/images/favicon.png?v=16">
-  <link rel="stylesheet" href="style.css?v=42">
+  <link rel="stylesheet" href="style.css?v=46">
   <script>
   try {
     if (sessionStorage.getItem('one-home-opening-seen') === '1') {
@@ -291,6 +291,7 @@
   }
   .problem__link:hover,.problem__link:focus-visible{border-bottom-color:rgba(168,92,56,.75);}
   .section--services,
+  .section--pricing,
   .section--results,
   .section--flow,
   .section--xfeed,
@@ -299,6 +300,7 @@
     padding-bottom:clamp(2.2rem,4.8vw,3.1rem);
   }
   .section--services .section__lead,
+  .section--pricing .section__lead,
   .section--results .section__lead,
   .section--flow .section__lead,
   .section--contact .section__lead{
@@ -574,6 +576,7 @@
           <li class="site-header__item"><a class="site-header__link" href="philosophy.html" title="初めての方へ（個人事業主向けWeb制作のOneとは）" aria-label="初めての方へ（個人事業主向けWeb制作のOneとは）"><span class="site-header__link-label">初めての方へ</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="profile.html" title="Profile（永冶陽平・岐阜・愛知で個人事業主向けWeb制作）" aria-label="Profile（永冶陽平・岐阜・愛知で個人事業主向けWeb制作）"><span class="site-header__link-label">Profile</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="services.html" title="お手伝いできること（Web制作・システム開発）" aria-label="お手伝いできること（Web制作・システム開発）"><span class="site-header__link-label">サービス</span></a></li>
+          <li class="site-header__item"><a class="site-header__link" href="pricing.html" title="料金の目安（Web制作・ホームページなど）" aria-label="料金の目安（Web制作・ホームページなど）"><span class="site-header__link-label">料金</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="results.html" title="Behind the Design（設計の裏側・支援の事例）" aria-label="Behind the Design（設計の裏側・支援の事例）"><span class="site-header__link-label">Behind the Design</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="flow.html" title="ご相談から完成まで（Web制作・開発の流れとお見積り）" aria-label="ご相談から完成まで（Web制作・開発の流れとお見積り）"><span class="site-header__link-label">ご依頼の流れ</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="contact.html" title="まずは無料で相談する（Web制作・システムのお問い合わせ）" aria-label="まずは無料で相談する（Web制作・システムのお問い合わせ）"><span class="site-header__link-label">無料で相談</span></a></li>
@@ -661,9 +664,39 @@
     <a class="section__jump" href="services.html" aria-label="お手伝いできることの詳細ページへ移動">service→</a>
   </section>
 
-  <section class="section section--results" id="results">
+  <section class="section section--pricing" id="pricing">
     <div class="section__head">
       <span class="section__num" aria-hidden="true">02</span>
+      <h2 class="section__title">料金の目安</h2>
+    </div>
+    <p class="section__lead">個人事業主・小規模事業向けに、相場より抑えた目安でご案内しています。</p>
+    <div class="pricing-teaser">
+      <ul class="pricing-teaser__list">
+        <li class="pricing-teaser__item">
+          <span class="pricing-teaser__name">ベーシック</span>
+          <span class="pricing-teaser__meta">5ページ程度</span>
+          <span class="pricing-teaser__price">￥80,000〜</span>
+        </li>
+        <li class="pricing-teaser__item pricing-teaser__item--featured">
+          <span class="pricing-teaser__badge">イチ推し</span>
+          <span class="pricing-teaser__name">ベーシックPLUS</span>
+          <span class="pricing-teaser__meta">開業応援パッケージ</span>
+          <span class="pricing-teaser__price">￥100,000〜</span>
+        </li>
+        <li class="pricing-teaser__item">
+          <span class="pricing-teaser__name">スタンダード</span>
+          <span class="pricing-teaser__meta">10ページ程度</span>
+          <span class="pricing-teaser__price">￥160,000〜</span>
+        </li>
+      </ul>
+      <p class="pricing-teaser__note">※相場より抑えた目安です。詳しい内訳は料金ページでご確認ください。</p>
+    </div>
+    <a class="section__jump" href="pricing.html" aria-label="料金の目安の詳細ページへ移動">price→</a>
+  </section>
+
+  <section class="section section--results" id="results">
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">03</span>
       <h2 class="section__title">Behind the Design</h2>
     </div>
     <p class="section__lead">制作屋ではなく設計の裏側を。課題の見立てから導線・仕組みの意図まで、設計士としての伴走をお伝えします。</p>
@@ -672,7 +705,7 @@
 
   <section class="section section--flow" id="flow">
     <div class="section__head">
-      <span class="section__num" aria-hidden="true">03</span>
+      <span class="section__num" aria-hidden="true">04</span>
       <h2 class="section__title">ご相談から完成まで（Web制作・開発の流れとお見積り）</h2>
     </div>
     <p class="section__lead">ご相談からお見積り、ご契約、納品・サポートまで、各ステップを明確にして進めます。</p>
@@ -703,7 +736,7 @@
 
   <section class="section section--contact" id="contact">
     <div class="section__head">
-      <span class="section__num" aria-hidden="true">04</span>
+      <span class="section__num" aria-hidden="true">05</span>
       <h2 class="section__title">まずは無料で相談する（Web制作・システムのお問い合わせ）</h2>
     </div>
     <div class="section__lead section__lead--contact">
@@ -723,6 +756,7 @@
         <li><a href="philosophy.html">初めての方へ</a></li>
         <li><a href="profile.html">Profile</a></li>
         <li><a href="services.html">サービス</a></li>
+        <li><a href="pricing.html">料金</a></li>
         <li><a href="results.html">Behind the Design</a></li>
         <li><a href="flow.html">ご依頼の流れ</a></li>
         <li><a href="contact.html">無料で相談</a></li>
