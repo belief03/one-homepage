@@ -98,19 +98,27 @@
     }
   }
 
-  // ヒーローはCSSの keyframes で表示済みのためここでは何もしない
+  // ヒーロー：スクロール誘導は少しスクロールしたら非表示
+  var heroScrollEl = document.querySelector('.hero__scroll');
+  if (heroScrollEl) {
+    function updateHeroScrollVisibility() {
+      heroScrollEl.classList.toggle('is-hidden', window.scrollY > 72);
+    }
+    updateHeroScrollVisibility();
+    window.addEventListener('scroll', updateHeroScrollVisibility, { passive: true });
+  }
 
   // トップPR動画枠：左テキスト列の高さに合わせて枠サイズを調整（YouTube 埋め込み想定）
   var problemVideoFrame = document.querySelector('.problem__video-frame');
-  var problemLayoutEl = document.querySelector('.problem__layout');
-  var problemTextColEl = document.querySelector('.problem__column--text');
+  var problemLayoutEl = document.querySelector('.about__layout');
+  var problemTextColEl = document.querySelector('.about__column--main');
 
   if (problemVideoFrame && problemLayoutEl && problemTextColEl) {
     function syncProblemVideoFrameMaxHeight() {
       if (!problemLayoutEl || !problemTextColEl) return;
       var h = problemTextColEl.getBoundingClientRect().height;
       if (h > 0) {
-        problemLayoutEl.style.setProperty('--problem-text-h', Math.round(h) + 'px');
+        problemLayoutEl.style.setProperty('--about-text-h', Math.round(h) + 'px');
       }
     }
 
@@ -133,6 +141,39 @@
     }
     window.addEventListener('load', syncProblemVideoFrameMaxHeight);
   }
+
+  // トップPR動画：サムネ＋ボタン → クリックで YouTube 埋め込み再生
+  var problemVideoPlayBtn = document.querySelector('[data-problem-video-play]');
+  var problemVideoEl = document.querySelector('[data-problem-video]');
+  if (problemVideoPlayBtn && problemVideoEl) {
+    var problemVideoThumb = problemVideoPlayBtn.querySelector('.problem__video-thumb');
+    if (problemVideoThumb) {
+      problemVideoThumb.addEventListener('error', function () {
+        var videoId = problemVideoEl.getAttribute('data-youtube-id');
+        if (!videoId) return;
+        problemVideoThumb.src = 'https://img.youtube.com/vi/' + encodeURIComponent(videoId) + '/hqdefault.jpg';
+      }, { once: true });
+    }
+
+    problemVideoPlayBtn.addEventListener('click', function () {
+      if (problemVideoEl.classList.contains('is-playing')) return;
+      var videoId = problemVideoEl.getAttribute('data-youtube-id');
+      if (!videoId) return;
+
+      var iframe = document.createElement('iframe');
+      iframe.className = 'problem__youtube';
+      iframe.title = '事業の目的からサービスまでを紹介するOneのPR動画（YouTube）';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?rel=0&modestbranding=1&autoplay=1';
+
+      problemVideoEl.appendChild(iframe);
+      problemVideoEl.classList.add('is-playing');
+      problemVideoPlayBtn.disabled = true;
+    });
+  }
+
   // スクロールで画面に入ったら .is-visible を付与（少し手前で発火）
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {

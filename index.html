@@ -60,18 +60,24 @@
           {
             "@type": "ListItem",
             "position": 4,
+            "name": "料金（Web制作・ホームページ制作）",
+            "url": "https://create-to-one.com/pricing.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
             "name": "Behind the Design（設計の裏側）",
             "url": "https://create-to-one.com/results.html"
           },
           {
             "@type": "ListItem",
-            "position": 5,
+            "position": 6,
             "name": "ご相談から完成まで（Web制作・開発の流れとお見積り）",
             "url": "https://create-to-one.com/flow.html"
           },
           {
             "@type": "ListItem",
-            "position": 6,
+            "position": 7,
             "name": "まずは無料で相談する（Web制作・システムのお問い合わせ）",
             "url": "https://create-to-one.com/contact.html"
           }
@@ -91,7 +97,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon-precomposed" href="/images/favicon.png?v=16">
-  <link rel="stylesheet" href="style.css?v=46">
+  <link rel="stylesheet" href="style.css?v=54">
   <script>
   try {
     if (sessionStorage.getItem('one-home-opening-seen') === '1') {
@@ -114,6 +120,7 @@
   html.one-skip-opening .hero__inner,
   html.one-skip-opening .hero__visual,
   html.one-skip-opening .hero__text{animation:none !important;opacity:1 !important;transform:none !important;}
+  html.one-skip-opening .hero__scroll{animation:none !important;opacity:.88 !important;transform:translateX(-50%) !important;}
   html.one-skip-opening .section,
   html.one-skip-opening .footer{opacity:1 !important;transform:none !important;transition:none !important;}
   html.one-skip-opening .section--services .services__item,
@@ -144,7 +151,8 @@
   .fv-title{font-size:38px;font-weight:700;margin-bottom:20px;line-height:1.5;}
   .fv-sub{font-size:18px;margin-bottom:28px;color:#444;}
   .fv-target{font-size:14px;color:#666;line-height:1.9;}
-  .section--problem{
+  .section--about,
+  .section--why-one{
     max-width:min(1120px,100%);
     margin:0 auto;
     padding-top:0;
@@ -155,29 +163,114 @@
     background:none;
     border-radius:0;
   }
-  .problem__layout{
+  .section--about + .section--why-one{
+    margin-top:clamp(1.75rem,4vw,2.75rem);
+    padding-top:clamp(1.5rem,3.2vw,2rem);
+  }
+  .section--why-one .section__head--minimal{
+    max-width:none;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:clamp(1.1rem,2.6vw,1.5rem);
+  }
+  .section--why-one .section__head--minimal .section__title{
+    text-align:center;
+  }
+  .section--why-one .section__head--minimal .section__title::after{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .about__layout{
     display:grid;
     grid-template-columns:minmax(0,1fr) minmax(0,1fr);
     gap:clamp(1.25rem,3.2vw,2.25rem);
     align-items:start;
-    --problem-text-h:300px;
+    --about-text-h:300px;
   }
-  .problem__column--text{
-    padding-top:28px;
-    padding-bottom:20px;
-    padding-left:clamp(1rem,2.4vw,1.5rem);
-    padding-right:clamp(0.75rem,2vw,1.25rem);
-    border-left:3px solid rgba(168,92,56,.25);
-    background:
-      linear-gradient(90deg,rgba(168,92,56,.05),transparent 42%),
-      repeating-linear-gradient(180deg,rgba(232,228,223,.14) 0 1px,transparent 1px 28px);
-    border-radius:8px;
+  .about__column--main{
+    min-width:0;
   }
-  .problem__column--media{
+  .about__body{
+    margin:0;
+  }
+  .about__text{
+    margin:0;
+    color:#3f3f3f;
+    font-size:0.98rem;
+    line-height:1.68;
+    letter-spacing:.01em;
+  }
+  .about__text + .about__text{
+    margin-top:0.85em;
+  }
+  .about__links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.65rem 1.35rem;
+    align-items:center;
+    margin-top:clamp(0.85rem,2vw,1.1rem);
+  }
+  .about__link{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+    color:#2c2c2c;
+    text-decoration:none;
+    font-weight:700;
+    letter-spacing:0.04em;
+    padding:0.2rem 0.15rem;
+    border-bottom:1px solid rgba(168,92,56,.35);
+  }
+  .about__link:hover,.about__link:focus-visible{border-bottom-color:rgba(168,92,56,.75);}
+  .about__column--media{
     display:flex;
     justify-content:center;
     align-items:flex-start;
     min-width:0;
+  }
+  .why-one__reasons{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:0.65rem;
+    grid-template-columns:1fr;
+  }
+  @media (min-width:720px){
+    .why-one__reasons{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  .why-one__reason{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:0.75rem;
+    align-items:start;
+    padding:0.85rem 0.95rem;
+    background:rgba(255,252,247,.72);
+    border:1px solid rgba(232,228,223,.9);
+    border-radius:8px;
+  }
+  .why-one__reason-num{
+    font-family:"Consolas","SFMono-Regular",Menlo,monospace;
+    font-size:0.82rem;
+    font-weight:700;
+    line-height:1.4;
+    color:#a85c38;
+    letter-spacing:.04em;
+  }
+  .why-one__reason-title{
+    margin:0 0 0.2rem;
+    font-size:0.95rem;
+    font-weight:700;
+    line-height:1.45;
+    color:#2c2c2c;
+  }
+  .why-one__reason-text{
+    margin:0;
+    font-size:0.88rem;
+    line-height:1.58;
+    color:#555;
   }
   .problem__video-wrap{
     margin:0;
@@ -191,10 +284,10 @@
   .problem__video-frame{
     position:relative;
     width:100%;
-    max-width:min(100%,calc(min(var(--problem-text-h),min(52vh,440px)) * 16 / 9));
+    max-width:min(100%,calc(min(var(--about-text-h),min(52vh,440px)) * 16 / 9));
     aspect-ratio:16 / 9;
     min-height:11.25rem;
-    max-height:min(var(--problem-text-h),min(52vh,440px));
+    max-height:min(var(--about-text-h),min(52vh,440px));
     margin-inline:auto;
     background:#1a1816;
     border-radius:8px;
@@ -208,8 +301,139 @@
     border:0;
     display:block;
   }
+  .problem__video-facade{
+    position:absolute;
+    inset:0;
+    margin:0;
+    padding:0;
+    border:0;
+    width:100%;
+    height:100%;
+    cursor:pointer;
+    background:#1a1816;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .problem__video-facade::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    background:
+      radial-gradient(ellipse 72% 62% at 50% 46%,rgba(26,24,22,.06) 0%,rgba(26,24,22,.42) 100%),
+      linear-gradient(180deg,rgba(26,24,22,.04) 0%,rgba(26,24,22,.58) 100%);
+    pointer-events:none;
+    transition:background .35s ease;
+  }
+  .problem__video-facade:hover::before,
+  .problem__video-facade:focus-visible::before{
+    background:
+      radial-gradient(ellipse 68% 58% at 50% 44%,rgba(26,24,22,.1) 0%,rgba(26,24,22,.48) 100%),
+      linear-gradient(180deg,rgba(26,24,22,.08) 0%,rgba(26,24,22,.66) 100%);
+  }
+  .problem__video-thumb{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .55s cubic-bezier(.22,.75,.26,1),filter .35s ease;
+  }
+  .problem__video-facade:hover .problem__video-thumb,
+  .problem__video-facade:focus-visible .problem__video-thumb{
+    transform:scale(1.06);
+    filter:brightness(1.05) saturate(1.04);
+  }
+  .problem__video-facade-ui{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:clamp(0.7rem,2.2vw,1rem);
+    padding:0.5rem;
+    pointer-events:none;
+  }
+  .problem__video-play-btn{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:clamp(4.35rem,14.5vw,5.4rem);
+    height:clamp(4.35rem,14.5vw,5.4rem);
+    border-radius:50%;
+    background:rgba(253,251,249,.22);
+    border:none;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 12px 32px rgba(0,0,0,.28);
+    transition:transform .28s cubic-bezier(.22,.75,.26,1),box-shadow .28s ease,background .28s ease;
+  }
+  .problem__video-play-btn::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:radial-gradient(circle at 32% 28%,rgba(253,251,249,.3) 0%,transparent 55%);
+    pointer-events:none;
+  }
+  .problem__video-play-svg{
+    position:relative;
+    z-index:1;
+    display:block;
+    width:38%;
+    height:38%;
+    margin-left:7%;
+    fill:#ebe4db;
+    filter:drop-shadow(0 2px 8px rgba(42,36,32,.38));
+    transition:fill .28s ease;
+  }
+  .problem__video-play-label{
+    display:block;
+    padding:0;
+    font-size:clamp(0.82rem,2.2vw,1rem);
+    font-weight:700;
+    letter-spacing:.04em;
+    line-height:1.35;
+    text-align:center;
+    color:#fff;
+    background:none;
+    border:none;
+    border-radius:0;
+    box-shadow:none;
+    text-shadow:
+      0 2px 14px rgba(0,0,0,.55),
+      0 1px 4px rgba(0,0,0,.45);
+    transition:transform .28s cubic-bezier(.22,.75,.26,1),opacity .28s ease;
+  }
+  .problem__video-facade:hover .problem__video-play-btn,
+  .problem__video-facade:focus-visible .problem__video-play-btn{
+    transform:scale(1.1);
+    background:rgba(253,251,249,.3);
+    box-shadow:0 16px 38px rgba(0,0,0,.32);
+  }
+  .problem__video-facade:hover .problem__video-play-svg,
+  .problem__video-facade:focus-visible .problem__video-play-svg{
+    fill:#f5f2ee;
+  }
+  .problem__video-facade:hover .problem__video-play-label,
+  .problem__video-facade:focus-visible .problem__video-play-label{
+    transform:translateY(-2px);
+    opacity:.95;
+  }
+  .problem__video-facade:active .problem__video-play-btn{transform:scale(1.04);}
+  .problem__video-facade:active .problem__video-play-label{transform:translateY(0);}
+  .problem__video-facade:focus{outline:none;}
+  .problem__video-facade:focus-visible{
+    outline:2px solid #a85c38;
+    outline-offset:3px;
+  }
+  .problem__video-frame.is-playing .problem__video-facade{display:none;}
   @media (max-width:820px){
-    .problem__layout{
+    .about__layout{
       grid-template-columns:1fr;
       gap:1.25rem;
     }
@@ -220,76 +444,27 @@
       line-height:1.78;
       padding:0 max(0px,env(safe-area-inset-right)) 0 max(0px,env(safe-area-inset-left));
     }
-    .problem__layout{gap:1rem;}
-    .problem__column--text{
-      padding-top:1rem;
-      padding-bottom:1.1rem;
-      padding-left:max(0.85rem,env(safe-area-inset-left));
-      padding-right:max(0.85rem,env(safe-area-inset-right));
+    .about__layout{gap:1rem;}
+    .about__text{font-size:0.97rem;line-height:1.62;}
+    .about__link{
+      min-height:44px;
+      padding:0.35rem 0.2rem;
+      box-sizing:border-box;
     }
+    .why-one__reason{padding:0.75rem 0.85rem;}
+    .why-one__reason-title{font-size:0.92rem;}
+    .why-one__reason-text{font-size:0.86rem;line-height:1.55;}
     .problem__video-wrap{
       border-radius:8px;
       box-shadow:0 8px 24px rgba(42,36,32,.07);
     }
     .problem__video-frame{
-      max-width:min(100%,calc(min(var(--problem-text-h),min(44vh,320px)) * 16 / 9));
+      max-width:min(100%,calc(min(var(--about-text-h),min(44vh,320px)) * 16 / 9));
       min-height:10rem;
-      max-height:min(var(--problem-text-h),min(44vh,320px));
+      max-height:min(var(--about-text-h),min(44vh,320px));
       border-radius:6px;
     }
-    .problem__text{font-size:0.97rem;line-height:1.55;}
-    .problem__check-item{font-size:0.88rem;line-height:1.55;}
-    .problem__link{
-      min-height:44px;
-      margin-top:0.35rem;
-      padding:0.35rem 0.2rem;
-      box-sizing:border-box;
-    }
   }
-  .problem__text{margin:0 0 4px;color:#3f3f3f;line-height:1.48;font-size:1rem;letter-spacing:.01em;}
-  .problem__checks{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:flex-start;
-    gap:0.35rem 1.15rem;
-    margin-bottom:0.7rem;
-  }
-  .problem__check-item{
-    margin:0;
-    display:inline-flex;
-    align-items:center;
-    font-weight:600;
-    color:#2f2f2f;
-    font-family:"Consolas","SFMono-Regular",Menlo,monospace;
-    font-size:.95rem;
-    line-height:1.6;
-    background:transparent;
-    border:none;
-    border-radius:0;
-    padding:0;
-  }
-  .problem__checks .problem__check-item:last-child{margin-bottom:0;}
-  .problem__links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:0.65rem 1.35rem;
-    align-items:center;
-    margin-top:8px;
-  }
-  .problem__links .problem__link{margin-top:0;}
-  .problem__link{
-    display:inline-flex;
-    align-items:center;
-    gap:.35rem;
-    margin-top:8px;
-    color:#2c2c2c;
-    text-decoration:none;
-    font-weight:700;
-    letter-spacing:0.04em;
-    padding:0.2rem 0.15rem;
-    border-bottom:1px solid rgba(168,92,56,.35);
-  }
-  .problem__link:hover,.problem__link:focus-visible{border-bottom-color:rgba(168,92,56,.75);}
   .section--services,
   .section--pricing,
   .section--results,
@@ -309,7 +484,7 @@
   .section--xfeed .section__panel{
     margin-top:0.9rem;
   }
-  .section--problem + .section--services{
+  .section--why-one + .section--services{
     margin-top:clamp(0.8rem,2.2vw,1.25rem);
   }
   .section--contact .section__jump{
@@ -535,7 +710,7 @@
     .fv-title{font-size:28px;}
     .fv-sub{font-size:16px;}
   }
-  @media(prefers-reduced-motion:reduce){.hero__inner,.hero__visual,.hero__text{animation:none !important;opacity:1 !important;transform:none !important;}.section,.section.is-visible,.section--services .services__item,.section--services.is-visible .services__item,.section--flow .flow__item,.section--flow.is-visible .flow__item,.footer,.footer.is-visible{opacity:1 !important;transform:none !important;transition:none !important;}.opening{transition:none !important;}.opening::before{display:none !important;}.opening__meter-wrap,.opening__line,.opening__sub{animation:none !important;opacity:1 !important;transform:none !important;}.opening__meter-wrap{--opening-progress:100 !important;}.opening__meter-scan,.opening__meter-head{animation:none !important;}}
+  @media(prefers-reduced-motion:reduce){.hero__inner,.hero__visual,.hero__text{animation:none !important;opacity:1 !important;transform:none !important;}.hero__scroll{animation:none !important;opacity:.88 !important;transform:translateX(-50%) !important;}.hero__scroll-line,.hero__scroll-chevron{animation:none !important;}.section,.section.is-visible,.section--services .services__item,.section--services.is-visible .services__item,.section--flow .flow__item,.section--flow.is-visible .flow__item,.footer,.footer.is-visible{opacity:1 !important;transform:none !important;transition:none !important;}.opening{transition:none !important;}.opening::before{display:none !important;}.opening__meter-wrap,.opening__line,.opening__sub{animation:none !important;opacity:1 !important;transform:none !important;}.opening__meter-wrap{--opening-progress:100 !important;}.opening__meter-scan,.opening__meter-head{animation:none !important;}.problem__video-thumb,.problem__video-play-btn,.problem__video-play-label{transition:none !important;}.problem__video-facade:hover .problem__video-thumb,.problem__video-facade:focus-visible .problem__video-thumb{transform:none !important;filter:none !important;}}
   </style>
 </head>
 <body>
@@ -573,10 +748,9 @@
       </button>
       <nav class="site-header__nav" id="site-header-nav" aria-label="メインナビゲーション">
         <ul class="site-header__list">
-          <li class="site-header__item"><a class="site-header__link" href="philosophy.html" title="初めての方へ（個人事業主向けWeb制作のOneとは）" aria-label="初めての方へ（個人事業主向けWeb制作のOneとは）"><span class="site-header__link-label">初めての方へ</span></a></li>
-          <li class="site-header__item"><a class="site-header__link" href="profile.html" title="Profile（永冶陽平・岐阜・愛知で個人事業主向けWeb制作）" aria-label="Profile（永冶陽平・岐阜・愛知で個人事業主向けWeb制作）"><span class="site-header__link-label">Profile</span></a></li>
+          <li class="site-header__item"><a class="site-header__link" href="#about" title="事業概要（Oneとは・代表紹介）" aria-label="事業概要（Oneとは・代表紹介）"><span class="site-header__link-label">事業概要</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="services.html" title="お手伝いできること（Web制作・システム開発）" aria-label="お手伝いできること（Web制作・システム開発）"><span class="site-header__link-label">サービス</span></a></li>
-          <li class="site-header__item"><a class="site-header__link" href="pricing.html" title="料金の目安（Web制作・ホームページなど）" aria-label="料金の目安（Web制作・ホームページなど）"><span class="site-header__link-label">料金</span></a></li>
+          <li class="site-header__item"><a class="site-header__link" href="pricing.html" title="料金（Web制作・ホームページなど）" aria-label="料金（Web制作・ホームページなど）"><span class="site-header__link-label">料金</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="results.html" title="Behind the Design（設計の裏側・支援の事例）" aria-label="Behind the Design（設計の裏側・支援の事例）"><span class="site-header__link-label">Behind the Design</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="flow.html" title="ご相談から完成まで（Web制作・開発の流れとお見積り）" aria-label="ご相談から完成まで（Web制作・開発の流れとお見積り）"><span class="site-header__link-label">ご依頼の流れ</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="contact.html" title="まずは無料で相談する（Web制作・システムのお問い合わせ）" aria-label="まずは無料で相談する（Web制作・システムのお問い合わせ）"><span class="site-header__link-label">無料で相談</span></a></li>
@@ -597,12 +771,12 @@
         <p class="hero__subtitle hero__catch">小さなアイデアを、確かな未来へ。</p>
         <p class="hero__subtitle hero__catch hero__catch--second">0から1を、Oneと。</p>
         <p class="hero__lead">小さな願望から、一緒に構想を整理しませんか？</p>
-        <div class="hero__cta-row hero__cta-row--main" aria-label="ヒーロー導線">
-          <a class="hero__cta" href="contact.html">無料で相談する</a>
-          <a class="hero__cta hero__cta--ghost" href="#services">お手伝いできることを見る</a>
-        </div>
       </div>
     </div>
+    <a href="#about" class="hero__scroll" aria-label="事業概要へスクロール">
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+      <span class="hero__scroll-chevron" aria-hidden="true"></span>
+    </a>
   </section>
 
   <div class="main-wrap">
@@ -619,40 +793,86 @@
       <span class="main-wrap__code-sym">⚙</span>
     </div>
 
-  <section class="section section--problem" id="problem" aria-labelledby="section-problem-heading">
-    <h2 id="section-problem-heading" class="u-visually-hidden">メッセージ</h2>
-    <div class="problem__layout">
-      <div class="problem__column problem__column--text">
-        <div class="problem__checks">
-          <p class="problem__check-item">☑ここが改善できたらいいな</p>
-          <p class="problem__check-item">☑こんなものがあったらいいな</p>
+  <section class="section section--about" id="about" aria-labelledby="section-about-heading">
+    <div class="section__head section__head--minimal">
+      <h2 class="section__title" id="section-about-heading">事業概要</h2>
+    </div>
+    <div class="about__layout">
+      <div class="about__column about__column--main">
+        <div class="about__body">
+          <p class="about__text">岐阜・愛知を中心に、個人事業主・小規模事務所向けのホームページ制作・Web設計支援を行っています。</p>
+          <p class="about__text">システムエンジニアとして、Webサイト・業務システム・ツール開発まで、0から1の設計〜開発を一貫して伴走します。ITに不慣れな方にも、分かりやすい言葉でお伝えします。</p>
         </div>
-        <p class="problem__text">そう思っても、「どうせ無理だ」と見過ごしてしまうことがありませんか？</p>
-        <p class="problem__text">本来、すべての始まりは小さな願望から生まれます。</p>
-        <p class="problem__text">私の好きな言葉に「夢を持つことはタダ」というものがあります。</p>
-        <p class="problem__text">アイデアを持つこと、生み出すことも同じこと。<br>大切なのは、それを形にすることと考えます。</p>
-        <div class="problem__links">
-          <a class="problem__link" href="philosophy.html" aria-label="初めての方へ（Oneとは）のページへ移動">初めての方へ→</a>
-          <a class="problem__link" href="profile.html" aria-label="Profileのページへ移動">Profile→</a>
+        <div class="about__links">
+          <a class="about__link" href="philosophy.html" aria-label="初めての方へ（Oneとは）のページへ移動">初めての方へ→</a>
+          <a class="about__link" href="profile.html" aria-label="代表紹介のページへ移動">代表紹介→</a>
         </div>
       </div>
-      <div class="problem__column problem__column--media">
+
+      <div class="about__column about__column--media">
         <figure class="problem__video-wrap">
-          <div class="problem__video-frame">
+          <div class="problem__video-frame" data-problem-video data-youtube-id="azMR3Dtkztk">
             <!-- PR動画（限定公開）https://youtu.be/azMR3Dtkztk -->
-            <iframe
-              class="problem__youtube"
-              title="事業の目的からサービスまでを紹介するOneのPR動画（YouTube）"
-              loading="eager"
-              src="https://www.youtube.com/embed/azMR3Dtkztk?rel=0&amp;modestbranding=1"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
+            <button type="button" class="problem__video-facade" data-problem-video-play aria-label="Play movie about One（PR動画を再生）">
+              <img
+                class="problem__video-thumb"
+                src="https://img.youtube.com/vi/azMR3Dtkztk/maxresdefault.jpg"
+                alt=""
+                width="1280"
+                height="720"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="problem__video-facade-ui">
+                <span class="problem__video-play-btn" aria-hidden="true">
+                  <svg class="problem__video-play-svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                    <path fill="#ebe4db" d="M8 5v14l11-7z"></path>
+                  </svg>
+                </span>
+                <span class="problem__video-play-label">Play movie about One</span>
+              </span>
+            </button>
           </div>
         </figure>
       </div>
     </div>
+  </section>
+
+  <section class="section section--why-one" id="why-one" aria-labelledby="section-why-one-heading">
+    <div class="section__head section__head--minimal">
+      <h2 class="section__title" id="section-why-one-heading">Oneが選ばれる理由</h2>
+    </div>
+
+    <ol class="why-one__reasons">
+      <li class="why-one__reason">
+        <span class="why-one__reason-num" aria-hidden="true">01</span>
+        <div>
+          <h3 class="why-one__reason-title">設計から運用まで、Webパートナーとして伴走</h3>
+          <p class="why-one__reason-text">One（イチ）は制作屋ではありません。事業の発展に寄与するWebパートナーとして、公開後の運用まで一緒に進めます。</p>
+        </div>
+      </li>
+      <li class="why-one__reason">
+        <span class="why-one__reason-num" aria-hidden="true">02</span>
+        <div>
+          <h3 class="why-one__reason-title">個人事業主・小規模事業向け、相場より抑えた料金</h3>
+          <p class="why-one__reason-text">開業準備中・副業・事業始めたての方にも、始めやすい目安でご案内します。岐阜・愛知を中心に、地域に根ざした対応も可能です。</p>
+        </div>
+      </li>
+      <li class="why-one__reason">
+        <span class="why-one__reason-num" aria-hidden="true">03</span>
+        <div>
+          <h3 class="why-one__reason-title">かんたん・シンプルを追求</h3>
+          <p class="why-one__reason-text">やさしい言葉で説明し、必要な機能だけを厳選。使いこなせる設計を心がけます。</p>
+        </div>
+      </li>
+      <li class="why-one__reason">
+        <span class="why-one__reason-num" aria-hidden="true">04</span>
+        <div>
+          <h3 class="why-one__reason-title">1客1件、ひとりで誠実に</h3>
+          <p class="why-one__reason-text">要望の整理から実装まで担当が変わりません。1つ1つのプロセスを大切にします。</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <section class="section section--services" id="services">
@@ -667,7 +887,7 @@
   <section class="section section--pricing" id="pricing">
     <div class="section__head">
       <span class="section__num" aria-hidden="true">02</span>
-      <h2 class="section__title">料金の目安</h2>
+      <h2 class="section__title">料金</h2>
     </div>
     <p class="section__lead">個人事業主・小規模事業向けに、相場より抑えた目安でご案内しています。</p>
     <div class="pricing-teaser">
@@ -691,7 +911,7 @@
       </ul>
       <p class="pricing-teaser__note">※相場より抑えた目安です。詳しい内訳は料金ページでご確認ください。</p>
     </div>
-    <a class="section__jump" href="pricing.html" aria-label="料金の目安の詳細ページへ移動">price→</a>
+    <a class="section__jump" href="pricing.html" aria-label="料金の詳細ページへ移動">price→</a>
   </section>
 
   <section class="section section--results" id="results">
@@ -753,8 +973,7 @@
     <div class="page-sitemap__inner">
       <ul class="page-sitemap__list">
         <li><a href="index.html">トップ</a></li>
-        <li><a href="philosophy.html">初めての方へ</a></li>
-        <li><a href="profile.html">Profile</a></li>
+        <li><a href="index.html#about">事業概要</a></li>
         <li><a href="services.html">サービス</a></li>
         <li><a href="pricing.html">料金</a></li>
         <li><a href="results.html">Behind the Design</a></li>
@@ -788,6 +1007,6 @@
     </div>
   </div>
 
-  <script src="main.js?v=22"></script>
+  <script src="main.js?v=27"></script>
 </body>
 </html>
