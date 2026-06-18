@@ -474,7 +474,7 @@ body:not(:has(.hero)){
 .profile__inner{display:grid;gap:var(--space-lg);align-items:start;}
 @media(min-width:640px){.profile__inner{grid-template-columns:160px 1fr;gap:var(--space-xl);}}
 .profile__figure{margin:0;border-radius:var(--radius);overflow:hidden;background:transparent;}
-.profile__figure img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;}
+.profile__figure img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;}
 .profile__body{min-width:0;}
 .profile__name{margin:0 0 var(--space);font-family:var(--font-serif);font-size:1.25rem;font-weight:600;}
 .profile__role{margin:0 0 var(--space);font-size:0.95rem;color:var(--color-accent);}
