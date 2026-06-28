@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Behind the Design｜デザインの裏側｜One</title>
-  <meta name="description" content="Behind the Design — About One（イチ）。このサイトをなぜそう設計したか、個人事業主向け・Profile・余白・動画・Create to One に込めた意図をお伝えします。">
+  <meta name="description" content="Behind the Design — このサイトの設計意図に加え、自社開発 Mapping（デモ版）の背景と、ホームページ制作・Webツール開発への活かし方をお伝えします。">
   <link rel="canonical" href="https://create-to-one.com/results.html">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#a85c38">
@@ -14,7 +14,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=16">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon" href="/images/favicon.png?v=16">
-  <link rel="stylesheet" href="style.css?v=54">
+  <link rel="stylesheet" href="style.css?v=58">
 </head>
 <body>
   <header class="site-header" aria-label="サイトヘッダー">
@@ -56,7 +56,7 @@
       <div class="section__head section__head--minimal">
         <h1 class="section__title">デザインの裏側</h1>
       </div>
-      <p class="results__tagline">デザインの裏側——このサイトを、なぜそう考え、どう形にしたかをお伝えします。</p>
+      <p class="results__tagline">デザインの裏側——このサイトの設計意図と、自社開発ツールの背景をお伝えします。</p>
 
       <div class="btd-chapters">
         <header class="btd-chapter-global" aria-label="Chapter">
@@ -68,6 +68,20 @@
             <span class="btd-chapter__mark">No.1</span>
             <span class="btd-chapter__name">About One（イチ）</span>
           </h2>
+
+          <p class="btd-mapping__lead">自社が手掛けるOneの公式ホームページです。</p>
+
+          <figure class="btd-mapping__figure">
+            <div class="btd-mapping__preview">
+              <div class="btd-mapping__frame btd-mapping__frame--thumb">
+                <img class="btd-mapping__img" src="images/one-homepage-screenshot.png" alt="Oneのホームページ。ヒーローに「初めてでも安心。0から誠実に創る、」の見出しと、事業概要セクションが表示されている。" width="1280" height="720" loading="lazy" decoding="async">
+                <button type="button" class="btd-mapping__expand" data-image-expand aria-expanded="false" aria-controls="one-homepage-modal" aria-label="Oneのホームページ画面を拡大表示">
+                  <span class="btd-mapping__expand-icon" aria-hidden="true">⤢</span>
+                  <span class="btd-mapping__expand-label">拡大する</span>
+                </button>
+              </div>
+            </div>
+          </figure>
 
           <div class="about-one" data-about-one-reveal>
             <article class="about-one__item about-one__item--visible-end">
@@ -122,6 +136,60 @@
             </p>
           </div>
         </article>
+
+        <article class="btd-chapter btd-chapter--mapping" id="chapter-mapping" aria-labelledby="chapter-mapping-title">
+          <h2 class="btd-chapter__title" id="chapter-mapping-title">
+            <span class="btd-chapter__mark">No.2</span>
+            <span class="btd-chapter__name">Mapping（自社開発・デモ版）</span>
+          </h2>
+
+          <div class="btd-mapping">
+            <p class="btd-mapping__lead">秘書業務では、拠点・エリア・対応状況など散在する情報を整理し、チーム全員が同じ認識で動ける形に整える必要がありました。その経験をもとに、<strong>地域情報を地図上で見える化する Mapping</strong>を自社開発しています。</p>
+
+            <figure class="btd-mapping__figure">
+              <div class="btd-mapping__preview">
+                <div class="btd-mapping__frame btd-mapping__frame--thumb">
+                  <img class="btd-mapping__img" src="images/mapping-demo.png" alt="Mappingのデモ画面。左に拠点・エリア・要対応件数のダッシュボード、右に名古屋市東区を中心とした地図と拠点マーカーが表示されている。" width="1280" height="720" loading="lazy" decoding="async">
+                  <button type="button" class="btd-mapping__expand" data-image-expand aria-expanded="false" aria-controls="mapping-demo-modal" aria-label="Mappingのデモ画面を拡大表示">
+                    <span class="btd-mapping__expand-icon" aria-hidden="true">⤢</span>
+                    <span class="btd-mapping__expand-label">拡大する</span>
+                  </button>
+                </div>
+              </div>
+            </figure>
+
+            <div class="about-one" data-about-one-reveal>
+              <article class="about-one__item about-one__item--visible-end">
+                <h3 class="about-one__question">① なぜ Mapping を作ったか</h3>
+                <ul class="about-one__checks">
+                  <li>管理の負担を軽減させる</li>
+                  <li>要対応案件とそうでない案件を明確化する</li>
+                  <li>現状を正確に把握させ、開拓の道しるべに繋げる</li>
+                </ul>
+              </article>
+
+              <div class="about-one__reveal-stack" id="mapping-reveal-stack">
+                <article class="about-one__item about-one__item--last" data-about-one-reveal-item hidden>
+                  <h3 class="about-one__question">② デモ画面で見える設計</h3>
+                  <ul class="about-one__checks about-one__checks--grid">
+                    <li>拠点・エリアを地図上にプロット</li>
+                    <li>件数・要対応をダッシュボードで把握</li>
+                    <li>全件／要対応のみの絞り込み</li>
+                    <li>リスト・印刷など運用導線</li>
+                    <li>地図機能で新規開拓の可能性を広げる</li>
+                  </ul>
+                </article>
+              </div>
+
+              <p class="about-one__reveal-actions">
+                <button type="button" class="about-one__reveal-btn" data-about-one-reveal-btn aria-controls="mapping-reveal-stack" aria-expanded="false">
+                  <span class="about-one__reveal-label about-one__reveal-label--open">more+</span>
+                  <span class="about-one__reveal-label about-one__reveal-label--close" hidden>less+</span>
+                </button>
+              </p>
+            </div>
+          </div>
+        </article>
       </div>
 
       <div class="hero__cta-row hero__cta-row--main">
@@ -158,6 +226,32 @@
     </div>
   </footer>
 
-  <script src="main.js?v=25"></script>
+  <div class="modal modal--image" id="one-homepage-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="one-homepage-modal-title">
+    <div class="modal__overlay" data-modal-close="true"></div>
+    <div class="modal__panel modal__panel--image" role="document">
+      <div class="modal__head modal__head--image">
+        <p class="modal__kicker" id="one-homepage-modal-title">One ホームページ</p>
+        <button class="modal__close" type="button" data-modal-close="true" aria-label="閉じる">×</button>
+      </div>
+      <figure class="modal__figure">
+        <img class="modal__img" src="images/one-homepage-screenshot.png" alt="Oneのホームページ（拡大表示）。" width="1280" height="720" decoding="async">
+      </figure>
+    </div>
+  </div>
+
+  <div class="modal modal--image" id="mapping-demo-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mapping-demo-modal-title">
+    <div class="modal__overlay" data-modal-close="true"></div>
+    <div class="modal__panel modal__panel--image" role="document">
+      <div class="modal__head modal__head--image">
+        <p class="modal__kicker" id="mapping-demo-modal-title">Mapping デモ画面</p>
+        <button class="modal__close" type="button" data-modal-close="true" aria-label="閉じる">×</button>
+      </div>
+      <figure class="modal__figure">
+        <img class="modal__img" src="images/mapping-demo.png" alt="Mappingのデモ画面（拡大表示）。" width="1280" height="720" decoding="async">
+      </figure>
+    </div>
+  </div>
+
+  <script src="main.js?v=28"></script>
 </body>
 </html>

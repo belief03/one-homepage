@@ -338,9 +338,60 @@
     });
   })();
 
+  // デザインの裏側：画面イメージの拡大表示
+  (function () {
+    var expandBtns = document.querySelectorAll('[data-image-expand]');
+    if (!expandBtns.length) return;
+
+    var activeExpandBtn = null;
+
+    expandBtns.forEach(function (expandBtn) {
+      var modalId = expandBtn.getAttribute('aria-controls');
+      var imageModal = modalId ? document.getElementById(modalId) : null;
+      if (!imageModal) return;
+
+      var closeEls = imageModal.querySelectorAll('[data-modal-close="true"]');
+
+      function openModal() {
+        activeExpandBtn = expandBtn;
+        imageModal.classList.add('is-open');
+        imageModal.setAttribute('aria-hidden', 'false');
+        expandBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('is-modal-open');
+
+        var closeBtn = imageModal.querySelector('.modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal() {
+        imageModal.classList.remove('is-open');
+        imageModal.setAttribute('aria-hidden', 'true');
+        expandBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('is-modal-open');
+        if (activeExpandBtn === expandBtn) {
+          expandBtn.focus();
+          activeExpandBtn = null;
+        }
+      }
+
+      expandBtn.addEventListener('click', openModal);
+
+      closeEls.forEach(function (el) {
+        el.addEventListener('click', closeModal);
+      });
+
+      imageModal._closeModal = closeModal;
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var openModal = document.querySelector('.modal--image.is-open');
+      if (openModal && openModal._closeModal) openModal._closeModal();
+    });
+  })();
+
   // Behind the Design：more+ / less+（②以降の開閉）
-  var aboutOneReveal = document.querySelector('[data-about-one-reveal]');
-  if (aboutOneReveal) {
+  document.querySelectorAll('[data-about-one-reveal]').forEach(function (aboutOneReveal) {
     var revealItems = aboutOneReveal.querySelectorAll('[data-about-one-reveal-item]');
     var revealBtn = aboutOneReveal.querySelector('[data-about-one-reveal-btn]');
     var revealOpenLabel = aboutOneReveal.querySelector('.about-one__reveal-label--open');
@@ -373,7 +424,7 @@
         setRevealOpen(!revealOpen);
       });
     }
-  }
+  });
 
   // スマホ：ヘッダーメニュー開閉
   var siteHeader = document.querySelector('.site-header');
