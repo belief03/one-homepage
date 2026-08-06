@@ -457,4 +457,121 @@
     });
   }
 
+  // 料金ページ：入場でこだわりをフワーっと → スクロールで料金・オプション
+  var pricingRevealEls = document.querySelectorAll('[data-pricing-reveal]');
+  if (pricingRevealEls.length) {
+    var pricingMotionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function showPricingReveal(el) {
+      el.classList.add('is-visible');
+    }
+
+    if (pricingMotionReduced) {
+      pricingRevealEls.forEach(showPricingReveal);
+    } else {
+      var pricingScrollObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          showPricingReveal(entry.target);
+          pricingScrollObserver.unobserve(entry.target);
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.12
+      });
+
+      pricingRevealEls.forEach(function (el, index) {
+        if (el.getAttribute('data-pricing-reveal-on') === 'load') {
+          var loadDelay = 120 + (index * 140);
+          if (el.getAttribute('data-pricing-reveal-style') === 'float') {
+            loadDelay = 320;
+          }
+          window.setTimeout(function () {
+            showPricingReveal(el);
+          }, loadDelay);
+        } else {
+          pricingScrollObserver.observe(el);
+        }
+      });
+    }
+  }
+
+  // 料金プラン：詳細を大きく表示（モーダル）
+  (function () {
+    var modal = document.getElementById('pricing-plan-modal');
+    var modalBody = document.getElementById('pricing-plan-modal-body');
+    var openBtns = document.querySelectorAll('[data-pricing-plan-open]');
+    if (!modal || !modalBody || !openBtns.length) return;
+
+    var activeBtn = null;
+
+    function closePlanModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-modal-open');
+      openBtns.forEach(function (btn) {
+        btn.setAttribute('aria-expanded', 'false');
+      });
+      if (activeBtn) {
+        activeBtn.focus();
+        activeBtn = null;
+      }
+      modalBody.innerHTML = '';
+    }
+
+    function openPlanModal(plan, btn) {
+      var clone = plan.cloneNode(true);
+      clone.classList.add('pricing-plan--modal-view');
+      clone.removeAttribute('data-pricing-reveal-item');
+      clone.removeAttribute('data-pricing-plan');
+      clone.querySelectorAll('[id]').forEach(function (el) {
+        el.removeAttribute('id');
+      });
+
+      var nameEl = clone.querySelector('.pricing-plan__name');
+      if (nameEl) nameEl.id = 'pricing-plan-modal-title';
+
+      var toggle = clone.querySelector('[data-pricing-plan-open]');
+      if (toggle) toggle.remove();
+
+      var more = clone.querySelector('.pricing-plan__more');
+      if (more) more.hidden = false;
+
+      modalBody.innerHTML = '';
+      modalBody.appendChild(clone);
+
+      activeBtn = btn;
+      openBtns.forEach(function (otherBtn) {
+        otherBtn.setAttribute('aria-expanded', otherBtn === btn ? 'true' : 'false');
+      });
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-modal-open');
+
+      var closeBtn = modal.querySelector('.modal__close');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    openBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var plan = btn.closest('[data-pricing-plan]');
+        if (!plan) return;
+        openPlanModal(plan, btn);
+      });
+    });
+
+    modal.querySelectorAll('[data-pricing-plan-close]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        closePlanModal();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closePlanModal();
+      }
+    });
+  })();
+
 })();
