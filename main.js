@@ -183,8 +183,9 @@
     });
   }, {
     root: null,
-    rootMargin: '0px 0px -5% 0px',
-    threshold: 0.05
+    /* ヒーローから降りた直後に、少し手前で発火して自然に見せる */
+    rootMargin: '0px 0px -8% 0px',
+    threshold: 0.08
   });
 
   document.querySelectorAll('.section, .footer, .page-sitemap').forEach(function (el) {
