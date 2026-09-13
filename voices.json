@@ -1,0 +1,22 @@
+{
+  "ok": true,
+  "updatedAt": "2026-09-13T00:00:00.000Z",
+  "voices": [
+    {
+      "id": "sample-meiryo",
+      "text": "事業内容が分かりやすく伝わるようになり、社内外で説明しやすくなりました。",
+      "service": "ホームページ制作",
+      "company": "株式会社名菱運輸",
+      "attribution": "株式会社名菱運輸 様",
+      "consent": "named"
+    },
+    {
+      "id": "sample-hakamori",
+      "text": "想いとサービス内容が伝わるサイトになり、問い合わせにもつながりやすくなりました。",
+      "service": "ホームページ制作",
+      "company": "墓守の民",
+      "attribution": "墓守の民 様",
+      "consent": "named"
+    }
+  ]
+}

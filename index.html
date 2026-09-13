@@ -116,7 +116,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon" href="/images/favicon.png?v=16">
   <link rel="apple-touch-icon-precomposed" href="/images/favicon.png?v=16">
-  <link rel="stylesheet" href="style.css?v=83">
+  <link rel="stylesheet" href="style.css?v=89">
   <script>
   try {
     if (sessionStorage.getItem('one-home-opening-seen') === '1') {
@@ -143,12 +143,14 @@
   html.one-skip-opening .section,
   html.one-skip-opening .footer{opacity:1 !important;transform:none !important;transition:none !important;}
   html.one-skip-opening .section--services .services__item,
+  html.one-skip-opening .section--works .works-teaser__item,
   html.one-skip-opening .section--flow .flow__item,
   html.one-skip-opening .section--mission .section__head,
   html.one-skip-opening .section--mission .mission,
   html.one-skip-opening .section--why-one .section__head,
   html.one-skip-opening .section--why-one .why-one__reason,
-  html.one-skip-opening .section .section__title::after{opacity:1 !important;transform:none !important;transition:none !important;}
+  html.one-skip-opening .section .section__title::after{opacity:1 !important;transform:none !important;transition:none !important;animation:none !important;}
+  /* 矢印はスキップ時もスクロール表示で再生（ここは上書きしない） */
   /* ヒーロー：リロード時にふわっと */
   @keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
   .hero__inner{animation:fadeInUp 0.9s ease-out 0s both;}
@@ -198,6 +200,10 @@
   .section--services .services__item:nth-child(1){transition-delay:0.05s;}
   .section--services .services__item:nth-child(2){transition-delay:0.15s;}
   .section--services.is-visible .services__item{opacity:1;transform:translateY(0);}
+  .section--works .works-teaser__item{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease-out,transform 0.6s ease-out;}
+  .section--works .works-teaser__item:nth-child(1){transition-delay:0.05s;}
+  .section--works .works-teaser__item:nth-child(2){transition-delay:0.15s;}
+  .section--works.is-visible .works-teaser__item{opacity:1;transform:translateY(0);}
   .section--flow .flow__item{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease-out,transform 0.6s ease-out;}
   .section--flow .flow__item:nth-child(1){transition-delay:0s;}
   .section--flow .flow__item:nth-child(2){transition-delay:0.1s;}
@@ -224,6 +230,10 @@
     background:none;
     border-radius:0;
   }
+  .section--mission{
+    position:relative;
+    overflow:hidden; /* 矢印は経営理念内のみ */
+  }
   .section--mission + .section--why-one{
     margin-top:clamp(1.75rem,4vw,2.75rem);
     padding-top:clamp(1.5rem,3.2vw,2rem);
@@ -245,6 +255,60 @@
   .section--why-one .section__head--minimal .section__title::after{
     margin-left:auto;
     margin-right:auto;
+  }
+  .mission__growth{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
+    opacity:0;
+  }
+  .mission__growth-path{
+    fill:none;
+    stroke:#c45a38;
+    stroke-width:14;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    opacity:0.72;
+    stroke-dasharray:1;
+    stroke-dashoffset:1;
+  }
+  .mission__growth-head{
+    fill:#c45a38;
+    opacity:0;
+    transform-box:fill-box;
+    transform-origin:center;
+    transform:scale(0.55) translate(-6px,8px);
+  }
+  /* 表示と同時に描画 → 少し残してから消える */
+  .section--mission.is-visible .mission__growth{
+    animation:missionGrowthLife 3.4s ease forwards;
+  }
+  .section--mission.is-visible .mission__growth-path{
+    animation:missionGrowthDraw 1.55s cubic-bezier(.2,.7,.2,1) 0.08s forwards;
+  }
+  .section--mission.is-visible .mission__growth-head{
+    animation:missionGrowthHead 0.4s cubic-bezier(.2,.75,.25,1) 1.35s forwards;
+  }
+  @keyframes missionGrowthLife{
+    0%{opacity:0;}
+    5%{opacity:1;}
+    68%{opacity:1;}
+    100%{opacity:0;}
+  }
+  @keyframes missionGrowthDraw{
+    to{stroke-dashoffset:0;}
+  }
+  @keyframes missionGrowthHead{
+    to{opacity:0.78;transform:scale(1) translate(0,0);}
+  }
+  .section--mission .section__head,
+  .mission{
+    position:relative;
+    z-index:1;
   }
   .mission{
     max-width:40rem;
@@ -339,22 +403,21 @@
   }
   .section--services,
   .section--pricing,
+  .section--works,
   .section--results,
   .section--flow,
-  .section--xfeed,
+  .section--blog-latest,
   .section--contact{
     padding-top:clamp(2.2rem,4.8vw,3.1rem);
     padding-bottom:clamp(2.2rem,4.8vw,3.1rem);
   }
   .section--services .section__lead,
   .section--pricing .section__lead,
+  .section--works .section__lead,
   .section--results .section__lead,
   .section--flow .section__lead,
   .section--contact .section__lead{
     margin-bottom:clamp(0.95rem,2.2vw,1.25rem);
-  }
-  .section--xfeed .section__panel{
-    margin-top:0.9rem;
   }
   .section--why-one + .section--services{
     margin-top:clamp(0.8rem,2.2vw,1.25rem);
@@ -582,7 +645,7 @@
     .fv-title{font-size:28px;}
     .fv-sub{font-size:16px;}
   }
-  @media(prefers-reduced-motion:reduce){.hero__inner,.hero__visual,.hero__text{animation:none !important;opacity:1 !important;transform:none !important;}.hero__scroll{animation:none !important;opacity:.88 !important;transform:translateX(-50%) !important;}.hero__scroll-line,.hero__scroll-chevron{animation:none !important;}.section,.section.is-visible,.section .section__title::after,.section.is-visible .section__title::after,.section--mission .section__head,.section--mission .mission,.section--mission.is-visible .section__head,.section--mission.is-visible .mission,.section--why-one .section__head,.section--why-one .why-one__reason,.section--why-one.is-visible .section__head,.section--why-one.is-visible .why-one__reason,.section--services .services__item,.section--services.is-visible .services__item,.section--flow .flow__item,.section--flow.is-visible .flow__item,.footer,.footer.is-visible{opacity:1 !important;transform:none !important;transition:none !important;}.opening{transition:none !important;}.opening::before{display:none !important;}.opening__meter-wrap,.opening__line,.opening__sub{animation:none !important;opacity:1 !important;transform:none !important;}.opening__meter-wrap{--opening-progress:100 !important;}.opening__meter-scan,.opening__meter-head{animation:none !important;}}
+  @media(prefers-reduced-motion:reduce){.hero__inner,.hero__visual,.hero__text{animation:none !important;opacity:1 !important;transform:none !important;}.hero__scroll{animation:none !important;opacity:.88 !important;transform:translateX(-50%) !important;}.hero__scroll-line,.hero__scroll-chevron{animation:none !important;}.section,.section.is-visible,.section .section__title::after,.section.is-visible .section__title::after,.section--mission .section__head,.section--mission .mission,.section--mission.is-visible .section__head,.section--mission.is-visible .mission,.section--why-one .section__head,.section--why-one .why-one__reason,.section--why-one.is-visible .section__head,.section--why-one.is-visible .why-one__reason,.section--services .services__item,.section--services.is-visible .services__item,.section--works .works-teaser__item,.section--works.is-visible .works-teaser__item,.section--flow .flow__item,.section--flow.is-visible .flow__item,.footer,.footer.is-visible{opacity:1 !important;transform:none !important;transition:none !important;animation:none !important;}.section--mission .mission__growth,.section--mission .mission__growth-path,.section--mission .mission__growth-head{animation:none !important;opacity:0 !important;}.opening{transition:none !important;}.opening::before{display:none !important;}.opening__meter-wrap,.opening__line,.opening__sub{animation:none !important;opacity:1 !important;transform:none !important;}.opening__meter-wrap{--opening-progress:100 !important;}.opening__meter-scan,.opening__meter-head{animation:none !important;}}
   </style>
 </head>
 <body>
@@ -625,6 +688,7 @@
           <li class="site-header__item"><a class="site-header__link" href="pricing.html" title="料金（Web制作・ホームページなど）" aria-label="料金（Web制作・ホームページなど）"><span class="site-header__link-label">料金</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="results.html" title="Behind the Design（デザインの裏側）" aria-label="Behind the Design（デザインの裏側）"><span class="site-header__link-label">デザインの裏側</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="flow.html" title="ご相談から完成まで（Web制作・開発の流れとお見積り）" aria-label="ご相談から完成まで（Web制作・開発の流れとお見積り）"><span class="site-header__link-label">ご依頼の流れ</span></a></li>
+                    <li class="site-header__item"><a class="site-header__link" href="blog.html" title="ブログ（制作・SEOのヒント）" aria-label="ブログ（制作・SEOのヒント）"><span class="site-header__link-label">ブログ</span></a></li>
           <li class="site-header__item"><a class="site-header__link" href="contact.html" title="まずは無料で相談する（Web制作・システムのお問い合わせ）" aria-label="まずは無料で相談する（Web制作・システムのお問い合わせ）"><span class="site-header__link-label">無料で相談</span></a></li>
         </ul>
       </nav>
@@ -666,6 +730,10 @@
     </div>
 
   <section class="section section--mission" id="philosophy" aria-labelledby="section-philosophy-heading">
+    <svg class="mission__growth" viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+      <path class="mission__growth-path" pathLength="1" d="M48 268 C120 240 155 205 195 185 S255 190 290 148 S345 95 415 62 S465 40 485 34"/>
+      <path class="mission__growth-head" d="M462 14 L508 30 L464 62 Z"/>
+    </svg>
     <div class="section__head section__head--minimal">
       <h2 class="section__title" id="section-philosophy-heading">経営理念</h2>
     </div>
@@ -708,7 +776,7 @@
       <li class="why-one__reason">
         <span class="why-one__reason-num" aria-hidden="true">その４</span>
         <div>
-          <h3 class="why-one__reason-title">1客1件、ひとりで誠実に</h3>
+          <h3 class="why-one__reason-title">1客1件、誠実に</h3>
           <p class="why-one__reason-text">要望の整理から実装まで担当が変わりません。1つ1つのプロセスを大切にします。</p>
         </div>
       </li>
@@ -749,14 +817,52 @@
           <span class="pricing-teaser__price">￥160,000〜</span>
         </li>
       </ul>
-      <p class="pricing-teaser__note">※相場より抑えた目安です。<a href="pricing.html#pricing-bonus-heading">詳しくは料金ページへ</a></p>
     </div>
     <a class="section__jump" href="pricing.html" aria-label="料金の詳細ページへ移動">price→</a>
   </section>
 
-  <section class="section section--results" id="results">
+  <section class="section section--works" id="works" aria-labelledby="section-works-heading" data-voices-url="https://script.google.com/a/macros/create-to-one.com/s/AKfycbx1D2JnYT5-fU670O_fwUDVoN_LJDiLtZMGrsXaSVz7SmSJ1VmIF3UmdFz9xWuktHX9gg/exec">
     <div class="section__head">
       <span class="section__num" aria-hidden="true">03</span>
+      <h2 class="section__title" id="section-works-heading">取引紹介</h2>
+    </div>
+    <p class="section__lead">これまでにご依頼いただいた制作の一例です。業種が違っても、伝わるホームページを一緒に形にします。</p>
+    <ul class="works-teaser">
+      <li class="works-teaser__item" data-voice-key="名菱運輸">
+        <div class="works-teaser__body">
+          <p class="works-teaser__meta">ホームページ制作　／　運輸・物流</p>
+          <h3 class="works-teaser__name">株式会社名菱運輸　様</h3>
+          <p class="works-teaser__outcome">事業内容や強みが伝わるコーポレートサイトを制作</p>
+          <figure class="works-teaser__voice">
+            <figcaption class="works-teaser__voice-label"><span class="works-teaser__voice-en" lang="en">Voice</span>ご依頼者の声</figcaption>
+            <blockquote class="works-teaser__voice-quote" data-voice-slot>
+              <p></p>
+            </blockquote>
+          </figure>
+        </div>
+      </li>
+      <li class="works-teaser__item" data-voice-key="墓守の民">
+        <div class="works-teaser__body">
+          <p class="works-teaser__meta">ホームページ制作　／　お墓参り代行</p>
+          <h3 class="works-teaser__name">墓守の民　様</h3>
+          <p class="works-teaser__outcome">想いとサービス内容が伝わり、問い合わせにつながるサイトを制作</p>
+          <figure class="works-teaser__voice">
+            <figcaption class="works-teaser__voice-label"><span class="works-teaser__voice-en" lang="en">Voice</span>ご依頼者の声</figcaption>
+            <blockquote class="works-teaser__voice-quote" data-voice-slot>
+              <p></p>
+            </blockquote>
+          </figure>
+          <p class="works-teaser__more">
+            <a class="works-teaser__link" href="https://hakamairidaikou.vercel.app/" target="_blank" rel="noopener noreferrer">サイトを見る →</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section section--results" id="results">
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">04</span>
       <h2 class="section__title">デザインの裏側</h2>
     </div>
     <p class="section__lead">このサイトの設計意図に加え、自社開発 Mapping（デモ版）の背景もお伝えします。</p>
@@ -765,38 +871,29 @@
 
   <section class="section section--flow" id="flow">
     <div class="section__head">
-      <span class="section__num" aria-hidden="true">04</span>
+      <span class="section__num" aria-hidden="true">05</span>
       <h2 class="section__title">ご相談から完成まで（Web制作・開発の流れとお見積り）</h2>
     </div>
     <p class="section__lead">ご相談からお見積り、ご契約、納品・サポートまで、各ステップを明確にして進めます。</p>
     <a class="section__jump" href="flow.html" aria-label="ご相談から完成までの詳細ページへ移動">flow→</a>
   </section>
 
-  <section class="section section--xfeed" id="information" aria-label="導線設計・改善の発信（X）">
-    <div class="section__head section__head--minimal">
-      <h2 class="section__title">導線設計・改善の発信</h2>
+  <section class="section section--blog-latest" id="information" aria-labelledby="blog-latest-heading" data-blog-latest="3" hidden>
+    <div class="section__head">
+      <span class="section__num" aria-hidden="true">06</span>
+      <h2 class="section__title" id="blog-latest-heading">ブログ</h2>
     </div>
-
-    <div class="section__panel section__panel--x">
-      <div class="information__x-pinned">
-        <div class="information__x-pinned-head">
-          <img class="information__x-pinned-avatar" src="images/logo-one.png" alt="Oneアイコン">
-          <div class="information__x-pinned-meta">
-            <p class="information__x-pinned-name">createtoOne</p>
-            <p class="information__x-pinned-handle">@createtoOne</p>
-          </div>
-        </div>
-        <p class="information__x-pinned-text">事業の価値を“伝わる形”にするための改善や導線設計を発信しています。</p>
-        <a class="information__x-pinned-link" href="https://x.com/createtoOne/status/2029391754940825659?s=20" target="_blank" rel="noopener noreferrer">
-          Xでツイートを見る
-        </a>
+    <div class="blog-latest">
+      <div class="blog-latest__head">
+        <a class="blog-latest__more" href="blog.html">一覧を見る →</a>
       </div>
+      <ul class="blog-latest__list" data-blog-latest-list></ul>
     </div>
   </section>
 
   <section class="section section--contact" id="contact">
     <div class="section__head">
-      <span class="section__num" aria-hidden="true">05</span>
+      <span class="section__num" aria-hidden="true">07</span>
       <h2 class="section__title">まずは無料で相談する（Web制作・システムのお問い合わせ）</h2>
     </div>
     <div class="section__lead section__lead--contact">
@@ -818,6 +915,7 @@
         <li><a href="pricing.html">料金</a></li>
         <li><a href="results.html">デザインの裏側</a></li>
         <li><a href="flow.html">ご依頼の流れ</a></li>
+        <li><a href="blog.html">ブログ</a></li>
         <li><a href="contact.html">無料で相談</a></li>
       </ul>
     </div>
@@ -847,6 +945,8 @@
     </div>
   </div>
 
-  <script src="main.js?v=28"></script>
+  <script src="main.js?v=31"></script>
+  <script src="microcms.config.js"></script>
+  <script src="blog.js?v=1"></script>
 </body>
 </html>

@@ -98,14 +98,51 @@
     }
   }
 
-  // ヒーロー：スクロール誘導は少しスクロールしたら非表示
+  // トップ：ヒーロー上ヘッダー／スクロール誘導をスクロール量に連動
+  var heroEl = document.querySelector('.hero');
   var heroScrollEl = document.querySelector('.hero__scroll');
-  if (heroScrollEl) {
-    function updateHeroScrollVisibility() {
-      heroScrollEl.classList.toggle('is-hidden', window.scrollY > 72);
+  var heroHeaderEl = heroEl ? document.querySelector('.site-header') : null;
+
+  if (heroEl && (heroScrollEl || heroHeaderEl)) {
+    var heroScrollReady = false;
+    var heroScrollRaf = 0;
+
+    window.setTimeout(function () {
+      heroScrollReady = true;
+      updateHeroChrome();
+    }, 900);
+
+    function updateHeroChrome() {
+      var y = window.scrollY || window.pageYOffset || 0;
+      var heroH = heroEl.offsetHeight || 1;
+      var fadeEnd = Math.max(96, heroH * 0.42);
+      var pastHero = y > Math.max(48, heroH - 72);
+
+      if (heroHeaderEl) {
+        heroHeaderEl.classList.toggle('is-past-hero', pastHero);
+      }
+
+      if (heroScrollEl && heroScrollReady) {
+        var t = Math.min(1, Math.max(0, y / fadeEnd));
+        var opacity = 0.88 * (1 - t);
+        heroScrollEl.style.opacity = String(opacity);
+        heroScrollEl.classList.toggle('is-hidden', t >= 0.98);
+      } else if (heroScrollEl && !heroScrollReady) {
+        heroScrollEl.classList.toggle('is-hidden', y > 72);
+      }
     }
-    updateHeroScrollVisibility();
-    window.addEventListener('scroll', updateHeroScrollVisibility, { passive: true });
+
+    function onHeroScroll() {
+      if (heroScrollRaf) return;
+      heroScrollRaf = window.requestAnimationFrame(function () {
+        heroScrollRaf = 0;
+        updateHeroChrome();
+      });
+    }
+
+    updateHeroChrome();
+    window.addEventListener('scroll', onHeroScroll, { passive: true });
+    window.addEventListener('resize', onHeroScroll, { passive: true });
   }
 
   // トップPR動画枠：左テキスト列の高さに合わせて枠サイズを調整（YouTube 埋め込み想定）
@@ -573,6 +610,84 @@
         closePlanModal();
       }
     });
+  })();
+
+  // お客様の声：アンケート（社名付き）→ 取引紹介カードへ紐づけ
+  (function () {
+    var worksSection = document.getElementById('works');
+    if (!worksSection) return;
+
+    var cards = worksSection.querySelectorAll('.works-teaser__item[data-voice-key]');
+    if (!cards.length) return;
+
+    var configuredUrl = (worksSection.getAttribute('data-voices-url') || '').trim();
+    var isLocalHost =
+      /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname) ||
+      window.location.protocol === 'file:';
+    var endpoint = configuredUrl || (isLocalHost ? 'voices.json' : '');
+    if (!endpoint) return;
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function normalizeCompany(name) {
+      return String(name || '')
+        .replace(/[ 　\t\r\n]/g, '')
+        .replace(/様$/g, '')
+        .replace(/^(株式会社|有限会社|合同会社|合資会社|合名会社)/, '')
+        .replace(/(株式会社|有限会社|合同会社|合資会社|合名会社)$/, '')
+        .toLowerCase();
+    }
+
+    function findVoiceForCard(card, voices) {
+      var key = normalizeCompany(card.getAttribute('data-voice-key'));
+      var nameEl = card.querySelector('.works-teaser__name');
+      var nameKey = normalizeCompany(nameEl ? nameEl.textContent : '');
+
+      for (var i = 0; i < voices.length; i++) {
+        var company = normalizeCompany(voices[i].company || voices[i].attribution || '');
+        if (!company) continue;
+        if (company === key || company === nameKey) return voices[i];
+        if (key && (company.indexOf(key) !== -1 || key.indexOf(company) !== -1)) return voices[i];
+        if (nameKey && (company.indexOf(nameKey) !== -1 || nameKey.indexOf(company) !== -1)) {
+          return voices[i];
+        }
+      }
+      return null;
+    }
+
+    function applyVoices(voices) {
+      if (!voices || !voices.length) return;
+
+      cards.forEach(function (card) {
+        var voice = findVoiceForCard(card, voices);
+        if (!voice || !voice.text) return;
+
+        var slot = card.querySelector('[data-voice-slot]');
+        if (!slot) return;
+
+        var text = escapeHtml(voice.text).replace(/\n/g, '<br>');
+        slot.innerHTML = '<p>' + text + '</p>';
+        card.classList.add('has-live-voice');
+      });
+    }
+
+    fetch(endpoint, { credentials: 'omit', cache: 'no-store' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('voices fetch failed: ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        if (!data || data.ok === false) return;
+        applyVoices(Array.isArray(data.voices) ? data.voices : []);
+      })
+      .catch(function () {});
   })();
 
 })();
