@@ -342,7 +342,7 @@
       return;
     }
 
-    fetchCms(null, { limit: 50, orders: '-publishedAt' })
+    fetchCms(null, { limit: 3, orders: '-updatedAt' })
       .then(function (data) {
         if (loadingEl) loadingEl.hidden = true;
         renderList(data.contents || [], listEl, emptyEl);
